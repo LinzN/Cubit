@@ -63,12 +63,12 @@ public class ChunkBorder implements Runnable {
         int y;
         for (y = 255; y > 0; y--) {
             if ((world.getBlockAt(x, y, z).getType() != Material.AIR)
-                    && (world.getBlockAt(x, y, z).getType() != Material.ENDER_PORTAL_FRAME)
+                    && (world.getBlockAt(x, y, z).getType() != Material.LEGACY_ENDER_PORTAL_FRAME)
                     && (world.getBlockAt(x, y, z).getType() != Material.BEDROCK)) {
                 if ((world.getBlockAt(x, y, z).getType() != Material.TORCH)
-                        && (world.getBlockAt(x, y, z).getType() != Material.REDSTONE_TORCH_ON)
+                        && (world.getBlockAt(x, y, z).getType() != Material.REDSTONE_TORCH)
                         && (world.getBlockAt(x, y, z).getType() != Material.DEAD_BUSH)
-                        && (world.getBlockAt(x, y, z).getType() != Material.DOUBLE_PLANT)
+                        && (world.getBlockAt(x, y, z).getType() != Material.LEGACY_DOUBLE_PLANT)
                         && (world.getBlockAt(x, y, z).getType() != Material.SNOW)) {
                     break;
                 }
