@@ -55,10 +55,10 @@ public class ParticleSender {
             edgeBlock.setZ(edgeBlock.getBlockZ() + .5);
             edgeBlock.setX(edgeBlock.getBlockX() + .5);
             if (this.primaryEffectSpigot != null) {
-                this.player.spigot().playEffect(edgeBlock, this.primaryEffectSpigot, 0, 0, 0f, 0f, 0f, 0.001f, 1, 32);
+                //this.player.spigot().playEffect(edgeBlock, this.primaryEffectSpigot, 0, 0, 0f, 0f, 0f, 0.001f, 1, 32);
             }
             if (this.secondaryEffectSpigot != null) {
-                this.player.spigot().playEffect(edgeBlock, this.secondaryEffectSpigot, 0, 0, 0f, 0f, 0f, 0.001f, 1, 32);
+                //this.player.spigot().playEffect(edgeBlock, this.secondaryEffectSpigot, 0, 0, 0f, 0f, 0f, 0.001f, 1, 32);
             }
         }
     }

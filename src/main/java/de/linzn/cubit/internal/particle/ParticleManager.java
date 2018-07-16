@@ -15,6 +15,7 @@ import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import de.linzn.cubit.internal.particle.border.ParticleSender;
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
+import org.bukkit.EntityEffect;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -23,6 +24,7 @@ public class ParticleManager {
 
     private CubitBukkitPlugin plugin;
 
+    //todo update new particle to 1.13
     public ParticleManager(CubitBukkitPlugin plugin) {
         plugin.getLogger().info("Loading ParticleManager");
         if (Bukkit.getPluginManager().getPlugin("ParticleLIB") != null) {
@@ -39,7 +41,7 @@ public class ParticleManager {
         if (CubitBukkitPlugin.inst().getYamlManager().getSettings().particleUse) {
 
             if (isSpigot()) {
-                plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Effect.HAPPY_VILLAGER, Effect.FIREWORKS_SPARK));
+                //plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, EntityEffect.VILLAGER_HAPPY, Effect.FIREWORKS_SPARK));
             }
 
         }
@@ -50,7 +52,7 @@ public class ParticleManager {
         if (CubitBukkitPlugin.inst().getYamlManager().getSettings().particleUse) {
 
             if (isSpigot()) {
-                plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Effect.WITCH_MAGIC, Effect.FIREWORKS_SPARK));
+                //plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, EntityEffect.WITCH_MAGIC, Effect.FIREWORKS_SPARK));
             }
 
         }
@@ -61,7 +63,7 @@ public class ParticleManager {
         if (CubitBukkitPlugin.inst().getYamlManager().getSettings().particleUse) {
 
             if (isSpigot()) {
-                plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, null, Effect.FIREWORKS_SPARK));
+                //plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, null, Effect.FIREWORKS_SPARK));
 
             }
         }
@@ -72,7 +74,7 @@ public class ParticleManager {
         if (CubitBukkitPlugin.inst().getYamlManager().getSettings().particleUse) {
 
             if (isSpigot()) {
-                plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Effect.FLAME, Effect.FIREWORKS_SPARK));
+                //plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Effect.FLAME, Effect.FIREWORKS_SPARK));
 
             }
         }
@@ -83,7 +85,7 @@ public class ParticleManager {
         if (CubitBukkitPlugin.inst().getYamlManager().getSettings().particleUse) {
 
             if (isSpigot()) {
-                plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Effect.HEART, Effect.FIREWORKS_SPARK));
+                //plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, EntityEffect.VILLAGER_HEART, Effect.FIREWORKS_SPARK));
             }
 
         }
@@ -94,7 +96,7 @@ public class ParticleManager {
         if (CubitBukkitPlugin.inst().getYamlManager().getSettings().particleUse) {
 
             if (isSpigot()) {
-                plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Effect.VILLAGER_THUNDERCLOUD, Effect.FIREWORKS_SPARK));
+                //plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, EntityEffect.VILLAGER_ANGRY, Effect.FIREWORKS_SPARK));
 
             }
         }
@@ -105,7 +107,7 @@ public class ParticleManager {
         if (CubitBukkitPlugin.inst().getYamlManager().getSettings().particleUse) {
 
             if (isSpigot()) {
-                plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Effect.PORTAL, Effect.FIREWORKS_SPARK));
+                //plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Effect.PORTAL, Effect.FIREWORKS_SPARK));
             }
 
         }
