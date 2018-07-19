@@ -50,6 +50,7 @@ public class ParticleSender {
     }
 
     @SuppressWarnings("deprecation")
+    //todo fix particle
     private void sendSpigotParticle() {
         for (Location edgeBlock : this.edgeBlocks) {
             edgeBlock.setZ(edgeBlock.getBlockZ() + .5);
