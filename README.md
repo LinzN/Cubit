@@ -1,6 +1,7 @@
 ![](https://files.enigmar.de/plugins/cubit-logo.png)
 
 
+![](https://ci.enigmar.de/buildStatus/icon?job=cubit)
 ### Cubit the regionmanager
 
 Cubit is a regionmanager for worldguard. You can buy a worldguard region with one command. The size for every region is one chunk (16x16). This region is fully protectet from other players. For each additional region,  the cost increases for the next region. This taxes are optional and can modified in the settings.yml. The owner of the region can add members to a region for build rights. The flags of a region can be changed. Like pvp, fire or other flags. If the owner of a region wants to sell his region, he can offer the region or sell the region directly to the server for a specific percentage of the buyprice.
