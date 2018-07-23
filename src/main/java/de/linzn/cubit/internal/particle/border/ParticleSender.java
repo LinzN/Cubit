@@ -12,8 +12,8 @@
 package de.linzn.cubit.internal.particle.border;
 
 import org.bukkit.Chunk;
-import org.bukkit.Effect;
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -22,16 +22,16 @@ public class ParticleSender {
 
     private Player player;
     private ArrayList<Location> edgeBlocks;
-    private Effect primaryEffectSpigot;
-    private Effect secondaryEffectSpigot;
+    private Particle primaryEffect;
+    private Particle secondaryEffect;
 
-    public ParticleSender(Player player, Location location, Effect primaryEffectSpigot, Effect secondaryEffectSpigot) {
+    public ParticleSender(Player player, Location location, Particle primaryEffect, Particle secondaryEffect) {
 
         this.player = player;
         this.edgeBlocks = getChunkEdgeLocation(location);
-        this.primaryEffectSpigot = primaryEffectSpigot;
-        this.secondaryEffectSpigot = secondaryEffectSpigot;
-        startSpigot();
+        this.primaryEffect = primaryEffect;
+        this.secondaryEffect = secondaryEffect;
+        startParticleLoop();
 
     }
 
@@ -49,26 +49,24 @@ public class ParticleSender {
         return edgeBlocks;
     }
 
-    @SuppressWarnings("deprecation")
-    //todo fix particle
-    private void sendSpigotParticle() {
+    private void sendBukkitParticle() {
         for (Location edgeBlock : this.edgeBlocks) {
             edgeBlock.setZ(edgeBlock.getBlockZ() + .5);
             edgeBlock.setX(edgeBlock.getBlockX() + .5);
-            if (this.primaryEffectSpigot != null) {
-                //this.player.spigot().playEffect(edgeBlock, this.primaryEffectSpigot, 0, 0, 0f, 0f, 0f, 0.001f, 1, 32);
+            if (this.primaryEffect != null) {
+                this.player.spawnParticle(this.primaryEffect, edgeBlock, 1, 0D, 0D, 0D, 0.001D);
             }
-            if (this.secondaryEffectSpigot != null) {
-                //this.player.spigot().playEffect(edgeBlock, this.secondaryEffectSpigot, 0, 0, 0f, 0f, 0f, 0.001f, 1, 32);
+            if (this.secondaryEffect != null) {
+                this.player.spawnParticle(this.secondaryEffect, edgeBlock, 1, 0D, 0D, 0D, 0.001D);
             }
         }
     }
 
 
-    private void startSpigot() {
+    private void startParticleLoop() {
         int loopValue = 0;
         while (loopValue <= 5) {
-            sendSpigotParticle();
+            sendBukkitParticle();
             loopValue++;
             try {
                 Thread.sleep(800);
