@@ -26,7 +26,6 @@
 					to download a SNAPSHOT dependency -->
             </snapshots>
         </repository>
-
         <repository>
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
@@ -159,10 +158,6 @@
     </build>
     <version>4.2.0</version>
     <groupId>de.linzn</groupId>
-    <dependencyManagement>
-        <dependencies>
-        </dependencies>
-    </dependencyManagement>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
