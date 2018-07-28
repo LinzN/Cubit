@@ -17,13 +17,13 @@ import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 
-@SuppressWarnings("deprecation")
+
 public class ParticleManager {
 
     private CubitBukkitPlugin plugin;
 
     public ParticleManager(CubitBukkitPlugin plugin) {
-        plugin.getLogger().info("Loading ParticleManager");
+        plugin.getLogger().info("[Setup] ParticleManager");
         plugin.getLogger().info("Using BukkitAPI as provider");
         this.plugin = plugin;
     }
