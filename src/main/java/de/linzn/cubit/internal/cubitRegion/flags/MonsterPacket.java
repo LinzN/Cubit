@@ -11,14 +11,15 @@
 
 package de.linzn.cubit.internal.cubitRegion.flags;
 
-import com.sk89q.worldedit.bukkit.BukkitAdapter;
+
+import com.sk89q.worldedit.world.entity.EntityType;
+import com.sk89q.worldedit.world.entity.EntityTypes;
 import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import de.linzn.cubit.internal.cubitRegion.ICubitPacket;
 import de.linzn.cubit.internal.cubitRegion.region.CubitLand;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.EntityType;
 
 import java.util.HashSet;
 
@@ -28,31 +29,30 @@ public class MonsterPacket implements ICubitPacket {
 
     public CubitLand enablePacket(CubitLand cubitLand) {
         cubitLand.getWGRegion().setFlag(Flags.MOB_DAMAGE, StateFlag.State.DENY);
-        cubitLand.getWGRegion().getFlags().put(Flags.DENY_SPAWN, new HashSet<com.sk89q.worldedit.world.entity.EntityType>() {
+        cubitLand.getWGRegion().getFlags().put(Flags.DENY_SPAWN, new HashSet<EntityType>() {
             {
-                add(BukkitAdapter.adapt(EntityType.CREEPER));
-                add(BukkitAdapter.adapt(EntityType.ZOMBIE));
-                add(BukkitAdapter.adapt(EntityType.SKELETON));
-                add(BukkitAdapter.adapt(EntityType.SILVERFISH));
-                add(BukkitAdapter.adapt(EntityType.ENDER_DRAGON));
-                add(BukkitAdapter.adapt(EntityType.WITHER));
-                add(BukkitAdapter.adapt(EntityType.WITHER_SKULL));
-                add(BukkitAdapter.adapt(EntityType.GIANT));
-                add(BukkitAdapter.adapt(EntityType.PIG_ZOMBIE));
-                add(BukkitAdapter.adapt(EntityType.CAVE_SPIDER));
-                add(BukkitAdapter.adapt(EntityType.SPIDER));
-                add(BukkitAdapter.adapt(EntityType.WITCH));
-                add(BukkitAdapter.adapt(EntityType.ENDERMITE));
-                add(BukkitAdapter.adapt(EntityType.GUARDIAN));
-                add(BukkitAdapter.adapt(EntityType.ZOMBIE_VILLAGER));
-                add(BukkitAdapter.adapt(EntityType.HUSK));
-                add(BukkitAdapter.adapt(EntityType.POLAR_BEAR));
-                add(BukkitAdapter.adapt(EntityType.EVOKER));
-                add(BukkitAdapter.adapt(EntityType.SHULKER));
-                add(BukkitAdapter.adapt(EntityType.MAGMA_CUBE));
-                add(BukkitAdapter.adapt(EntityType.STRAY));
-                add(BukkitAdapter.adapt(EntityType.VEX));
-                add(BukkitAdapter.adapt(EntityType.VINDICATOR));
+                add(EntityTypes.CREEPER);
+                add(EntityTypes.ZOMBIE);
+                add(EntityTypes.SKELETON);
+                add(EntityTypes.SILVERFISH);
+                add(EntityTypes.ENDER_DRAGON);
+                add(EntityTypes.WITHER);
+                add(EntityTypes.WITHER_SKULL);
+                add(EntityTypes.GIANT);
+                add(EntityTypes.ZOMBIE_PIGMAN);
+                add(EntityTypes.CAVE_SPIDER);
+                add(EntityTypes.SPIDER);
+                add(EntityTypes.WITCH);
+                add(EntityTypes.ENDERMITE);
+                add(EntityTypes.GUARDIAN);
+                add(EntityTypes.ZOMBIE_VILLAGER);
+                add(EntityTypes.HUSK);
+                add(EntityTypes.POLAR_BEAR);
+                add(EntityTypes.EVOKER);
+                add(EntityTypes.MAGMA_CUBE);
+                add(EntityTypes.STRAY);
+                add(EntityTypes.VEX);
+                add(EntityTypes.VINDICATOR);
             }
         });
         return cubitLand;
@@ -62,13 +62,8 @@ public class MonsterPacket implements ICubitPacket {
     @Override
     public CubitLand disablePacket(CubitLand cubitLand) {
         cubitLand.getWGRegion().setFlag(Flags.MOB_DAMAGE, StateFlag.State.ALLOW);
-        cubitLand.getWGRegion().getFlags().put(Flags.DENY_SPAWN, new HashSet<EntityType>() {
-            {
-
-            }
-        });
+        cubitLand.getWGRegion().getFlags().put(Flags.DENY_SPAWN, new HashSet<EntityType>());
         return cubitLand;
-
     }
 
     @Override
