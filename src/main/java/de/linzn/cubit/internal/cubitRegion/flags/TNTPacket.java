@@ -11,7 +11,8 @@
 
 package de.linzn.cubit.internal.cubitRegion.flags;
 
-import com.sk89q.worldguard.protection.flags.DefaultFlag;
+
+import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import de.linzn.cubit.internal.cubitRegion.ICubitPacket;
@@ -22,25 +23,25 @@ public class TNTPacket implements ICubitPacket {
 
     @Override
     public CubitLand enablePacket(CubitLand cubitLand) {
-        cubitLand.getWGRegion().setFlag(DefaultFlag.CREEPER_EXPLOSION, StateFlag.State.DENY);
-        cubitLand.getWGRegion().setFlag(DefaultFlag.TNT, StateFlag.State.DENY);
-        cubitLand.getWGRegion().setFlag(DefaultFlag.OTHER_EXPLOSION, StateFlag.State.DENY);
+        cubitLand.getWGRegion().setFlag(Flags.CREEPER_EXPLOSION, StateFlag.State.DENY);
+        cubitLand.getWGRegion().setFlag(Flags.TNT, StateFlag.State.DENY);
+        cubitLand.getWGRegion().setFlag(Flags.OTHER_EXPLOSION, StateFlag.State.DENY);
         return cubitLand;
 
     }
 
     @Override
     public CubitLand disablePacket(CubitLand cubitLand) {
-        cubitLand.getWGRegion().setFlag(DefaultFlag.CREEPER_EXPLOSION, StateFlag.State.ALLOW);
-        cubitLand.getWGRegion().setFlag(DefaultFlag.TNT, StateFlag.State.ALLOW);
-        cubitLand.getWGRegion().setFlag(DefaultFlag.OTHER_EXPLOSION, StateFlag.State.ALLOW);
+        cubitLand.getWGRegion().setFlag(Flags.CREEPER_EXPLOSION, StateFlag.State.ALLOW);
+        cubitLand.getWGRegion().setFlag(Flags.TNT, StateFlag.State.ALLOW);
+        cubitLand.getWGRegion().setFlag(Flags.OTHER_EXPLOSION, StateFlag.State.ALLOW);
         return cubitLand;
 
     }
 
     @Override
     public boolean getState(CubitLand cubitLand) {
-        return cubitLand.getWGRegion().getFlag(DefaultFlag.OTHER_EXPLOSION) == StateFlag.State.DENY;
+        return cubitLand.getWGRegion().getFlag(Flags.OTHER_EXPLOSION) == StateFlag.State.DENY;
     }
 
     @Override

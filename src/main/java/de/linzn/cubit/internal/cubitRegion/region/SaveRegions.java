@@ -11,8 +11,9 @@
 
 package de.linzn.cubit.internal.cubitRegion.region;
 
+import com.sk89q.worldedit.bukkit.BukkitWorld;
+import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.protection.managers.RegionManager;
-import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import org.bukkit.World;
 
 public class SaveRegions {
@@ -26,8 +27,7 @@ public class SaveRegions {
 
     public boolean saveData(final CubitLand cubitLand, final World world) {
         try {
-            RegionManager manager = CubitBukkitPlugin.inst().getWorldGuardPlugin()
-                    .getRegionManager(world);
+            RegionManager manager = WorldGuard.getInstance().getPlatform().getRegionContainer().get(new BukkitWorld(world));
             if (cubitLand != null && cubitLand.getWGRegion() != null) {
                 manager.addRegion(cubitLand.getWGRegion());
             }

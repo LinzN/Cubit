@@ -11,7 +11,8 @@
 
 package de.linzn.cubit.internal.cubitRegion.flags;
 
-import com.sk89q.worldguard.protection.flags.DefaultFlag;
+
+import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.flags.RegionGroup;
 import com.sk89q.worldguard.protection.flags.RegionGroupFlag;
 import com.sk89q.worldguard.protection.flags.StateFlag;
@@ -24,25 +25,25 @@ public class LockPacket implements ICubitPacket {
 
     @Override
     public CubitLand enablePacket(CubitLand cubitLand) {
-        RegionGroupFlag groupFlag = DefaultFlag.USE.getRegionGroupFlag();
+        RegionGroupFlag groupFlag = Flags.USE.getRegionGroupFlag();
         cubitLand.getWGRegion().setFlag(groupFlag, RegionGroup.NON_MEMBERS);
-        cubitLand.getWGRegion().setFlag(DefaultFlag.USE, StateFlag.State.DENY);
+        cubitLand.getWGRegion().setFlag(Flags.USE, StateFlag.State.DENY);
         return cubitLand;
 
     }
 
     @Override
     public CubitLand disablePacket(CubitLand cubitLand) {
-        RegionGroupFlag groupFlag = DefaultFlag.USE.getRegionGroupFlag();
+        RegionGroupFlag groupFlag = Flags.USE.getRegionGroupFlag();
         cubitLand.getWGRegion().setFlag(groupFlag, RegionGroup.ALL);
-        cubitLand.getWGRegion().setFlag(DefaultFlag.USE, StateFlag.State.ALLOW);
+        cubitLand.getWGRegion().setFlag(Flags.USE, StateFlag.State.ALLOW);
         return cubitLand;
 
     }
 
     @Override
     public boolean getState(CubitLand cubitLand) {
-        return cubitLand.getWGRegion().getFlag(DefaultFlag.USE) == StateFlag.State.DENY;
+        return cubitLand.getWGRegion().getFlag(Flags.USE) == StateFlag.State.DENY;
     }
 
     @Override

@@ -11,6 +11,8 @@
 
 package de.linzn.cubit.internal.cubitRegion;
 
+import com.sk89q.worldedit.bukkit.BukkitWorld;
+import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
@@ -57,7 +59,7 @@ public class CubitRegionManager {
     }
 
     public boolean isValidRegion(final World world, final int valueX, final int valueZ) {
-        RegionManager manager = plugin.getWorldGuardPlugin().getRegionManager(world);
+        RegionManager manager = WorldGuard.getInstance().getPlatform().getRegionContainer().get(new BukkitWorld(world));
         String serverName = buildLandName(CubitType.SERVER.toString().toLowerCase(), valueX, valueZ);
         String shopName = buildLandName(CubitType.SHOP.toString().toLowerCase(), valueX, valueZ);
         String worldName = buildLandName(world.getName().toLowerCase(), valueX, valueZ);
@@ -301,7 +303,7 @@ public class CubitRegionManager {
     }
 
     private ProtectedRegion praseWGRegion(final World world, final int valueX, final int valueZ) {
-        RegionManager manager = plugin.getWorldGuardPlugin().getRegionManager(world);
+        RegionManager manager = WorldGuard.getInstance().getPlatform().getRegionContainer().get(new BukkitWorld(world));
         String serverName = buildLandName(CubitType.SERVER.toString(), valueX, valueZ);
         String shopName = buildLandName(CubitType.SHOP.toString(), valueX, valueZ);
         String worldName = buildLandName(world.getName(), valueX, valueZ);

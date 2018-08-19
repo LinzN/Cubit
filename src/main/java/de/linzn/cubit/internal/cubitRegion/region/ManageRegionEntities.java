@@ -11,7 +11,9 @@
 
 package de.linzn.cubit.internal.cubitRegion.region;
 
+import com.sk89q.worldedit.bukkit.BukkitWorld;
 import com.sk89q.worldguard.LocalPlayer;
+import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.domains.DefaultDomain;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
@@ -148,7 +150,7 @@ public class ManageRegionEntities {
 
     public List<ProtectedRegion> getRegionList(OfflinePlayer player, World world, CubitType type) {
         LocalPlayer lPlayer = CubitBukkitPlugin.inst().getWorldGuardPlugin().wrapOfflinePlayer(player);
-        RegionManager rm = CubitBukkitPlugin.inst().getWorldGuardPlugin().getRegionManager(world);
+        RegionManager rm = WorldGuard.getInstance().getPlatform().getRegionContainer().get(new BukkitWorld(world));
         List<ProtectedRegion> toReturn = new ArrayList<>();
 
         for (Map.Entry<String, ProtectedRegion> entry : rm.getRegions().entrySet()) {

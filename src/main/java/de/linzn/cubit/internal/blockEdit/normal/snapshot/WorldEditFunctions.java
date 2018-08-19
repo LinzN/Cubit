@@ -11,12 +11,7 @@
 
 package de.linzn.cubit.internal.blockEdit.normal.snapshot;
 
-import com.sk89q.worldedit.*;
-import com.sk89q.worldedit.bukkit.BukkitUtil;
-import com.sk89q.worldedit.bukkit.BukkitWorld;
 import com.sk89q.worldedit.bukkit.adapter.BukkitImplAdapter;
-import com.sk89q.worldedit.data.DataException;
-import com.sk89q.worldedit.schematic.SchematicFormat;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import org.apache.commons.io.FileUtils;
 import org.bukkit.Bukkit;
@@ -32,6 +27,7 @@ import java.util.HashSet;
 import java.util.UUID;
 
 @SuppressWarnings("deprecation")
+//todo fix worldedit functions save and load
 public class WorldEditFunctions {
 
     public boolean hasValidAdapter;
@@ -55,6 +51,7 @@ public class WorldEditFunctions {
     }
 
     public void save(UUID uuid, Chunk chunk, String snapshotName) {
+        /*
         if (this.hasValidAdapter) {
             try {
 
@@ -70,6 +67,7 @@ public class WorldEditFunctions {
                         minPoint);
                 clipboard.copy(editSession);
                 SchematicFormat.MCEDIT.save(clipboard, schematicFile);
+
                 editSession.flushQueue();
 
             } catch (DataException | IOException ex) {
@@ -82,9 +80,11 @@ public class WorldEditFunctions {
 
             }
         }
+        */
     }
 
     public void paste(final UUID uuid, final String snapshotName, final Chunk chunk) {
+        /*
         if (this.hasValidAdapter) {
             final Location pasteLoc = convertChunkLocation(chunk);
             final File snapshotFile = getSnapshotFileLocation(uuid, snapshotName);
@@ -111,6 +111,7 @@ public class WorldEditFunctions {
                 }
             });
         }
+        */
     }
 
     public void regenerateChunk(final Chunk chunk) {

@@ -13,7 +13,9 @@ package de.linzn.cubit.internal.cubitRegion.region;
 
 import com.sk89q.worldedit.Vector;
 import com.sk89q.worldedit.Vector2D;
+import com.sk89q.worldedit.bukkit.BukkitWorld;
 import com.sk89q.worldguard.LocalPlayer;
+import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.domains.DefaultDomain;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
@@ -55,7 +57,7 @@ public class ManageRegions {
     }
 
     public CubitLand removeRegion(CubitLand cubitLand, World world) {
-        RegionManager manager = CubitBukkitPlugin.inst().getWorldGuardPlugin().getRegionManager(world);
+        RegionManager manager = WorldGuard.getInstance().getPlatform().getRegionContainer().get(new BukkitWorld(world));
         manager.removeRegion(cubitLand.getLandName());
         return cubitLand;
 

@@ -11,7 +11,9 @@
 
 package de.linzn.cubit.internal.vault;
 
+import com.sk89q.worldedit.bukkit.BukkitWorld;
 import com.sk89q.worldguard.LocalPlayer;
+import com.sk89q.worldguard.WorldGuard;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import de.linzn.cubit.internal.vault.eConomy.EconomyHook;
 import net.milkbowl.vault.economy.Economy;
@@ -108,7 +110,7 @@ public class VaultManager {
         double landSellPercent = CubitBukkitPlugin.inst().getYamlManager().getSettings().landSellPercent;
         LocalPlayer localplayer = CubitBukkitPlugin.inst().getWorldGuardPlugin()
                 .wrapOfflinePlayer(Bukkit.getOfflinePlayer(uuid));
-        double regionSize = CubitBukkitPlugin.inst().getWorldGuardPlugin().getRegionManager(world)
+        double regionSize = WorldGuard.getInstance().getPlatform().getRegionContainer().get(new BukkitWorld(world))
                 .getRegionCountOfPlayer(localplayer);
         double price;
 

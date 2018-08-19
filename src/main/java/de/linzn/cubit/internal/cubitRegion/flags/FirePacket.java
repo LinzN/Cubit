@@ -11,7 +11,8 @@
 
 package de.linzn.cubit.internal.cubitRegion.flags;
 
-import com.sk89q.worldguard.protection.flags.DefaultFlag;
+
+import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import de.linzn.cubit.internal.cubitRegion.ICubitPacket;
@@ -22,27 +23,27 @@ public class FirePacket implements ICubitPacket {
 
     @Override
     public CubitLand enablePacket(CubitLand cubitLand) {
-        cubitLand.getWGRegion().setFlag(DefaultFlag.FIRE_SPREAD, StateFlag.State.DENY);
-        cubitLand.getWGRegion().setFlag(DefaultFlag.LAVA_FIRE, StateFlag.State.DENY);
-        cubitLand.getWGRegion().setFlag(DefaultFlag.LIGHTER, StateFlag.State.DENY);
-        cubitLand.getWGRegion().setFlag(DefaultFlag.LIGHTNING, StateFlag.State.DENY);
+        cubitLand.getWGRegion().setFlag(Flags.FIRE_SPREAD, StateFlag.State.DENY);
+        cubitLand.getWGRegion().setFlag(Flags.LAVA_FIRE, StateFlag.State.DENY);
+        cubitLand.getWGRegion().setFlag(Flags.LIGHTER, StateFlag.State.DENY);
+        cubitLand.getWGRegion().setFlag(Flags.LIGHTNING, StateFlag.State.DENY);
         return cubitLand;
 
     }
 
     @Override
     public CubitLand disablePacket(CubitLand cubitLand) {
-        cubitLand.getWGRegion().setFlag(DefaultFlag.FIRE_SPREAD, StateFlag.State.ALLOW);
-        cubitLand.getWGRegion().setFlag(DefaultFlag.LAVA_FIRE, StateFlag.State.ALLOW);
-        cubitLand.getWGRegion().setFlag(DefaultFlag.LIGHTER, StateFlag.State.ALLOW);
-        cubitLand.getWGRegion().setFlag(DefaultFlag.LIGHTNING, StateFlag.State.ALLOW);
+        cubitLand.getWGRegion().setFlag(Flags.FIRE_SPREAD, StateFlag.State.ALLOW);
+        cubitLand.getWGRegion().setFlag(Flags.LAVA_FIRE, StateFlag.State.ALLOW);
+        cubitLand.getWGRegion().setFlag(Flags.LIGHTER, StateFlag.State.ALLOW);
+        cubitLand.getWGRegion().setFlag(Flags.LIGHTNING, StateFlag.State.ALLOW);
         return cubitLand;
 
     }
 
     @Override
     public boolean getState(CubitLand cubitLand) {
-        return cubitLand.getWGRegion().getFlag(DefaultFlag.FIRE_SPREAD) == StateFlag.State.DENY;
+        return cubitLand.getWGRegion().getFlag(Flags.FIRE_SPREAD) == StateFlag.State.DENY;
     }
 
     @Override

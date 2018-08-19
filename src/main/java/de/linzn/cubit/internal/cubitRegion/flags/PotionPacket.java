@@ -11,7 +11,8 @@
 
 package de.linzn.cubit.internal.cubitRegion.flags;
 
-import com.sk89q.worldguard.protection.flags.DefaultFlag;
+
+import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import de.linzn.cubit.internal.cubitRegion.ICubitPacket;
@@ -22,21 +23,21 @@ public class PotionPacket implements ICubitPacket {
 
     @Override
     public CubitLand enablePacket(CubitLand cubitLand) {
-        cubitLand.getWGRegion().setFlag(DefaultFlag.POTION_SPLASH, StateFlag.State.DENY);
+        cubitLand.getWGRegion().setFlag(Flags.POTION_SPLASH, StateFlag.State.DENY);
         return cubitLand;
 
     }
 
     @Override
     public CubitLand disablePacket(CubitLand cubitLand) {
-        cubitLand.getWGRegion().setFlag(DefaultFlag.POTION_SPLASH, StateFlag.State.ALLOW);
+        cubitLand.getWGRegion().setFlag(Flags.POTION_SPLASH, StateFlag.State.ALLOW);
         return cubitLand;
 
     }
 
     @Override
     public boolean getState(CubitLand cubitLand) {
-        return cubitLand.getWGRegion().getFlag(DefaultFlag.POTION_SPLASH) == StateFlag.State.DENY;
+        return cubitLand.getWGRegion().getFlag(Flags.POTION_SPLASH) == StateFlag.State.DENY;
     }
 
     @Override

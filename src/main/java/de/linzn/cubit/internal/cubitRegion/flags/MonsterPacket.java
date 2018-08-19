@@ -11,7 +11,8 @@
 
 package de.linzn.cubit.internal.cubitRegion.flags;
 
-import com.sk89q.worldguard.protection.flags.DefaultFlag;
+
+import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import de.linzn.cubit.internal.cubitRegion.ICubitPacket;
@@ -26,8 +27,8 @@ public class MonsterPacket implements ICubitPacket {
     @Override
 
     public CubitLand enablePacket(CubitLand cubitLand) {
-        cubitLand.getWGRegion().setFlag(DefaultFlag.MOB_DAMAGE, StateFlag.State.DENY);
-        cubitLand.getWGRegion().getFlags().put(DefaultFlag.DENY_SPAWN, new HashSet<EntityType>() {
+        cubitLand.getWGRegion().setFlag(Flags.MOB_DAMAGE, StateFlag.State.DENY);
+        cubitLand.getWGRegion().getFlags().put(Flags.DENY_SPAWN, new HashSet<EntityType>() {
             {
                 add(EntityType.CREEPER);
                 add(EntityType.ZOMBIE);
@@ -61,8 +62,8 @@ public class MonsterPacket implements ICubitPacket {
     @Override
     @SuppressWarnings("serial")
     public CubitLand disablePacket(CubitLand cubitLand) {
-        cubitLand.getWGRegion().setFlag(DefaultFlag.MOB_DAMAGE, StateFlag.State.ALLOW);
-        cubitLand.getWGRegion().getFlags().put(DefaultFlag.DENY_SPAWN, new HashSet<EntityType>() {
+        cubitLand.getWGRegion().setFlag(Flags.MOB_DAMAGE, StateFlag.State.ALLOW);
+        cubitLand.getWGRegion().getFlags().put(Flags.DENY_SPAWN, new HashSet<EntityType>() {
             {
 
             }
@@ -73,7 +74,7 @@ public class MonsterPacket implements ICubitPacket {
 
     @Override
     public boolean getState(CubitLand cubitLand) {
-        return cubitLand.getWGRegion().getFlag(DefaultFlag.MOB_DAMAGE) == StateFlag.State.DENY;
+        return cubitLand.getWGRegion().getFlag(Flags.MOB_DAMAGE) == StateFlag.State.DENY;
     }
 
     @Override
