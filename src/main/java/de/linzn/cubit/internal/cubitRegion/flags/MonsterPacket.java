@@ -11,6 +11,7 @@
 
 package de.linzn.cubit.internal.cubitRegion.flags;
 
+import com.sk89q.worldedit.bukkit.BukkitAdapter;
 import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
@@ -27,31 +28,31 @@ public class MonsterPacket implements ICubitPacket {
 
     public CubitLand enablePacket(CubitLand cubitLand) {
         cubitLand.getWGRegion().setFlag(Flags.MOB_DAMAGE, StateFlag.State.DENY);
-        cubitLand.getWGRegion().getFlags().put(Flags.DENY_SPAWN, new HashSet<EntityType>() {
+        cubitLand.getWGRegion().getFlags().put(Flags.DENY_SPAWN, new HashSet<com.sk89q.worldedit.world.entity.EntityType>() {
             {
-                add(EntityType.CREEPER);
-                add(EntityType.ZOMBIE);
-                add(EntityType.SKELETON);
-                add(EntityType.SILVERFISH);
-                add(EntityType.ENDER_DRAGON);
-                add(EntityType.WITHER);
-                add(EntityType.WITHER_SKULL);
-                add(EntityType.GIANT);
-                add(EntityType.PIG_ZOMBIE);
-                add(EntityType.CAVE_SPIDER);
-                add(EntityType.SPIDER);
-                add(EntityType.WITCH);
-                add(EntityType.ENDERMITE);
-                add(EntityType.GUARDIAN);
-                add(EntityType.ZOMBIE_VILLAGER);
-                add(EntityType.HUSK);
-                add(EntityType.POLAR_BEAR);
-                add(EntityType.EVOKER);
-                add(EntityType.SHULKER);
-                add(EntityType.MAGMA_CUBE);
-                add(EntityType.STRAY);
-                add(EntityType.VEX);
-                add(EntityType.VINDICATOR);
+                add(BukkitAdapter.adapt(EntityType.CREEPER));
+                add(BukkitAdapter.adapt(EntityType.ZOMBIE));
+                add(BukkitAdapter.adapt(EntityType.SKELETON));
+                add(BukkitAdapter.adapt(EntityType.SILVERFISH));
+                add(BukkitAdapter.adapt(EntityType.ENDER_DRAGON));
+                add(BukkitAdapter.adapt(EntityType.WITHER));
+                add(BukkitAdapter.adapt(EntityType.WITHER_SKULL));
+                add(BukkitAdapter.adapt(EntityType.GIANT));
+                add(BukkitAdapter.adapt(EntityType.PIG_ZOMBIE));
+                add(BukkitAdapter.adapt(EntityType.CAVE_SPIDER));
+                add(BukkitAdapter.adapt(EntityType.SPIDER));
+                add(BukkitAdapter.adapt(EntityType.WITCH));
+                add(BukkitAdapter.adapt(EntityType.ENDERMITE));
+                add(BukkitAdapter.adapt(EntityType.GUARDIAN));
+                add(BukkitAdapter.adapt(EntityType.ZOMBIE_VILLAGER));
+                add(BukkitAdapter.adapt(EntityType.HUSK));
+                add(BukkitAdapter.adapt(EntityType.POLAR_BEAR));
+                add(BukkitAdapter.adapt(EntityType.EVOKER));
+                add(BukkitAdapter.adapt(EntityType.SHULKER));
+                add(BukkitAdapter.adapt(EntityType.MAGMA_CUBE));
+                add(BukkitAdapter.adapt(EntityType.STRAY));
+                add(BukkitAdapter.adapt(EntityType.VEX));
+                add(BukkitAdapter.adapt(EntityType.VINDICATOR));
             }
         });
         return cubitLand;
