@@ -11,7 +11,6 @@
 
 package de.linzn.cubit.internal.cubitRegion.flags;
 
-
 import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
@@ -60,7 +59,6 @@ public class MonsterPacket implements ICubitPacket {
     }
 
     @Override
-    @SuppressWarnings("serial")
     public CubitLand disablePacket(CubitLand cubitLand) {
         cubitLand.getWGRegion().setFlag(Flags.MOB_DAMAGE, StateFlag.State.ALLOW);
         cubitLand.getWGRegion().getFlags().put(Flags.DENY_SPAWN, new HashSet<EntityType>() {
