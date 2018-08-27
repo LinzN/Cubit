@@ -62,7 +62,7 @@ public class NMSLoader {
     }
 
     private void addVersions() {
-        this.nmsList.add("v1_13_R1");
+        this.nmsList.add("v1_13_R2");
     }
 
 }
