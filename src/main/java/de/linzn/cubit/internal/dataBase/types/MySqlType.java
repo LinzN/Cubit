@@ -52,11 +52,9 @@ public class MySqlType implements DatabaseType {
             state.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS " + offerDatabase + " (Id int NOT NULL AUTO_INCREMENT, regionID text, world text, uuid text, value double, PRIMARY KEY (Id));");
             state.executeUpdate(
-                    "CREATE TABLE IF NOT EXISTS " + uuidCacheDatabase + " (Id int NOT NULL AUTO_INCREMENT, UUID text, NAME text, TIMESTAMP bigint, PRIMARY KEY (id));");
+                    "CREATE TABLE IF NOT EXISTS " + uuidCacheDatabase + " (Id int NOT NULL AUTO_INCREMENT, UUID text, NAME text, TIMESTAMP bigint, PRIMARY KEY (Id));");
             state.executeUpdate(
-                    "CREATE TABLE IF NOT EXISTS " + buyuptimeDatabase + " (UUID varchar NOT NULL, TIME int, PRIMARY KEY (id));");
-
-
+                    "CREATE TABLE IF NOT EXISTS " + buyuptimeDatabase + " (UUID varchar(60) NOT NULL, TIME int, PRIMARY KEY (UUID));");
             state.close();
             return this.releaseConnection(con);
         } catch (SQLException e) {
