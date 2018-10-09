@@ -342,15 +342,20 @@ public class CubitRegionManager {
 
     public boolean isToLongOffline(final UUID uuid, final boolean isMember) {
         long currentTimeStamp = new Date().getTime();
+        double buyupTimeInDays = plugin.getDataAccessManager().databaseType.get_buyup_time(uuid);
+
+        if (buyupTimeInDays == -1D) {
+            return false;
+        } else if (buyupTimeInDays == 0D) {
+            if (isMember) {
+                buyupTimeInDays = this.plugin.getYamlManager().getSettings().landDeprecatedMember;
+            } else {
+                buyupTimeInDays = this.plugin.getYamlManager().getSettings().landDeprecatedOther;
+            }
+        }
 
         long lastLogin = plugin.getDataAccessManager().databaseType.get_last_login_profile(uuid);
-        long landDeprecated = (long) (this.plugin.getYamlManager().getSettings().landDeprecatedOther * 24 * 60 * 60
-                * 1000);
-
-        if (isMember) {
-            landDeprecated = (long) (this.plugin.getYamlManager().getSettings().landDeprecatedMember * 24 * 60 * 60
-                    * 1000);
-        }
+        long landDeprecated = (long) (buyupTimeInDays * 24 * 60 * 60 * 1000);
 
         return currentTimeStamp - lastLogin >= landDeprecated;
     }

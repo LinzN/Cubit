@@ -66,6 +66,7 @@ public class PermissionNodes {
     public String reloadCubit = "cubit.command.admin.reloadcubit";
     public String checkUpdateAdmin = "cubit.admin.checkupdate";
     public String listSavesAdmin = "cubit.command.admin.listsnapshots";
+    public String setbuyuptime = "cubit.command.admin.setbuyuptime";
 
     public PermissionNodes(JavaPlugin plugin) {
         plugin.getLogger().info("Loading PermissionNodes");

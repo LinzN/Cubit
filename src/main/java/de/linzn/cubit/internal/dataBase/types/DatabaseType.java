@@ -33,6 +33,8 @@ public interface DatabaseType {
 
     boolean set_update_profile(UUID uuid, String player, long time);
 
+    boolean set_buyup_time(UUID uuid, int time);
+
     // Output
 
     long get_last_login_profile(UUID uuid);
@@ -44,6 +46,8 @@ public interface DatabaseType {
     OfferData get_offer(String regionID, World world);
 
     boolean get_is_offer(String regionID, World world);
+
+    int get_buyup_time(UUID uuid);
 
     // Other
     String get_formate_date(long date);

@@ -38,6 +38,8 @@ public class SqliteType implements DatabaseType {
                     "CREATE TABLE IF NOT EXISTS offerManager (Id INTEGER PRIMARY KEY   AUTOINCREMENT, regionID text, world text, uuid text, value double);");
             state.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS uuidcache (Id INTEGER PRIMARY KEY   AUTOINCREMENT, UUID text, NAME text, TIMESTAMP bigint);");
+            state.executeUpdate(
+                    "CREATE TABLE IF NOT EXISTS buyuptime (UUID VARCHAR PRIMARY KEY, TIME int);");
             state.close();
             return this.releaseConnection(con);
         } catch (SQLException e) {
@@ -155,6 +157,34 @@ public class SqliteType implements DatabaseType {
     }
 
     @Override
+    public boolean set_buyup_time(UUID uuid, int time) {
+        // TODO Auto-generated method stub
+        Connection con = this.createConnection();
+        try {
+            Statement state = con.createStatement();
+            if (time == 0) {
+                state.executeUpdate("DELETE FROM  buyuptime WHERE UUID = '" + uuid.toString() + "';");
+            } else {
+                ResultSet result = state.executeQuery("SELECT UUID FROM buyuptime WHERE UUID = '" + uuid + "';");
+
+                if (result.next()) {
+                    state.executeUpdate("UPDATE buyuptime SET TIME = '" + time + "' WHERE UUID = '" + uuid.toString() + "';");
+                } else {
+                    state.executeUpdate("INSERT INTO buyuptime (UUID, TIME) VALUES ('" + uuid.toString() + "', '" + time + "');");
+
+                }
+                result.close();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        this.releaseConnection(con);
+        return true;
+    }
+
+    @Override
     public long get_last_login_profile(UUID uuid) {
         // TODO Auto-generated method stub
         long lastlogin = CubitBukkitPlugin.inst().getYamlManager().getSettings().cubitSetupDate;
@@ -249,6 +279,24 @@ public class SqliteType implements DatabaseType {
         }
         this.releaseConnection(con);
         return isoffered;
+    }
+
+    @Override
+    public int get_buyup_time(UUID uuid) {
+        int time = 0;
+        Connection con = this.createConnection();
+        try {
+            Statement state = con.createStatement();
+            ResultSet result = state.executeQuery("SELECT TIME FROM buyuptime WHERE UUID = '" + uuid + "';");
+            if (result.next()) {
+                time = result.getInt(1);
+            }
+            result.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        this.releaseConnection(con);
+        return time;
     }
 
     @Override

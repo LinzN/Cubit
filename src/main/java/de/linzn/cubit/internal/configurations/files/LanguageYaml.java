@@ -54,6 +54,7 @@ public class LanguageYaml {
     public String savedSnapshot;
     public String restoredSnapshot;
     public String resetSnapshot;
+    public String setbuyuptime;
     /* UnSuccess MSG */
     public String buyIsAlreadyLand;
     public String isAlreadyLand;
@@ -154,6 +155,7 @@ public class LanguageYaml {
     public String adminHelpE2P2;
     public String adminHelpE3P2;
     public String adminHelpE4P2;
+    public String adminHelpE5P2;
     /* Page 3 Help for Admin Command */
     public String adminHelpHeaderP3;
     public String adminHelpE1P3;
@@ -250,6 +252,7 @@ public class LanguageYaml {
         restoredSnapshot = this.getLanguageString("restoredSnapshot",
                 "&2You restored a snapshot named &e{snapshotName}&2!");
         resetSnapshot = this.getLanguageString("resetSnapshot", "&2You reseted the region &e{regionID}&2!");
+        setbuyuptime = this.getLanguageString("setBuyupTime", "&2You set the buyuptime for &e{player} &2to &e{time} &2days!");
 
         /* UnSuccess MSG */
         buyIsAlreadyLand = this.getLanguageString("buyIsAlreadyLand",
@@ -409,6 +412,8 @@ public class LanguageYaml {
                 "&2 Add player: &e/cadmin addplayer (player)");
         adminHelpE4P2 = this.getLanguageString("theme.adminHelpPage2.help4",
                 "&2 Remove player: &e/cadmin removeplayer (player)");
+        adminHelpE5P2 = this.getLanguageString("theme.adminHelpPage2.help5",
+                "&2 Remove player: &e/cadmin setbuyuptime (player) (time)");
 
         /* Page 3 Help for Admin Command */
         adminHelpHeaderP3 = this.getLanguageString("theme.adminHelpPage3.header", "&6&lManage flags: [Page 3]");

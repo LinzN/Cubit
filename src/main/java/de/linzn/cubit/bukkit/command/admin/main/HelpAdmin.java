@@ -76,7 +76,7 @@ public class HelpAdmin implements ICommand {
         sender.sendMessage(plugin.getYamlManager().getLanguage().adminHelpE2P2);
         sender.sendMessage(plugin.getYamlManager().getLanguage().adminHelpE3P2);
         sender.sendMessage(plugin.getYamlManager().getLanguage().adminHelpE4P2);
-
+        sender.sendMessage(plugin.getYamlManager().getLanguage().adminHelpE5P2);
         return true;
 
     }

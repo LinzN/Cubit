@@ -30,6 +30,7 @@ public class MySqlType implements DatabaseType {
 
     private String offerDatabase = "offerManager";
     private String uuidCacheDatabase = "uuidcache";
+    private String buyuptimeDatabase = "buyuptime";
 
     @Override
     public boolean setupDatabase() {
@@ -52,6 +53,8 @@ public class MySqlType implements DatabaseType {
                     "CREATE TABLE IF NOT EXISTS " + offerDatabase + " (Id int NOT NULL AUTO_INCREMENT, regionID text, world text, uuid text, value double, PRIMARY KEY (Id));");
             state.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS " + uuidCacheDatabase + " (Id int NOT NULL AUTO_INCREMENT, UUID text, NAME text, TIMESTAMP bigint, PRIMARY KEY (id));");
+            state.executeUpdate(
+                    "CREATE TABLE IF NOT EXISTS " + buyuptimeDatabase + " (UUID varchar NOT NULL, TIME int, PRIMARY KEY (id));");
 
 
             state.close();
@@ -174,6 +177,35 @@ public class MySqlType implements DatabaseType {
     }
 
     @Override
+    public boolean set_buyup_time(UUID uuid, int time) {
+        // TODO Auto-generated method stub
+        Connection con = this.createConnection();
+        try {
+            Statement state = con.createStatement();
+            if (time == 0) {
+                state.executeUpdate("DELETE FROM " + buyuptimeDatabase + " WHERE UUID = '" + uuid.toString() + "';");
+            } else {
+                ResultSet result = state.executeQuery("SELECT UUID FROM " + buyuptimeDatabase + " WHERE UUID = '" + uuid + "';");
+                if (result.next()) {
+                    state.executeUpdate("UPDATE " + buyuptimeDatabase + " SET TIME = '" + time
+                            + "' WHERE UUID = '" + uuid.toString() + "';");
+
+                } else {
+                    state.executeUpdate("INSERT INTO " + buyuptimeDatabase + " (UUID, TIME) VALUES ('" + uuid.toString() + "', '" + time + "');");
+
+                }
+                result.close();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        this.releaseConnection(con);
+        return true;
+    }
+
+    @Override
     public long get_last_login_profile(UUID uuid) {
         // TODO Auto-generated method stub
         long lastlogin = CubitBukkitPlugin.inst().getYamlManager().getSettings().cubitSetupDate;
@@ -268,6 +300,24 @@ public class MySqlType implements DatabaseType {
         }
         this.releaseConnection(con);
         return isoffered;
+    }
+
+    @Override
+    public int get_buyup_time(UUID uuid) {
+        int time = 0;
+        Connection con = this.createConnection();
+        try {
+            Statement state = con.createStatement();
+            ResultSet result = state.executeQuery("SELECT TIME FROM " + buyuptimeDatabase + " WHERE UUID = '" + uuid + "';");
+            if (result.next()) {
+                time = result.getInt(1);
+            }
+            result.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        this.releaseConnection(con);
+        return time;
     }
 
     @Override
