@@ -413,7 +413,7 @@ public class LanguageYaml {
         adminHelpE4P2 = this.getLanguageString("theme.adminHelpPage2.help4",
                 "&2 Remove player: &e/cadmin removeplayer (player)");
         adminHelpE5P2 = this.getLanguageString("theme.adminHelpPage2.help5",
-                "&2 Remove player: &e/cadmin setbuyuptime (player) (time)");
+                "&2 Set Buyuptime: &e/cadmin setbuyuptime (player) (time)");
 
         /* Page 3 Help for Admin Command */
         adminHelpHeaderP3 = this.getLanguageString("theme.adminHelpPage3.header", "&6&lManage flags: [Page 3]");
