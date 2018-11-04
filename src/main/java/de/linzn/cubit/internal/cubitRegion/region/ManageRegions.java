@@ -11,7 +11,6 @@
 
 package de.linzn.cubit.internal.cubitRegion.region;
 
-import com.sk89q.worldedit.Vector2D;
 import com.sk89q.worldedit.bukkit.BukkitWorld;
 import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldguard.LocalPlayer;
@@ -32,14 +31,10 @@ public class ManageRegions {
     public CubitLand newRegion(final int chunkX, final int chunkZ, final World world, final UUID playerUUID,
                                final String regionName) {
 
-        final BlockVector3 min;
-        final BlockVector3 max;
-        final Vector2D min2D;
-
-        min2D = new Vector2D(chunkX * 16, chunkZ * 16);
-        min = BlockVector3.at(min2D.getBlockX(), 0, min2D.getBlockZ());
+        BlockVector3 min;
+        BlockVector3 max;
+        min = BlockVector3.at(chunkX * 16, 0D, chunkZ * 16);
         max = min.add(15, world.getMaxHeight(), 15);
-
         ProtectedRegion region = new ProtectedCuboidRegion(regionName, min, max);
 
         if (playerUUID != null) {
