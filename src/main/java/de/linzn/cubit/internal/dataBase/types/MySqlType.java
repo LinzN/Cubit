@@ -47,6 +47,7 @@ public class MySqlType implements DatabaseType {
             if (CubitBukkitPlugin.inst().getYamlManager().getSettings().useMineSuite && CubitBukkitPlugin.inst().getYamlManager().getSettings().useMineSuiteDatabase) {
                 CubitBukkitPlugin.inst().getLogger().info("Use MineSuite integration");
                 offerDatabase = "module_cubit_offerdata";
+                buyuptimeDatabase = "module_cubit_buyuptime";
                 uuidCacheDatabase = "core_uuidcache";
             }
             state.executeUpdate(
