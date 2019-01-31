@@ -46,7 +46,7 @@ public class CommandCubit implements CommandExecutor {
         cmdThread.submit(() -> {
             if (args.length == 0) {
                 getCmdMap().get("help").runCmd(cmd, sender, args);
-            } else if (getCmdMap().containsKey(args[0])) {
+            } else if (getCmdMap().containsKey(args[0].toLowerCase())) {
                 String command = args[0];
                 if (!getCmdMap().get(command).runCmd(cmd, sender, args)) {
                     sender.sendMessage(
@@ -74,7 +74,7 @@ public class CommandCubit implements CommandExecutor {
             this.cmdMap.put("v", new Version(this.plugin));
             this.cmdMap.put("reload", new Reload(this.plugin, perm.reloadCubit));
             this.cmdMap.put("rl", new Reload(this.plugin, perm.reloadCubit));
-            this.cmdMap.put("rebuildFlag", new RebuildFlag(this.plugin, perm.rebuildFlag));
+            this.cmdMap.put("rebuildflag", new RebuildFlag(this.plugin, perm.rebuildFlag));
             this.isLoaded = true;
         } catch (Exception e) {
             e.printStackTrace();
