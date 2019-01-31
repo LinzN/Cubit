@@ -34,35 +34,25 @@ public class RebuildFlag implements ICommand {
     @Override
     public boolean runCmd(final Command cmd, final CommandSender sender, String[] args) {
         if (sender instanceof Player) {
-            /* Build and get all variables */
-            Player player = (Player) sender;
-            /* Permission Check */
-            if (!player.hasPermission(this.permNode)) {
-                sender.sendMessage(plugin.getYamlManager().getLanguage().errorNoPermission);
-                return true;
-            }
-
-            if (args.length >= 1) {
-                String worldName = args[0];
-
-                World world = Bukkit.getWorld(worldName);
-
-                for (CubitLand cubitLand : this.plugin.getRegionManager().getAllRegions(world, CubitType.WORLD)) {
-                    this.plugin.getRegionManager().firePacket.refreshPacket(cubitLand, false);
-                    this.plugin.getRegionManager().lockPacket.refreshPacket(cubitLand, false);
-                    this.plugin.getRegionManager().monsterPacket.refreshPacket(cubitLand, false);
-                    this.plugin.getRegionManager().potionPacket.refreshPacket(cubitLand, false);
-                    this.plugin.getRegionManager().pvpPacket.refreshPacket(cubitLand, false);
-                    this.plugin.getRegionManager().tntPacket.refreshPacket(cubitLand, false);
-                    this.plugin.getLogger().info("PACKET-REFRESHING LAND: " + cubitLand.getWGRegion().getId());
-                }
-                CubitBukkitPlugin.inst().getRegionManager().getRegionSaver().save(world);
-            } else {
-                sender.sendMessage(plugin.getYamlManager().getLanguage().errorCommand);
-            }
-
-
+            sender.sendMessage(plugin.getYamlManager().getLanguage().errorNoPermission);
+            return true;
         }
+
+        String worldName = args[1];
+        this.plugin.getLogger().info("Start FLAG-Rebuild for world " + worldName);
+        World world = Bukkit.getWorld(worldName);
+
+        for (CubitLand cubitLand : this.plugin.getRegionManager().getAllRegions(world, CubitType.WORLD)) {
+            this.plugin.getRegionManager().firePacket.refreshPacket(cubitLand, false);
+            this.plugin.getRegionManager().lockPacket.refreshPacket(cubitLand, false);
+            this.plugin.getRegionManager().monsterPacket.refreshPacket(cubitLand, false);
+            this.plugin.getRegionManager().potionPacket.refreshPacket(cubitLand, false);
+            this.plugin.getRegionManager().pvpPacket.refreshPacket(cubitLand, false);
+            this.plugin.getRegionManager().tntPacket.refreshPacket(cubitLand, false);
+            this.plugin.getLogger().info("PACKET-REFRESHING LAND: " + cubitLand.getWGRegion().getId());
+        }
+        CubitBukkitPlugin.inst().getRegionManager().getRegionSaver().save(world);
+
 
         return true;
 
