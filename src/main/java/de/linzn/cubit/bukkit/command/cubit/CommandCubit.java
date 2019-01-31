@@ -14,6 +14,7 @@ package de.linzn.cubit.bukkit.command.cubit;
 import com.google.common.collect.Maps;
 import de.linzn.cubit.bukkit.command.ICommand;
 import de.linzn.cubit.bukkit.command.cubit.main.HelpCubit;
+import de.linzn.cubit.bukkit.command.cubit.main.RebuildFlag;
 import de.linzn.cubit.bukkit.command.cubit.main.Reload;
 import de.linzn.cubit.bukkit.command.cubit.main.Version;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
@@ -73,7 +74,7 @@ public class CommandCubit implements CommandExecutor {
             this.cmdMap.put("v", new Version(this.plugin));
             this.cmdMap.put("reload", new Reload(this.plugin, perm.reloadCubit));
             this.cmdMap.put("rl", new Reload(this.plugin, perm.reloadCubit));
-
+            this.cmdMap.put("rebuildFlag", new RebuildFlag(this.plugin, perm.rebuildFlag));
             this.isLoaded = true;
         } catch (Exception e) {
             e.printStackTrace();

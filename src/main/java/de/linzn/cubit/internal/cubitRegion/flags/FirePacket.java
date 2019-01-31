@@ -78,6 +78,15 @@ public class FirePacket implements ICubitPacket {
     }
 
     @Override
+    public void refreshPacket(CubitLand cubitLand, boolean save) {
+        if (getState(cubitLand)) {
+            enablePacket(cubitLand);
+        } else {
+            disablePacket(cubitLand);
+        }
+    }
+
+    @Override
     public String getPacketName() {
         return "FIRE";
     }

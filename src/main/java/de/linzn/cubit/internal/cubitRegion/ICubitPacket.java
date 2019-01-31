@@ -27,5 +27,7 @@ public interface ICubitPacket {
 
     CubitLand switchState(CubitLand cubitLand, boolean save);
 
+    void refreshPacket(CubitLand cubitLand, boolean save);
+
     String getPacketName();
 }

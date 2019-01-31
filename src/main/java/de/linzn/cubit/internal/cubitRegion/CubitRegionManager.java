@@ -26,10 +26,7 @@ import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class CubitRegionManager {
 
@@ -286,6 +283,23 @@ public class CubitRegionManager {
                 CubitLand data = new CubitLand(world);
                 data.setWGRegion(region, false);
                 list.add(data);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<CubitLand> getAllRegions(final World world, final CubitType type) {
+        RegionManager rm = WorldGuard.getInstance().getPlatform().getRegionContainer().get(new BukkitWorld(world));
+        List<CubitLand> list = new ArrayList<>();
+        try {
+            for (Map.Entry<String, ProtectedRegion> region : Objects.requireNonNull(rm).getRegions().entrySet()) {
+                CubitLand data = new CubitLand(world);
+                data.setWGRegion(region.getValue(), false);
+                if (data.getCubitType() == type || type == CubitType.NOTYPE) {
+                    list.add(data);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
