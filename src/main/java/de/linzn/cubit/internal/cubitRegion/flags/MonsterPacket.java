@@ -53,6 +53,11 @@ public class MonsterPacket implements ICubitPacket {
                 add(EntityTypes.STRAY);
                 add(EntityTypes.VEX);
                 add(EntityTypes.VINDICATOR);
+                add(EntityTypes.DROWNED);
+                add(EntityTypes.PHANTOM);
+                add(EntityTypes.GHAST);
+                add(EntityTypes.ELDER_GUARDIAN);
+                add(EntityTypes.SHULKER);
             }
         });
         return cubitLand;
