@@ -49,6 +49,7 @@ public class RebuildFlag implements ICommand {
             this.plugin.getRegionManager().potionPacket.refreshPacket(cubitLand, false);
             this.plugin.getRegionManager().pvpPacket.refreshPacket(cubitLand, false);
             this.plugin.getRegionManager().tntPacket.refreshPacket(cubitLand, false);
+            this.plugin.getRegionManager().cubitPacket.refreshPacket(cubitLand, false);
             this.plugin.getLogger().info("PACKET-REFRESHING LAND: " + cubitLand.getWGRegion().getId());
         }
         CubitBukkitPlugin.inst().getRegionManager().getRegionSaver().save(world);
