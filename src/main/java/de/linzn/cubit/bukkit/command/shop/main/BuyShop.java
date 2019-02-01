@@ -81,7 +81,10 @@ public class BuyShop implements ICommand {
             player.sendMessage(plugin.getYamlManager().getLanguage().takeOwnLand);
             return true;
         }
-        if (!plugin.getDataAccessManager().databaseType.get_is_offer(cubitLand.getLandName(), loc.getWorld())) {
+
+        boolean isMember = cubitLand.getMembersUUID().equals(player.getUniqueId());
+
+        if (!plugin.getDataAccessManager().databaseType.get_is_offer(cubitLand.getLandName(), loc.getWorld()) && !plugin.getRegionManager().isToLongOffline(cubitLand.getOwnersUUID()[0], isMember)) {
             sender.sendMessage(
                     plugin.getYamlManager().getLanguage().notOffered.replace("regionID", cubitLand.getLandName()));
             return true;

@@ -17,7 +17,6 @@ import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import de.linzn.cubit.internal.cubitRegion.flags.*;
-import de.linzn.cubit.internal.cubitRegion.flags.worldguard.CustomFlags;
 import de.linzn.cubit.internal.cubitRegion.region.CubitLand;
 import de.linzn.cubit.internal.cubitRegion.region.ManageRegionEntities;
 import de.linzn.cubit.internal.cubitRegion.region.ManageRegions;
@@ -38,7 +37,6 @@ public class CubitRegionManager {
     public TNTPacket tntPacket;
     public PotionPacket potionPacket;
     public CubitPacket cubitPacket;
-    public CustomFlags customFlags;
     private CubitBukkitPlugin plugin;
     private ManageRegions mReg;
     private ManageRegionEntities mRegE;
@@ -57,7 +55,6 @@ public class CubitRegionManager {
         this.tntPacket = new TNTPacket();
         this.potionPacket = new PotionPacket();
         this.cubitPacket = new CubitPacket();
-        this.customFlags = new CustomFlags();
     }
 
     public boolean isValidRegion(final World world, final int valueX, final int valueZ) {

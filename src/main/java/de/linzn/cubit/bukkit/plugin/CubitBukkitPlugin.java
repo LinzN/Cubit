@@ -20,6 +20,7 @@ import de.linzn.cubit.internal.blockEdit.BlockEditManager;
 import de.linzn.cubit.internal.cacheSystem.CacheManager;
 import de.linzn.cubit.internal.configurations.YamlConfigurationManager;
 import de.linzn.cubit.internal.cubitRegion.CubitRegionManager;
+import de.linzn.cubit.internal.cubitRegion.flags.worldguard.CustomFlags;
 import de.linzn.cubit.internal.dataBase.DatabaseManager;
 import de.linzn.cubit.internal.entityManage.EntityManager;
 import de.linzn.cubit.internal.particle.ParticleManager;
@@ -49,6 +50,15 @@ public class CubitBukkitPlugin extends JavaPlugin {
 
     public static CubitBukkitPlugin inst() {
         return inst;
+    }
+
+    @Override
+    public void onLoad() {
+        /* Register worldGuard custom flags */
+        if (this.getServer().getPluginManager().getPlugin("WorldGuard") != null) {
+            CustomFlags.registerFlag(CustomFlags.CUBIT_AUTOMATIC_UPDATE);
+            CustomFlags.registerFlag(CustomFlags.CUBIT_GUILD_LAND);
+        }
     }
 
     @Override
