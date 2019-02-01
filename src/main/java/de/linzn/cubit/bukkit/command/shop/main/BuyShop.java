@@ -85,9 +85,13 @@ public class BuyShop implements ICommand {
         boolean isMember = cubitLand.getMembersUUID().equals(player.getUniqueId());
 
         if (!plugin.getDataAccessManager().databaseType.get_is_offer(cubitLand.getLandName(), loc.getWorld()) && !plugin.getRegionManager().isToLongOffline(cubitLand.getOwnersUUID()[0], isMember)) {
-            sender.sendMessage(
-                    plugin.getYamlManager().getLanguage().notOffered.replace("regionID", cubitLand.getLandName()));
-            return true;
+            if (cubitLand.getOwnersUUID()[0] != null) {
+                if (!plugin.getRegionManager().isToLongOffline(cubitLand.getOwnersUUID()[0], isMember)) {
+                    sender.sendMessage(
+                            plugin.getYamlManager().getLanguage().notOffered.replace("regionID", cubitLand.getLandName()));
+                    return true;
+                }
+            }
         }
 
         int shopLimit = CubitBukkitPlugin.inst().getYamlManager().getSettings().shopLimit;

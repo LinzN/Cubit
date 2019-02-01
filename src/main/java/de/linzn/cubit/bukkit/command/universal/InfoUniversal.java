@@ -193,12 +193,14 @@ public class InfoUniversal implements ICommand {
                 player.sendMessage(plugin.getYamlManager().getLanguage().landInfoA2.replace("{value}",
                         "" + plugin.getVaultManager().formattingToEconomy(plugin.getDataAccessManager().databaseType
                                 .get_offer(cubitLand.getLandName(), cubitLand.getWorld()).getValue())));
-
-            } else if (plugin.getRegionManager().isToLongOffline(cubitLand.getOwnersUUID()[0], isMember)) {
-                String value = plugin.getVaultManager().formattingToEconomy(plugin.getDataAccessManager().databaseType
-                        .get_offer(cubitLand.getLandName(), cubitLand.getWorld()).getValue());
-                player.sendMessage(plugin.getYamlManager().getLanguage().isFreeAndBuyable
-                        .replace("{regionID}", cubitLand.getLandName()).replace("{price}", value));
+            } else {
+                if (cubitLand.getOwnersUUID()[0] != null) {
+                    if (plugin.getRegionManager().isToLongOffline(cubitLand.getOwnersUUID()[0], isMember)) {
+                        String value = plugin.getVaultManager().formattingToEconomy(CubitBukkitPlugin.inst().getYamlManager().getSettings().shopBasePrice);
+                        player.sendMessage(plugin.getYamlManager().getLanguage().isFreeAndBuyable
+                                .replace("{regionID}", cubitLand.getLandName()).replace("{price}", value));
+                    }
+                }
             }
 
         } else {
