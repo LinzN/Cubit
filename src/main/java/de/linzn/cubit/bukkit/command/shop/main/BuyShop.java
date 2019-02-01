@@ -82,33 +82,39 @@ public class BuyShop implements ICommand {
             return true;
         }
 
-        boolean isMember = cubitLand.getMembersUUID().equals(player.getUniqueId());
-
-        if (!plugin.getDataAccessManager().databaseType.get_is_offer(cubitLand.getLandName(), loc.getWorld()) && !plugin.getRegionManager().isToLongOffline(cubitLand.getOwnersUUID()[0], isMember)) {
+        boolean isOffered = plugin.getDataAccessManager().databaseType.get_is_offer(cubitLand.getLandName(), loc.getWorld());
+        if (!isOffered) {
             if (cubitLand.getOwnersUUID()[0] != null) {
-                if (!plugin.getRegionManager().isToLongOffline(cubitLand.getOwnersUUID()[0], isMember)) {
+                if (!plugin.getRegionManager().isToLongOffline(cubitLand.getOwnersUUID()[0], false)) {
                     sender.sendMessage(
                             plugin.getYamlManager().getLanguage().notOffered.replace("regionID", cubitLand.getLandName()));
                     return true;
                 }
+            } else {
+                sender.sendMessage(
+                        plugin.getYamlManager().getLanguage().notOffered.replace("regionID", cubitLand.getLandName()));
+                return true;
             }
         }
-
         int shopLimit = CubitBukkitPlugin.inst().getYamlManager().getSettings().shopLimit;
         if (plugin.getRegionManager().hasReachLimit(player.getUniqueId(), loc.getWorld(), CubitType.SHOP, shopLimit)) {
             sender.sendMessage(plugin.getYamlManager().getLanguage().reachLimit);
             return true;
         }
-        OfferData offerData = plugin.getDataAccessManager().databaseType.get_offer(cubitLand.getLandName(),
-                loc.getWorld());
+        double value = CubitBukkitPlugin.inst().getYamlManager().getSettings().shopBasePrice;
+        if (isOffered) {
+            OfferData offerData = plugin.getDataAccessManager().databaseType.get_offer(cubitLand.getLandName(),
+                    loc.getWorld());
+            value = offerData.getValue();
+        }
 
-        if (!plugin.getVaultManager().hasEnougToBuy(player.getUniqueId(), offerData.getValue())) {
+        if (!plugin.getVaultManager().hasEnougToBuy(player.getUniqueId(), value)) {
             sender.sendMessage(plugin.getYamlManager().getLanguage().notEnoughMoney.replace("{cost}",
-                    "" + plugin.getVaultManager().formattingToEconomy(offerData.getValue())));
+                    "" + plugin.getVaultManager().formattingToEconomy(value)));
             return true;
         }
 
-        if (!plugin.getVaultManager().transferMoney(player.getUniqueId(), null, offerData.getValue())) {
+        if (!plugin.getVaultManager().transferMoney(player.getUniqueId(), null, value)) {
             /* If this task failed! This should never happen */
             sender.sendMessage(plugin.getYamlManager().getLanguage().errorInTask.replace("{error}", "SHOP-ECONOMY"));
             plugin.getLogger()
