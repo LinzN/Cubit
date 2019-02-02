@@ -100,6 +100,7 @@ public class CubitRegionManager {
                     this.plugin.getYamlManager().getFlag().worldRegionPacketFire, false);
             cubitLand = this.potionPacket.switchState(cubitLand,
                     this.plugin.getYamlManager().getFlag().worldRegionPacketPotion, false);
+            cubitLand = this.cubitPacket.switchState(cubitLand, true, false);
             return saveMrg.save(cubitLand);
         } catch (Exception e) {
             e.printStackTrace();
@@ -127,6 +128,7 @@ public class CubitRegionManager {
                     this.plugin.getYamlManager().getFlag().serverRegionPacketFire, false);
             cubitLand = this.potionPacket.switchState(cubitLand,
                     this.plugin.getYamlManager().getFlag().serverRegionPacketPotion, false);
+            cubitLand = this.cubitPacket.switchState(cubitLand, true, false);
             return saveMrg.save(cubitLand);
         } catch (Exception e) {
             e.printStackTrace();
@@ -155,6 +157,7 @@ public class CubitRegionManager {
                     this.plugin.getYamlManager().getFlag().shopRegionPacketFire, false);
             cubitLand = this.potionPacket.switchState(cubitLand,
                     this.plugin.getYamlManager().getFlag().shopRegionPacketPotion, false);
+            cubitLand = this.cubitPacket.switchState(cubitLand, true, false);
             return saveMrg.save(cubitLand);
         } catch (Exception e) {
             e.printStackTrace();
@@ -185,6 +188,7 @@ public class CubitRegionManager {
                     false);
             this.potionPacket.switchState(cubitLand, this.plugin.getYamlManager().getFlag().worldRegionPacketPotion,
                     false);
+            this.cubitPacket.switchState(cubitLand, true, false);
 
             return saveMrg.save(world);
         } catch (Exception e) {
