@@ -23,6 +23,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Arrays;
+
 public class BuyShop implements ICommand {
 
     private CubitBukkitPlugin plugin;
@@ -84,8 +86,9 @@ public class BuyShop implements ICommand {
 
         boolean isOffered = plugin.getDataAccessManager().databaseType.get_is_offer(cubitLand.getLandName(), loc.getWorld());
         if (!isOffered) {
+            boolean isMember = Arrays.asList(cubitLand.getMembersUUID()).contains(player.getUniqueId());
             if (cubitLand.getOwnersUUID()[0] != null) {
-                if (!plugin.getRegionManager().isToLongOffline(cubitLand.getOwnersUUID()[0], false)) {
+                if (!plugin.getRegionManager().isToLongOffline(cubitLand.getOwnersUUID()[0], isMember)) {
                     sender.sendMessage(
                             plugin.getYamlManager().getLanguage().notOffered.replace("regionID", cubitLand.getLandName()));
                     return true;

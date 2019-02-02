@@ -22,6 +22,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Arrays;
+
 public class BuyupLand implements ICommand {
 
     private CubitBukkitPlugin plugin;
@@ -80,10 +82,7 @@ public class BuyupLand implements ICommand {
             player.sendMessage(plugin.getYamlManager().getLanguage().takeOwnLand);
             return true;
         }
-        boolean isMember = false;
-        if (cubitLand.getMembersUUID().equals(player.getUniqueId())) {
-            isMember = true;
-        }
+        boolean isMember = Arrays.asList(cubitLand.getMembersUUID()).contains(player.getUniqueId());
 
         if (!plugin.getRegionManager().isToLongOffline(cubitLand.getOwnersUUID()[0], isMember)) {
             sender.sendMessage(plugin.getYamlManager().getLanguage().notToLongOffline);

@@ -14,6 +14,7 @@ package de.linzn.cubit.internal.blockEdit.subHandler;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import de.linzn.cubit.internal.blockEdit.normal.block.ChunkBlockCleaner;
 import de.linzn.cubit.internal.blockEdit.normal.block.ChunkBorder;
+import de.linzn.cubit.internal.blockEdit.normal.block.ChunkBorderCleaner;
 import org.bukkit.Chunk;
 import org.bukkit.Material;
 
@@ -62,6 +63,18 @@ public class BlockHandler {
             if (this.plugin.getYamlManager().getSettings().useShopMaterialCleanup) {
                 new ChunkBlockCleaner(plugin, chunk, blockList);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean cleanChunkBorder(Chunk chunk) {
+        int[] directions = new int[]{1, 1, 1, 1};
+        //todo add check other gs
+        try {
+            new ChunkBorderCleaner(plugin, chunk, Material.AIR, directions);
         } catch (Exception e) {
             e.printStackTrace();
             return false;

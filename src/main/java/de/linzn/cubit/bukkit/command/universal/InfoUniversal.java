@@ -131,11 +131,7 @@ public class InfoUniversal implements ICommand {
                     "" + offerValues + " + Base: " + basePrice));
         }
 
-        boolean isMember = false;
-
-        if (cubitLand.getMembersUUID().equals(player.getUniqueId())) {
-            isMember = true;
-        }
+        boolean isMember = Arrays.asList(cubitLand.getMembersUUID()).contains(player.getUniqueId());
 
         if (plugin.getRegionManager().isToLongOffline(cubitLand.getOwnersUUID()[0], isMember)) {
             player.sendMessage(plugin.getYamlManager().getLanguage().landInfoA3);
@@ -182,6 +178,7 @@ public class InfoUniversal implements ICommand {
                     .replace("{monster}", statusMonster).replace("{fire}", statusFire).replace("{pvp}", statusPvP)
                     .replace("{tnt}", statusTNT).replace("{potion}", statusPotion));
 
+            boolean isMember = Arrays.asList(cubitLand.getMembersUUID()).contains(player.getUniqueId());
 
             if (plugin.getDataAccessManager().databaseType.get_is_offer(cubitLand.getLandName(),
                     cubitLand.getWorld())) {
@@ -189,7 +186,7 @@ public class InfoUniversal implements ICommand {
                         "" + plugin.getVaultManager().formattingToEconomy(plugin.getDataAccessManager().databaseType
                                 .get_offer(cubitLand.getLandName(), cubitLand.getWorld()).getValue())));
             } else {
-                if (plugin.getRegionManager().isToLongOffline(cubitLand.getOwnersUUID()[0], false)) {
+                if (plugin.getRegionManager().isToLongOffline(cubitLand.getOwnersUUID()[0], isMember)) {
                         String value = plugin.getVaultManager().formattingToEconomy(CubitBukkitPlugin.inst().getYamlManager().getSettings().shopBasePrice);
                         player.sendMessage(plugin.getYamlManager().getLanguage().isFreeAndBuyable
                                 .replace("{regionID}", cubitLand.getLandName()).replace("{price}", value));
