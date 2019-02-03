@@ -45,6 +45,7 @@ public class PermissionNodes {
     public String removeMemberShop = "cubit.command.shop.removemember";
     public String kickShop = "cubit.command.shop.kick";
     public String listShop = "cubit.command.shop.list";
+    public String flagShop = "cubit.command.shop.flag.";
     public String listBiomesShop = "cubit.command.shop.listbiomes";
     public String changeBiomeShop = "cubit.command.shop.changebiome";
     /* Admin Perms */

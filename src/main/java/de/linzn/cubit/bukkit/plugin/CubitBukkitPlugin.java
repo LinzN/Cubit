@@ -57,6 +57,8 @@ public class CubitBukkitPlugin extends JavaPlugin {
         if (this.getServer().getPluginManager().getPlugin("WorldGuard") != null) {
             CustomFlags.registerFlag(CustomFlags.CUBIT_AUTOMATIC_UPDATE);
             CustomFlags.registerFlag(CustomFlags.CUBIT_GUILD_LAND);
+            CustomFlags.registerFlag(CustomFlags.CUBIT_ANIMAL_SPAWN);
+            CustomFlags.registerFlag(CustomFlags.CUBIT_MONSTER_SPAWN);
         }
     }
 

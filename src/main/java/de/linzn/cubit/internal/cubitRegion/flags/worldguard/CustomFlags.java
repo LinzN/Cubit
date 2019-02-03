@@ -9,6 +9,8 @@ import org.bukkit.Bukkit;
 public class CustomFlags {
     public static final StateFlag CUBIT_AUTOMATIC_UPDATE = new StateFlag("cubit-automatic-update", true);
     public static final StateFlag CUBIT_GUILD_LAND = new StateFlag("cubit-guild-land", false);
+    public static final StateFlag CUBIT_MONSTER_SPAWN = new StateFlag("cubit-monster-spawn", false);
+    public static final StateFlag CUBIT_ANIMAL_SPAWN = new StateFlag("cubit-animal-spawn", true);
 
     public static void registerFlag(Flag flag) {
         try {

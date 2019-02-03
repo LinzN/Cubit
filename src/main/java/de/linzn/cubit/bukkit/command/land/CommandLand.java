@@ -118,24 +118,27 @@ public class CommandLand implements CommandExecutor {
             this.cmdMap.put("remove",
                     new RemoveMemberUniversal(this.plugin, perm.removeMemberLand, CubitType.WORLD, false));
 
-            /* Protection Commands */
+            /* Flags Commands */
             this.cmdMap.put("pvp",
-                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().pvpPacket,
+                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().pvpFlag,
                             perm.flagLand + "pvp", CubitType.WORLD, false));
             this.cmdMap.put("fire",
-                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().firePacket,
+                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().fireFlag,
                             perm.flagLand + "fire", CubitType.WORLD, false));
             this.cmdMap.put("lock",
-                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().lockPacket,
+                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().lockFlag,
                             perm.flagLand + "lock", CubitType.WORLD, false));
             this.cmdMap.put("tnt",
-                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().tntPacket,
+                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().tntFlag,
                             perm.flagLand + "tnt", CubitType.WORLD, false));
             this.cmdMap.put("monster",
-                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().monsterPacket,
+                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().monsterFlag,
                             perm.flagLand + "monster", CubitType.WORLD, false));
+            this.cmdMap.put("animals",
+                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().animalFlag,
+                            perm.flagLand + "animals", CubitType.WORLD, false));
             this.cmdMap.put("potion",
-                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().potionPacket,
+                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().potionFlag,
                             perm.flagLand + "potion", CubitType.WORLD, false));
 
             this.cmdMap.put("changebiome",

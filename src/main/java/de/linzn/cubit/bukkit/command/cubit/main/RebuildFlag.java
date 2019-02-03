@@ -43,13 +43,13 @@ public class RebuildFlag implements ICommand {
         World world = Bukkit.getWorld(worldName);
 
         for (CubitLand cubitLand : this.plugin.getRegionManager().getAllRegions(world, CubitType.WORLD)) {
-            this.plugin.getRegionManager().firePacket.refreshPacket(cubitLand, false);
-            this.plugin.getRegionManager().lockPacket.refreshPacket(cubitLand, false);
-            this.plugin.getRegionManager().monsterPacket.refreshPacket(cubitLand, false);
-            this.plugin.getRegionManager().potionPacket.refreshPacket(cubitLand, false);
-            this.plugin.getRegionManager().pvpPacket.refreshPacket(cubitLand, false);
-            this.plugin.getRegionManager().tntPacket.refreshPacket(cubitLand, false);
-            this.plugin.getRegionManager().cubitPacket.refreshPacket(cubitLand, false);
+            this.plugin.getRegionManager().fireFlag.refresh(cubitLand, false);
+            this.plugin.getRegionManager().lockFlag.refresh(cubitLand, false);
+            this.plugin.getRegionManager().monsterFlag.refresh(cubitLand, false);
+            this.plugin.getRegionManager().potionFlag.refresh(cubitLand, false);
+            this.plugin.getRegionManager().pvpFlag.refresh(cubitLand, false);
+            this.plugin.getRegionManager().tntFlag.refresh(cubitLand, false);
+            this.plugin.getRegionManager().cubitPacket.refresh(cubitLand, false);
             this.plugin.getLogger().info("PACKET-REFRESHING LAND: " + cubitLand.getWGRegion().getId());
         }
         CubitBukkitPlugin.inst().getRegionManager().getRegionSaver().save(world);

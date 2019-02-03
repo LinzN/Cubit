@@ -14,20 +14,22 @@ package de.linzn.cubit.internal.cubitRegion;
 import de.linzn.cubit.internal.cubitRegion.region.CubitLand;
 import org.bukkit.ChatColor;
 
-public interface ICubitPacket {
-    CubitLand enablePacket(CubitLand cubitLand);
+public interface IFlags {
+    CubitLand enable(CubitLand cubitLand);
 
-    CubitLand disablePacket(CubitLand cubitLand);
+    CubitLand disable(CubitLand cubitLand);
 
-    boolean getState(CubitLand cubitLand);
+    boolean getStatus(CubitLand cubitLand);
 
-    ChatColor getStateColor(CubitLand cubitLand);
+    ChatColor getStatusColor(CubitLand cubitLand);
 
-    CubitLand switchState(CubitLand cubitLand, boolean value, boolean save);
+    CubitLand switchStatus(CubitLand cubitLand, boolean value, boolean save);
 
-    CubitLand switchState(CubitLand cubitLand, boolean save);
+    CubitLand switchStatus(CubitLand cubitLand, boolean save);
 
-    void refreshPacket(CubitLand cubitLand, boolean save);
+    void refresh(CubitLand cubitLand, boolean save);
 
-    String getPacketName();
+    String getStatusString(CubitLand cubitLand);
+
+    String getProtectionName();
 }

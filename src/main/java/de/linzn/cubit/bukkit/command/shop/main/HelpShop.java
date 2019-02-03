@@ -48,6 +48,8 @@ public class HelpShop implements ICommand {
             return page2(sender);
         } else if (args[1].equalsIgnoreCase("3")) {
             return page3(sender);
+        } else if (args[1].equalsIgnoreCase("4")) {
+            return page4(sender);
         }
 
         return page1(sender);
@@ -59,7 +61,8 @@ public class HelpShop implements ICommand {
         sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpE2P1);
         sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpE3P1);
         sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpE4P1);
-        sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpBottomP1);
+        sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpE5P1);
+        sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpE6P1);
         return true;
 
     }
@@ -79,6 +82,18 @@ public class HelpShop implements ICommand {
         sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpE2P3);
         sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpE3P3);
         sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpBottomP3);
+
+        return true;
+
+    }
+
+    private boolean page4(CommandSender sender) {
+        sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpHeaderP4);
+        sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpE1P4);
+        sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpE2P4);
+        sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpE3P4);
+        sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpE4P4);
+        sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpBottomP4);
 
         return true;
 

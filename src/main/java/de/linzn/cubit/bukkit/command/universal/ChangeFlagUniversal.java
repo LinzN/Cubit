@@ -14,7 +14,7 @@ package de.linzn.cubit.bukkit.command.universal;
 import de.linzn.cubit.bukkit.command.ICommand;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import de.linzn.cubit.internal.cubitRegion.CubitType;
-import de.linzn.cubit.internal.cubitRegion.ICubitPacket;
+import de.linzn.cubit.internal.cubitRegion.IFlags;
 import de.linzn.cubit.internal.cubitRegion.region.CubitLand;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
@@ -25,12 +25,12 @@ import org.bukkit.entity.Player;
 public class ChangeFlagUniversal implements ICommand {
 
     private CubitBukkitPlugin plugin;
-    private ICubitPacket packet;
+    private IFlags packet;
     private boolean isAdmin;
     private String permNode;
     private CubitType type;
 
-    public ChangeFlagUniversal(CubitBukkitPlugin plugin, ICubitPacket packet, String permNode, CubitType type,
+    public ChangeFlagUniversal(CubitBukkitPlugin plugin, IFlags packet, String permNode, CubitType type,
                                boolean isAdmin) {
         this.plugin = plugin;
         this.packet = packet;
@@ -86,24 +86,20 @@ public class ChangeFlagUniversal implements ICommand {
         if (args.length < 2) {
         } else if (args[1].equalsIgnoreCase("on")) {
 
-            packet.switchState(cubitLand, true, true);
-            String stateString = plugin.getRegionManager().getStringState(packet.getState(cubitLand));
-            sender.sendMessage(plugin.getYamlManager().getLanguage().flagSwitchSuccess
-                    .replace("{flag}", packet.getPacketName()).replace("{value}", stateString));
+            packet.switchStatus(cubitLand, true, true);
+
+            sender.sendMessage(this.packet.getStatusString(cubitLand).replace("{regionID}", cubitLand.getLandName()));
 
             return true;
         } else if (args[1].equalsIgnoreCase("off")) {
 
-            packet.switchState(cubitLand, false, true);
-            String stateString = plugin.getRegionManager().getStringState(packet.getState(cubitLand));
-            sender.sendMessage(plugin.getYamlManager().getLanguage().flagSwitchSuccess
-                    .replace("{flag}", packet.getPacketName()).replace("{value}", stateString));
+            packet.switchStatus(cubitLand, false, true);
+            sender.sendMessage(this.packet.getStatusString(cubitLand).replace("{regionID}", cubitLand.getLandName()));
 
             return true;
         }
         /* Switch flag-state to the opposite value */
-        packet.switchState(cubitLand, true);
-        String stateString = plugin.getRegionManager().getStringState(packet.getState(cubitLand));
+        packet.switchStatus(cubitLand, true);
 
         if (!plugin.getParticleManager().changeFlag(player, loc)) {
             /* If this task failed! This should never happen */
@@ -112,10 +108,7 @@ public class ChangeFlagUniversal implements ICommand {
                     .warning(plugin.getYamlManager().getLanguage().errorInTask.replace("{error}", "CREATE-PARTICLE"));
             return true;
         }
-
-        sender.sendMessage(plugin.getYamlManager().getLanguage().flagSwitchSuccess
-                .replace("{flag}", packet.getPacketName()).replace("{value}", stateString));
-
+        sender.sendMessage(this.packet.getStatusString(cubitLand).replace("{regionID}", cubitLand.getLandName()));
         return true;
     }
 

@@ -63,6 +63,7 @@ public class CreateShopAdmin implements ICommand {
          * permissions
          */
 
+
         if (!plugin.getRegionManager().isValidRegion(loc.getWorld(), chunk.getX(), chunk.getZ())) {
             if (!plugin.getRegionManager().createRegion(loc, player.getUniqueId(), CubitType.SHOP)) {
                 /* If this task failed! This should never happen */
@@ -73,14 +74,18 @@ public class CreateShopAdmin implements ICommand {
                 return true;
             }
         } else {
-            if (!plugin.getRegionManager().restoreDefaultSettings(
-                    plugin.getRegionManager().praseRegionData(loc.getWorld(), chunk.getX(), chunk.getZ()),
-                    loc.getWorld(), null)) {
-                /* If this task failed! This should never happen */
-                sender.sendMessage(
-                        plugin.getYamlManager().getLanguage().errorInTask.replace("{error}", "RESTORE-REGION"));
-                plugin.getLogger().warning(
-                        plugin.getYamlManager().getLanguage().errorInTask.replace("{error}", "RESTORE-REGION"));
+            CubitLand land = plugin.getRegionManager().praseRegionData(loc.getWorld(), chunk.getX(), chunk.getZ());
+            if (land.getCubitType() == CubitType.SHOP) {
+                if (!plugin.getRegionManager().restoreDefaultSettings(land, loc.getWorld(), null)) {
+                    /* If this task failed! This should never happen */
+                    sender.sendMessage(
+                            plugin.getYamlManager().getLanguage().errorInTask.replace("{error}", "RESTORE-REGION"));
+                    plugin.getLogger().warning(
+                            plugin.getYamlManager().getLanguage().errorInTask.replace("{error}", "RESTORE-REGION"));
+                    return true;
+                }
+            } else {
+                sender.sendMessage(plugin.getYamlManager().getLanguage().isAlreadyLand.replace("{regionID}", land.getLandName()));
                 return true;
             }
         }

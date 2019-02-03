@@ -30,13 +30,14 @@ import java.util.*;
 
 public class CubitRegionManager {
 
-    public FirePacket firePacket;
-    public LockPacket lockPacket;
-    public MonsterPacket monsterPacket;
-    public PvPPacket pvpPacket;
-    public TNTPacket tntPacket;
-    public PotionPacket potionPacket;
-    public CubitPacket cubitPacket;
+    public FireFlag fireFlag;
+    public LockFlag lockFlag;
+    public MonsterFlag monsterFlag;
+    public PvPFlag pvpFlag;
+    public TNTFlag tntFlag;
+    public PotionFlag potionFlag;
+    public AnimalFlag animalFlag;
+    public CubitFlag cubitPacket;
     private CubitBukkitPlugin plugin;
     private ManageRegions mReg;
     private ManageRegionEntities mRegE;
@@ -48,13 +49,14 @@ public class CubitRegionManager {
         this.mReg = new ManageRegions();
         this.mRegE = new ManageRegionEntities();
         this.saveMrg = new SaveRegions();
-        this.firePacket = new FirePacket();
-        this.lockPacket = new LockPacket();
-        this.monsterPacket = new MonsterPacket();
-        this.pvpPacket = new PvPPacket();
-        this.tntPacket = new TNTPacket();
-        this.potionPacket = new PotionPacket();
-        this.cubitPacket = new CubitPacket();
+        this.fireFlag = new FireFlag();
+        this.lockFlag = new LockFlag();
+        this.monsterFlag = new MonsterFlag();
+        this.pvpFlag = new PvPFlag();
+        this.tntFlag = new TNTFlag();
+        this.potionFlag = new PotionFlag();
+        this.animalFlag = new AnimalFlag();
+        this.cubitPacket = new CubitFlag();
     }
 
     public boolean isValidRegion(final World world, final int valueX, final int valueZ) {
@@ -88,19 +90,21 @@ public class CubitRegionManager {
             String regionName = buildLandName(world.getName(), chunkX, chunkZ);
             CubitLand cubitLand = mReg.newRegion(chunkX, chunkZ, world, playerUUID, regionName);
 
-            cubitLand = this.lockPacket.switchState(cubitLand,
+            cubitLand = this.lockFlag.switchStatus(cubitLand,
                     this.plugin.getYamlManager().getFlag().worldRegionPacketLock, false);
-            cubitLand = this.monsterPacket.switchState(cubitLand,
+            cubitLand = this.monsterFlag.switchStatus(cubitLand,
                     this.plugin.getYamlManager().getFlag().worldRegionPacketMonster, false);
-            cubitLand = this.pvpPacket.switchState(cubitLand,
+            cubitLand = this.animalFlag.switchStatus(cubitLand,
+                    this.plugin.getYamlManager().getFlag().worldRegionPacketAnimals, false);
+            cubitLand = this.pvpFlag.switchStatus(cubitLand,
                     this.plugin.getYamlManager().getFlag().worldRegionPacketPVP, false);
-            cubitLand = this.tntPacket.switchState(cubitLand,
+            cubitLand = this.tntFlag.switchStatus(cubitLand,
                     this.plugin.getYamlManager().getFlag().worldRegionPacketTNT, false);
-            cubitLand = this.firePacket.switchState(cubitLand,
+            cubitLand = this.fireFlag.switchStatus(cubitLand,
                     this.plugin.getYamlManager().getFlag().worldRegionPacketFire, false);
-            cubitLand = this.potionPacket.switchState(cubitLand,
+            cubitLand = this.potionFlag.switchStatus(cubitLand,
                     this.plugin.getYamlManager().getFlag().worldRegionPacketPotion, false);
-            cubitLand = this.cubitPacket.switchState(cubitLand, true, false);
+            cubitLand = this.cubitPacket.switchStatus(cubitLand, true, false);
             return saveMrg.save(cubitLand);
         } catch (Exception e) {
             e.printStackTrace();
@@ -116,19 +120,21 @@ public class CubitRegionManager {
             String regionName = buildLandName(CubitType.SERVER.toString(), chunkX, chunkZ);
             CubitLand cubitLand = mReg.newRegion(chunkX, chunkZ, world, null, regionName);
 
-            cubitLand = this.lockPacket.switchState(cubitLand,
+            cubitLand = this.lockFlag.switchStatus(cubitLand,
                     this.plugin.getYamlManager().getFlag().serverRegionPacketLock, false);
-            cubitLand = this.monsterPacket.switchState(cubitLand,
+            cubitLand = this.monsterFlag.switchStatus(cubitLand,
                     this.plugin.getYamlManager().getFlag().serverRegionPacketMonster, false);
-            cubitLand = this.pvpPacket.switchState(cubitLand,
+            cubitLand = this.animalFlag.switchStatus(cubitLand,
+                    this.plugin.getYamlManager().getFlag().serverRegionPacketAnimals, false);
+            cubitLand = this.pvpFlag.switchStatus(cubitLand,
                     this.plugin.getYamlManager().getFlag().serverRegionPacketPVP, false);
-            cubitLand = this.tntPacket.switchState(cubitLand,
+            cubitLand = this.tntFlag.switchStatus(cubitLand,
                     this.plugin.getYamlManager().getFlag().serverRegionPacketTNT, false);
-            cubitLand = this.firePacket.switchState(cubitLand,
+            cubitLand = this.fireFlag.switchStatus(cubitLand,
                     this.plugin.getYamlManager().getFlag().serverRegionPacketFire, false);
-            cubitLand = this.potionPacket.switchState(cubitLand,
+            cubitLand = this.potionFlag.switchStatus(cubitLand,
                     this.plugin.getYamlManager().getFlag().serverRegionPacketPotion, false);
-            cubitLand = this.cubitPacket.switchState(cubitLand, true, false);
+            cubitLand = this.cubitPacket.switchStatus(cubitLand, true, false);
             return saveMrg.save(cubitLand);
         } catch (Exception e) {
             e.printStackTrace();
@@ -145,19 +151,21 @@ public class CubitRegionManager {
             String regionName = buildLandName(CubitType.SHOP.toString(), chunkX, chunkZ);
             CubitLand cubitLand = mReg.newRegion(chunkX, chunkZ, world, null, regionName);
 
-            cubitLand = this.lockPacket.switchState(cubitLand,
+            cubitLand = this.lockFlag.switchStatus(cubitLand,
                     this.plugin.getYamlManager().getFlag().shopRegionPacketLock, false);
-            cubitLand = this.monsterPacket.switchState(cubitLand,
+            cubitLand = this.monsterFlag.switchStatus(cubitLand,
                     this.plugin.getYamlManager().getFlag().shopRegionPacketMonster, false);
-            cubitLand = this.pvpPacket.switchState(cubitLand,
+            cubitLand = this.animalFlag.switchStatus(cubitLand,
+                    this.plugin.getYamlManager().getFlag().shopRegionPacketAnimals, false);
+            cubitLand = this.pvpFlag.switchStatus(cubitLand,
                     this.plugin.getYamlManager().getFlag().shopRegionPacketPVP, false);
-            cubitLand = this.tntPacket.switchState(cubitLand,
+            cubitLand = this.tntFlag.switchStatus(cubitLand,
                     this.plugin.getYamlManager().getFlag().shopRegionPacketTNT, false);
-            cubitLand = this.firePacket.switchState(cubitLand,
+            cubitLand = this.fireFlag.switchStatus(cubitLand,
                     this.plugin.getYamlManager().getFlag().shopRegionPacketFire, false);
-            cubitLand = this.potionPacket.switchState(cubitLand,
+            cubitLand = this.potionFlag.switchStatus(cubitLand,
                     this.plugin.getYamlManager().getFlag().shopRegionPacketPotion, false);
-            cubitLand = this.cubitPacket.switchState(cubitLand, true, false);
+            cubitLand = this.cubitPacket.switchStatus(cubitLand, true, false);
             return saveMrg.save(cubitLand);
         } catch (Exception e) {
             e.printStackTrace();
@@ -178,17 +186,19 @@ public class CubitRegionManager {
                 this.mRegE.setOwner(list, world, player);
             }
 
-            this.lockPacket.switchState(cubitLand, this.plugin.getYamlManager().getFlag().worldRegionPacketLock,
+            this.lockFlag.switchStatus(cubitLand, this.plugin.getYamlManager().getFlag().worldRegionPacketLock,
                     false);
-            this.monsterPacket.switchState(cubitLand, this.plugin.getYamlManager().getFlag().worldRegionPacketMonster,
+            this.monsterFlag.switchStatus(cubitLand, this.plugin.getYamlManager().getFlag().worldRegionPacketMonster,
                     false);
-            this.pvpPacket.switchState(cubitLand, this.plugin.getYamlManager().getFlag().worldRegionPacketPVP, false);
-            this.tntPacket.switchState(cubitLand, this.plugin.getYamlManager().getFlag().worldRegionPacketTNT, false);
-            this.firePacket.switchState(cubitLand, this.plugin.getYamlManager().getFlag().worldRegionPacketFire,
+            this.animalFlag.switchStatus(cubitLand, this.plugin.getYamlManager().getFlag().worldRegionPacketAnimals,
                     false);
-            this.potionPacket.switchState(cubitLand, this.plugin.getYamlManager().getFlag().worldRegionPacketPotion,
+            this.pvpFlag.switchStatus(cubitLand, this.plugin.getYamlManager().getFlag().worldRegionPacketPVP, false);
+            this.tntFlag.switchStatus(cubitLand, this.plugin.getYamlManager().getFlag().worldRegionPacketTNT, false);
+            this.fireFlag.switchStatus(cubitLand, this.plugin.getYamlManager().getFlag().worldRegionPacketFire,
                     false);
-            this.cubitPacket.switchState(cubitLand, true, false);
+            this.potionFlag.switchStatus(cubitLand, this.plugin.getYamlManager().getFlag().worldRegionPacketPotion,
+                    false);
+            this.cubitPacket.switchStatus(cubitLand, true, false);
 
             return saveMrg.save(world);
         } catch (Exception e) {

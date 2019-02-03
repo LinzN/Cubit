@@ -2,14 +2,14 @@ package de.linzn.cubit.internal.cubitRegion.flags;
 
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
-import de.linzn.cubit.internal.cubitRegion.ICubitPacket;
+import de.linzn.cubit.internal.cubitRegion.IFlags;
 import de.linzn.cubit.internal.cubitRegion.flags.worldguard.CustomFlags;
 import de.linzn.cubit.internal.cubitRegion.region.CubitLand;
 import org.bukkit.ChatColor;
 
-public class CubitPacket implements ICubitPacket {
+public class CubitFlag implements IFlags {
     @Override
-    public CubitLand enablePacket(CubitLand cubitLand) {
+    public CubitLand enable(CubitLand cubitLand) {
         cubitLand.getWGRegion().setFlag(CustomFlags.CUBIT_AUTOMATIC_UPDATE, StateFlag.State.ALLOW);
         cubitLand.getWGRegion().setFlag(CustomFlags.CUBIT_GUILD_LAND, StateFlag.State.DENY);
         return cubitLand;
@@ -17,7 +17,7 @@ public class CubitPacket implements ICubitPacket {
     }
 
     @Override
-    public CubitLand disablePacket(CubitLand cubitLand) {
+    public CubitLand disable(CubitLand cubitLand) {
         cubitLand.getWGRegion().setFlag(CustomFlags.CUBIT_AUTOMATIC_UPDATE, StateFlag.State.DENY);
         cubitLand.getWGRegion().setFlag(CustomFlags.CUBIT_GUILD_LAND, StateFlag.State.DENY);
         return cubitLand;
@@ -25,28 +25,28 @@ public class CubitPacket implements ICubitPacket {
     }
 
     @Override
-    public boolean getState(CubitLand cubitLand) {
-        if(cubitLand.getWGRegion().getFlag(CustomFlags.CUBIT_AUTOMATIC_UPDATE) == null){
-           return true;
+    public boolean getStatus(CubitLand cubitLand) {
+        if (cubitLand.getWGRegion().getFlag(CustomFlags.CUBIT_AUTOMATIC_UPDATE) == null) {
+            return true;
         }
         return cubitLand.getWGRegion().getFlag(CustomFlags.CUBIT_AUTOMATIC_UPDATE) == StateFlag.State.ALLOW;
     }
 
     @Override
-    public ChatColor getStateColor(CubitLand cubitLand) {
-        if (getState(cubitLand)) {
+    public ChatColor getStatusColor(CubitLand cubitLand) {
+        if (getStatus(cubitLand)) {
             return ChatColor.GREEN;
         }
         return ChatColor.RED;
     }
 
     @Override
-    public CubitLand switchState(CubitLand cubitLand, boolean value, boolean save) {
+    public CubitLand switchStatus(CubitLand cubitLand, boolean value, boolean save) {
         CubitLand newCubitLand;
         if (value) {
-            newCubitLand = enablePacket(cubitLand);
+            newCubitLand = enable(cubitLand);
         } else {
-            newCubitLand = disablePacket(cubitLand);
+            newCubitLand = disable(cubitLand);
         }
         if (save) {
             CubitBukkitPlugin.inst().getRegionManager().getRegionSaver().save(cubitLand.getWorld());
@@ -55,25 +55,30 @@ public class CubitPacket implements ICubitPacket {
     }
 
     @Override
-    public CubitLand switchState(CubitLand cubitLand, boolean save) {
-        if (getState(cubitLand)) {
-            return switchState(cubitLand, false, save);
+    public CubitLand switchStatus(CubitLand cubitLand, boolean save) {
+        if (getStatus(cubitLand)) {
+            return switchStatus(cubitLand, false, save);
         } else {
-            return switchState(cubitLand, true, save);
+            return switchStatus(cubitLand, true, save);
         }
     }
 
     @Override
-    public void refreshPacket(CubitLand cubitLand, boolean save) {
-        if (getState(cubitLand)) {
-            enablePacket(cubitLand);
+    public void refresh(CubitLand cubitLand, boolean save) {
+        if (getStatus(cubitLand)) {
+            enable(cubitLand);
         } else {
-            disablePacket(cubitLand);
+            disable(cubitLand);
         }
     }
 
     @Override
-    public String getPacketName() {
+    public String getStatusString(CubitLand cubitLand) {
+        return "no type";
+    }
+
+    @Override
+    public String getProtectionName() {
         return "CUBIT";
     }
 }

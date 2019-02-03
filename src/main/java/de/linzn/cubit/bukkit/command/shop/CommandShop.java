@@ -107,6 +107,19 @@ public class CommandShop implements CommandExecutor {
                     new EditBiomeUniversal(this.plugin, perm.changeBiomeShop, CubitType.SHOP, false));
             this.cmdMap.put("listbiomes", new ListBiomesUniversal(this.plugin, perm.listBiomesShop, CubitType.SHOP));
 
+            /* Flags Commands */
+            this.cmdMap.put("fire",
+                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().fireFlag,
+                            perm.flagShop + "fire", CubitType.SHOP, false));
+            this.cmdMap.put("lock",
+                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().lockFlag,
+                            perm.flagShop + "lock", CubitType.SHOP, false));
+            this.cmdMap.put("monster",
+                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().monsterFlag,
+                            perm.flagShop + "monster", CubitType.SHOP, false));
+            this.cmdMap.put("animals",
+                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().animalFlag,
+                            perm.flagShop + "animals", CubitType.SHOP, false));
             this.isLoaded = true;
         } catch (Exception e) {
             e.printStackTrace();

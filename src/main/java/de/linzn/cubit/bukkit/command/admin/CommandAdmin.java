@@ -70,23 +70,26 @@ public class CommandAdmin implements CommandExecutor {
     public void loadCmd() {
         try {
             PermissionNodes perm = CubitBukkitPlugin.inst().getPermNodes();
-            /* Protection AdminCommands */
+            /* Flags AdminCommands */
             this.cmdMap.put("help", new HelpAdmin(this.plugin, perm.helpAdminLand));
             this.cmdMap.put("setpvp",
-                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().pvpPacket,
+                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().pvpFlag,
                             perm.flagAdminLand + "pvp", CubitType.NOTYPE, true));
             this.cmdMap.put("setfire",
-                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().firePacket,
+                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().fireFlag,
                             perm.flagAdminLand + "fire", CubitType.NOTYPE, true));
             this.cmdMap.put("setlock",
-                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().lockPacket,
+                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().lockFlag,
                             perm.flagAdminLand + "lock", CubitType.NOTYPE, true));
             this.cmdMap.put("settnt",
-                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().tntPacket,
+                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().tntFlag,
                             perm.flagAdminLand + "tnt", CubitType.NOTYPE, true));
             this.cmdMap.put("setmonster",
-                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().monsterPacket,
+                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().monsterFlag,
                             perm.flagAdminLand + "monster", CubitType.NOTYPE, true));
+            this.cmdMap.put("setanimals",
+                    new ChangeFlagUniversal(this.plugin, CubitBukkitPlugin.inst().getRegionManager().animalFlag,
+                            perm.flagAdminLand + "animals", CubitType.NOTYPE, true));
             this.cmdMap.put("remove", new SellLand(this.plugin, perm.sellAdminLand, true));
             this.cmdMap.put("addplayer",
                     new AddMemberUniversal(this.plugin, perm.addMemberAdminLand, CubitType.NOTYPE, true));

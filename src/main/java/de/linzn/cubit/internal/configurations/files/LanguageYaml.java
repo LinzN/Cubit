@@ -42,7 +42,6 @@ public class LanguageYaml {
     public String createShopLand;
     public String deleteShopLand;
     public String sellSuccess;
-    public String flagSwitchSuccess;
     public String addMemberSuccess;
     public String removeMemberSuccess;
     public String offerAddSuccess;
@@ -65,6 +64,24 @@ public class LanguageYaml {
     public String noRegionsFound;
     public String noSnapshotsFound;
     public String wrongArguments;
+
+    /* Flag switch msg */
+    public String pvpOn;
+    public String pvpOff;
+    public String monsterOn;
+    public String monsterOff;
+    public String tntOn;
+    public String tntOff;
+    public String animalsOn;
+    public String animalsOff;
+    public String lockOn;
+    public String lockOff;
+    public String potionsOn;
+    public String potionsOff;
+    public String fireOn;
+    public String fireOff;
+
+
     /* Header for Plugin */
     public String landHeader;
     public String landBiomeListHeader;
@@ -114,6 +131,7 @@ public class LanguageYaml {
     public String landHelpE3P4;
     public String landHelpE4P4;
     public String landHelpE5P4;
+    public String landHelpE6P4;
     public String landHelpBottomP4;
     /* Page 5 Help for Land Command */
     public String landHelpHeaderP5;
@@ -129,7 +147,8 @@ public class LanguageYaml {
     public String shopHelpE2P1;
     public String shopHelpE3P1;
     public String shopHelpE4P1;
-    public String shopHelpBottomP1;
+    public String shopHelpE5P1;
+    public String shopHelpE6P1;
     /* Page 2 Help for Shop Command */
     public String shopHelpHeaderP2;
     public String shopHelpE1P2;
@@ -141,6 +160,13 @@ public class LanguageYaml {
     public String shopHelpE2P3;
     public String shopHelpE3P3;
     public String shopHelpBottomP3;
+    /* Page 4 Help for Shop Command */
+    public String shopHelpHeaderP4;
+    public String shopHelpE1P4;
+    public String shopHelpE2P4;
+    public String shopHelpE3P4;
+    public String shopHelpE4P4;
+    public String shopHelpBottomP4;
     /* Page 1 Help for Admin Command */
     public String adminHelpHeaderP1;
     public String adminHelpE1P1;
@@ -163,6 +189,7 @@ public class LanguageYaml {
     public String adminHelpE3P3;
     public String adminHelpE4P3;
     public String adminHelpE5P3;
+    public String adminHelpE6P3;
     /* Page 4 Help for Admin Command */
     public String adminHelpHeaderP4;
     public String adminHelpE1P4;
@@ -231,8 +258,6 @@ public class LanguageYaml {
         isFreeAndBuyable = this.getLanguageString("isFreeAndBuyable",
                 "&2This region &e{regionID} &2is buyable for &6{price}&2!");
         sellSuccess = this.getLanguageString("sellSuccess", "&2You sold the region &e{regionID}&2 to the server!");
-        flagSwitchSuccess = this.getLanguageString("flagSwitchSuccess",
-                "&2The system &9&l{flag}-Protection &2switched to &9&l{value}&2!");
         addMemberSuccess = this.getLanguageString("addMemberSuccess",
                 "&2You added {member} to the region &e{regionID}&2!");
         removeMemberSuccess = this.getLanguageString("removeMemberSuccess",
@@ -273,8 +298,8 @@ public class LanguageYaml {
         landHeader = this.getLanguageString("theme.general.header",
                 "&6<<<<<<<<<<<<<<<<<<<<<&2&l|Region Info|&6>>>>>>>>>>>>>>>>>>>>>");
 
-        flagStateActive = this.getLanguageString("theme.general.flagStateActive", "ACTIVE");
-        flagStateInactive = this.getLanguageString("theme.general.flagStateInactive", "INACTIVE");
+        flagStateActive = this.getLanguageString("theme.general.flagStateActive", "Enabled");
+        flagStateInactive = this.getLanguageString("theme.general.flagStateInactive", "Disabled");
 
         /* Land Info Page */
         landInfoA1 = this.getLanguageString("theme.landinfo.empty",
@@ -290,7 +315,7 @@ public class LanguageYaml {
                 "&2Area-corner: From [&e{min}&2] to [&e{max}&2]");
         landInfoE5 = this.getLanguageString("theme.landinfo.lastLogin", "&2Last login: &e{time}");
         landInfoE6 = this.getLanguageString("theme.landinfo.flagPackets",
-                "&2Security-Systems: {lock}, {monster}, {fire}, {pvp}, {tnt}, {potion}");
+                "&2Flags: {lock}, {monster}, {animals}, {fire}, {pvp}, {tnt}, {potion}");
 
         /* Page 1 Help for Land Command */
         landHelpHeaderP1 = this.getLanguageString("theme.helpPage1.header",
@@ -323,17 +348,19 @@ public class LanguageYaml {
         landHelpBottomP3 = this.getLanguageString("theme.helpPage3.bottom", "&a&lMore on page 4 with &6/land help 4");
 
         /* Page 4 Help for Land Command */
-        landHelpHeaderP4 = this.getLanguageString("theme.helpPage4.header", "&6&lRegion Protection-systems: [Page 4]");
+        landHelpHeaderP4 = this.getLanguageString("theme.helpPage4.header", "&6&lRegion Flags: [Page 4]");
         landHelpE1P4 = this.getLanguageString("theme.helpPage4.help1",
-                "&2 Fire Protection: &e/land fire (&aON&e/&cOFF&e)");
+                "&2 Fire: &e/land fire (&aON&e/&cOFF&e)");
         landHelpE2P4 = this.getLanguageString("theme.helpPage4.help2",
-                "&2 Access Protection: &e/land lock (&aON&e/&cOFF&e)");
+                "&2 Access: &e/land lock (&aON&e/&cOFF&e)");
         landHelpE3P4 = this.getLanguageString("theme.helpPage4.help3",
-                "&2 PvP Protection: &e/land pvp (&aON&e/&cOFF&e)");
+                "&2 PvP: &e/land pvp (&aON&e/&cOFF&e)");
         landHelpE4P4 = this.getLanguageString("theme.helpPage4.help4",
-                "&2 TnT Protection: &e/land tnt (&aON&e/&cOFF&e)");
+                "&2 TnT: &e/land tnt (&aON&e/&cOFF&e)");
         landHelpE5P4 = this.getLanguageString("theme.helpPage4.help5",
-                "&2 Monster Protection: &e/land monster (&aON&e/&cOFF&e)");
+                "&2 Monster: &e/land monster (&aON&e/&cOFF&e)");
+        landHelpE6P4 = this.getLanguageString("theme.helpPage4.help6",
+                "&2 Animals: &e/land animals (&aON&e/&cOFF&e)");
         landHelpBottomP4 = this.getLanguageString("theme.helpPage4.bottom", "&a&lMore on page 5 with &6/land help 5");
 
         /* Page 5 Help for Land Command */
@@ -356,8 +383,8 @@ public class LanguageYaml {
                 "&2 List all your shops: &e/shop list [Page]");
         shopHelpE3P1 = this.getLanguageString("theme.shopHelpPage1.help3", "&6&lMore commands on the following pages:");
         shopHelpE4P1 = this.getLanguageString("theme.shopHelpPage1.help4", "&2 Page 2: Buy - Sell &a/shop help 2");
-        shopHelpBottomP1 = this.getLanguageString("theme.shopHelpPage1.bottom",
-                "&2 Page 3: Manage Members &a/shop help 3");
+        shopHelpE5P1 = this.getLanguageString("theme.shopHelpPage1.help5", "&2 Page 3: Manage Members &a/shop help 3");
+        shopHelpE6P1 = this.getLanguageString("theme.shopHelpPage1.help6", "&2 Page 4: Manage Flags &a/shop help 4");
 
         /* Page 2 Help for Shop Command */
         shopHelpHeaderP2 = this.getLanguageString("theme.shopHelpPage2.header", "&6&lBuy - Sell: [Page 2]");
@@ -374,7 +401,21 @@ public class LanguageYaml {
                 "&2 Unset player build-rights: &e/shop remove (-all) [player]");
         shopHelpE3P3 = this.getLanguageString("theme.shopHelpPage3.help3",
                 "&2 Kick non-members from a shop (teleporting): &4/shop kick");
-        shopHelpBottomP3 = this.getLanguageString("theme.shopHelpPage3.bottom", "&a&lBack to page 2 &6/shop help 2");
+        shopHelpBottomP3 = this.getLanguageString("theme.shopHelpPage3.bottom",
+                "&a&lMore on page 4 with &6/shop help 4");
+
+        /* Page 3 Help for Land Command */
+        shopHelpHeaderP4 = this.getLanguageString("theme.shopHelpPage4.header", "&6&lManage Flags: [Page 4]");
+        shopHelpE1P4 = this.getLanguageString("theme.shopHelpPage4.help1",
+                "&2 Fire: &e/shop fire (&aON&e/&cOFF&e)");
+        shopHelpE2P4 = this.getLanguageString("theme.shopHelpPage4.help2",
+                "&2 Access: &e/shop lock (&aON&e/&cOFF&e)");
+        shopHelpE3P4 = this.getLanguageString("theme.shopHelpPage4.help3",
+                "&2 Monster: &e/shop monster (&aON&e/&cOFF&e)");
+        shopHelpE4P4 = this.getLanguageString("theme.shopHelpPage4.help4",
+                "&2 Animals: &e/shop animals (&aON&e/&cOFF&e)");
+        shopHelpBottomP4 = this.getLanguageString("theme.shopHelpPage4.bottom", "&a&lBack to page 3 &6/shop help 3");
+
 
         /* Land List Command */
         landListHeader = this.getLanguageString("theme.landList.header",
@@ -418,15 +459,17 @@ public class LanguageYaml {
         /* Page 3 Help for Admin Command */
         adminHelpHeaderP3 = this.getLanguageString("theme.adminHelpPage3.header", "&6&lManage flags: [Page 3]");
         adminHelpE1P3 = this.getLanguageString("theme.adminHelpPage3.help1",
-                "&2 Fire Protection: &e/cadmin setfire (&aON&e/&cOFF&e)");
+                "&2 Fire: &e/cadmin setfire (&aON&e/&cOFF&e)");
         adminHelpE2P3 = this.getLanguageString("theme.adminHelpPage3.help2",
-                "&2 Access Protection: &e/cadmin setlock (&aON&e/&cOFF&e)");
+                "&2 Access: &e/cadmin setlock (&aON&e/&cOFF&e)");
         adminHelpE3P3 = this.getLanguageString("theme.adminHelpPage3.help3",
-                "&2 PvP Protection: &e/cadmin setpvp (&aON&e/&cOFF&e)");
+                "&2 PvP: &e/cadmin setpvp (&aON&e/&cOFF&e)");
         adminHelpE4P3 = this.getLanguageString("theme.adminHelpPage3.help4",
-                "&2 TnT Protection: &e/cadmin settnt (&aON&e/&cOFF&e)");
+                "&2 TnT: &e/cadmin settnt (&aON&e/&cOFF&e)");
         adminHelpE5P3 = this.getLanguageString("theme.adminHelpPage3.help5",
-                "&2 Monster Protection: &e/cadmin setmonster (&aON&e/&cOFF&e)");
+                "&2 Monster: &e/cadmin setmonster (&aON&e/&cOFF&e)");
+        adminHelpE6P3 = this.getLanguageString("theme.adminHelpPage3.help6",
+                "&2 Animals: &e/cadmin setanimals (&aON&e/&cOFF&e)");
 
         /* Page 4 Help for Admin Command */
         adminHelpHeaderP4 = this.getLanguageString("theme.adminHelpPage4.header", "&6&lLand edit: [Page 4]");
@@ -456,6 +499,21 @@ public class LanguageYaml {
         landEditConfirmTaskCancel = this.getLanguageString("landEditConfirmTask.cancel", "&cAktion wurde abgebrochen!");
         landEditConfirmInfoBiome = this.getLanguageString("landEditConfirmTask.biome", "&eBist du dir sicher dass du das Biome ändern möchtest?");
         landEditConfirmInfoReset = this.getLanguageString("landEditConfirmTask.reset", "&eBist du dir sicher dass du alle Blöcke auf dem Land löschen willst?");
+
+        pvpOn = this.getLanguageString("flag.pvp.on", "&6PVP is now enabled on region {regionID}!");
+        pvpOff = this.getLanguageString("flag.pvp.off", "&2PVP is now disabled on region {regionID}!");
+        monsterOn = this.getLanguageString("flag.monster.on", "&6Monster spawning is now enabled on region {regionID}!");
+        monsterOff = this.getLanguageString("flag.monster.off", "&2Monster spawning is now disabled on region {regionID}!");
+        tntOn = this.getLanguageString("flag.tnt.on", "&2TNT is now enabled on region {regionID}!");
+        tntOff = this.getLanguageString("flag.tnt.off", "&2TNT is now disabled on region {regionID}!");
+        animalsOn = this.getLanguageString("flag.animals.on", "&2Animal spawning is now enabled on region {regionID}!");
+        animalsOff = this.getLanguageString("flag.animals.off", "&6Animal spawning is now disabled on region {regionID}!");
+        lockOn = this.getLanguageString("flag.lock.on", "&2Grief-protection is now enabled on region {regionID}!");
+        lockOff = this.getLanguageString("flag.lock.off", "&6Grief-protection is now disabled on region {regionID}!");
+        potionsOn = this.getLanguageString("flag.potions.on", "&6Potion splash is now enabled on region {regionID}!");
+        potionsOff = this.getLanguageString("flag.potions.off", "&2Potion splash is now disabled on region {regionID}!");
+        fireOn = this.getLanguageString("flag.fire.on", "&6Fire is now enabled on region {regionID}!");
+        fireOff = this.getLanguageString("flag.fire.off", "&2Fire is now disabled on region {regionID}!");
     }
 
     public String getLanguageString(String path, String defaultValue) {

@@ -94,19 +94,20 @@ public class InfoUniversal implements ICommand {
         String formatedTime = plugin.getDataAccessManager().databaseType.get_formate_date(lastLogin);
         String minBorder = cubitLand.getMinPoint();
         String maxBorder = cubitLand.getMaxPoint();
-        String statusLock = plugin.getRegionManager().lockPacket.getStateColor(cubitLand)
-                + plugin.getRegionManager().lockPacket.getPacketName();
-        String statusFire = plugin.getRegionManager().firePacket.getStateColor(cubitLand)
-                + plugin.getRegionManager().firePacket.getPacketName();
-        String statusPvP = plugin.getRegionManager().pvpPacket.getStateColor(cubitLand)
-                + plugin.getRegionManager().pvpPacket.getPacketName();
-        String statusTNT = plugin.getRegionManager().tntPacket.getStateColor(cubitLand)
-                + plugin.getRegionManager().tntPacket.getPacketName();
-        String statusMonster = plugin.getRegionManager().monsterPacket.getStateColor(cubitLand)
-                + plugin.getRegionManager().monsterPacket.getPacketName();
-
-        String statusPotion = plugin.getRegionManager().potionPacket.getStateColor(cubitLand)
-                + plugin.getRegionManager().potionPacket.getPacketName();
+        String statusLock = plugin.getRegionManager().lockFlag.getStatusColor(cubitLand)
+                + plugin.getRegionManager().lockFlag.getProtectionName();
+        String statusFire = plugin.getRegionManager().fireFlag.getStatusColor(cubitLand)
+                + plugin.getRegionManager().fireFlag.getProtectionName();
+        String statusPvP = plugin.getRegionManager().pvpFlag.getStatusColor(cubitLand)
+                + plugin.getRegionManager().pvpFlag.getProtectionName();
+        String statusTNT = plugin.getRegionManager().tntFlag.getStatusColor(cubitLand)
+                + plugin.getRegionManager().tntFlag.getProtectionName();
+        String statusMonster = plugin.getRegionManager().monsterFlag.getStatusColor(cubitLand)
+                + plugin.getRegionManager().monsterFlag.getProtectionName();
+        String statusAnimals = plugin.getRegionManager().animalFlag.getStatusColor(cubitLand)
+                + plugin.getRegionManager().animalFlag.getProtectionName();
+        String statusPotion = plugin.getRegionManager().potionFlag.getStatusColor(cubitLand)
+                + plugin.getRegionManager().potionFlag.getProtectionName();
 
         player.sendMessage(
                 plugin.getYamlManager().getLanguage().landInfoE1.replace("{regionID}", cubitLand.getLandName()));
@@ -120,7 +121,7 @@ public class InfoUniversal implements ICommand {
         player.sendMessage(plugin.getYamlManager().getLanguage().landInfoE5.replace("{time}", formatedTime));
         player.sendMessage(plugin.getYamlManager().getLanguage().landInfoE6.replace("{lock}", statusLock)
                 .replace("{monster}", statusMonster).replace("{fire}", statusFire).replace("{pvp}", statusPvP)
-                .replace("{tnt}", statusTNT).replace("{potion}", statusPotion));
+                .replace("{tnt}", statusTNT).replace("{potion}", statusPotion).replace("{animals}", statusAnimals));
 
         if (plugin.getDataAccessManager().databaseType.get_is_offer(cubitLand.getLandName(),
                 cubitLand.getWorld())) {
@@ -148,19 +149,21 @@ public class InfoUniversal implements ICommand {
             String formatedTime = plugin.getDataAccessManager().databaseType.get_formate_date(lastLogin);
             String minBorder = cubitLand.getMinPoint();
             String maxBorder = cubitLand.getMaxPoint();
-            String statusLock = plugin.getRegionManager().lockPacket.getStateColor(cubitLand)
-                    + plugin.getRegionManager().lockPacket.getPacketName();
-            String statusFire = plugin.getRegionManager().firePacket.getStateColor(cubitLand)
-                    + plugin.getRegionManager().firePacket.getPacketName();
-            String statusPvP = plugin.getRegionManager().pvpPacket.getStateColor(cubitLand)
-                    + plugin.getRegionManager().pvpPacket.getPacketName();
-            String statusTNT = plugin.getRegionManager().tntPacket.getStateColor(cubitLand)
-                    + plugin.getRegionManager().tntPacket.getPacketName();
-            String statusMonster = plugin.getRegionManager().monsterPacket.getStateColor(cubitLand)
-                    + plugin.getRegionManager().monsterPacket.getPacketName();
+            String statusLock = plugin.getRegionManager().lockFlag.getStatusColor(cubitLand)
+                    + plugin.getRegionManager().lockFlag.getProtectionName();
+            String statusFire = plugin.getRegionManager().fireFlag.getStatusColor(cubitLand)
+                    + plugin.getRegionManager().fireFlag.getProtectionName();
+            String statusPvP = plugin.getRegionManager().pvpFlag.getStatusColor(cubitLand)
+                    + plugin.getRegionManager().pvpFlag.getProtectionName();
+            String statusTNT = plugin.getRegionManager().tntFlag.getStatusColor(cubitLand)
+                    + plugin.getRegionManager().tntFlag.getProtectionName();
+            String statusMonster = plugin.getRegionManager().monsterFlag.getStatusColor(cubitLand)
+                    + plugin.getRegionManager().monsterFlag.getProtectionName();
+            String statusAnimals = plugin.getRegionManager().animalFlag.getStatusColor(cubitLand)
+                    + plugin.getRegionManager().animalFlag.getProtectionName();
 
-            String statusPotion = plugin.getRegionManager().potionPacket.getStateColor(cubitLand)
-                    + plugin.getRegionManager().potionPacket.getPacketName();
+            String statusPotion = plugin.getRegionManager().potionFlag.getStatusColor(cubitLand)
+                    + plugin.getRegionManager().potionFlag.getProtectionName();
 
             player.sendMessage(
                     plugin.getYamlManager().getLanguage().landInfoE1.replace("{regionID}", cubitLand.getLandName()));
@@ -176,7 +179,7 @@ public class InfoUniversal implements ICommand {
             player.sendMessage(plugin.getYamlManager().getLanguage().landInfoE5.replace("{time}", formatedTime));
             player.sendMessage(plugin.getYamlManager().getLanguage().landInfoE6.replace("{lock}", statusLock)
                     .replace("{monster}", statusMonster).replace("{fire}", statusFire).replace("{pvp}", statusPvP)
-                    .replace("{tnt}", statusTNT).replace("{potion}", statusPotion));
+                    .replace("{tnt}", statusTNT).replace("{potion}", statusPotion).replace("{animals}", statusAnimals));
 
             boolean isMember = Arrays.asList(cubitLand.getMembersUUID()).contains(player.getUniqueId());
 
@@ -187,9 +190,9 @@ public class InfoUniversal implements ICommand {
                                 .get_offer(cubitLand.getLandName(), cubitLand.getWorld()).getValue())));
             } else {
                 if (plugin.getRegionManager().isToLongOffline(cubitLand.getOwnersUUID()[0], isMember)) {
-                        String value = plugin.getVaultManager().formattingToEconomy(CubitBukkitPlugin.inst().getYamlManager().getSettings().shopBasePrice);
-                        player.sendMessage(plugin.getYamlManager().getLanguage().isFreeAndBuyable
-                                .replace("{regionID}", cubitLand.getLandName()).replace("{price}", value));
+                    String value = plugin.getVaultManager().formattingToEconomy(CubitBukkitPlugin.inst().getYamlManager().getSettings().shopBasePrice);
+                    player.sendMessage(plugin.getYamlManager().getLanguage().isFreeAndBuyable
+                            .replace("{regionID}", cubitLand.getLandName()).replace("{price}", value));
                 }
             }
 
@@ -209,26 +212,28 @@ public class InfoUniversal implements ICommand {
         String minBorder = cubitLand.getMinPoint();
         String maxBorder = cubitLand.getMaxPoint();
 
-        String statusLock = plugin.getRegionManager().lockPacket.getStateColor(cubitLand)
-                + plugin.getRegionManager().lockPacket.getPacketName();
-        String statusFire = plugin.getRegionManager().firePacket.getStateColor(cubitLand)
-                + plugin.getRegionManager().firePacket.getPacketName();
-        String statusPvP = plugin.getRegionManager().pvpPacket.getStateColor(cubitLand)
-                + plugin.getRegionManager().pvpPacket.getPacketName();
-        String statusTNT = plugin.getRegionManager().tntPacket.getStateColor(cubitLand)
-                + plugin.getRegionManager().tntPacket.getPacketName();
-        String statusMonster = plugin.getRegionManager().monsterPacket.getStateColor(cubitLand)
-                + plugin.getRegionManager().monsterPacket.getPacketName();
+        String statusLock = plugin.getRegionManager().lockFlag.getStatusColor(cubitLand)
+                + plugin.getRegionManager().lockFlag.getProtectionName();
+        String statusFire = plugin.getRegionManager().fireFlag.getStatusColor(cubitLand)
+                + plugin.getRegionManager().fireFlag.getProtectionName();
+        String statusPvP = plugin.getRegionManager().pvpFlag.getStatusColor(cubitLand)
+                + plugin.getRegionManager().pvpFlag.getProtectionName();
+        String statusTNT = plugin.getRegionManager().tntFlag.getStatusColor(cubitLand)
+                + plugin.getRegionManager().tntFlag.getProtectionName();
+        String statusMonster = plugin.getRegionManager().monsterFlag.getStatusColor(cubitLand)
+                + plugin.getRegionManager().monsterFlag.getProtectionName();
+        String statusAnimals = plugin.getRegionManager().animalFlag.getStatusColor(cubitLand)
+                + plugin.getRegionManager().animalFlag.getProtectionName();
 
-        String statusPotion = plugin.getRegionManager().potionPacket.getStateColor(cubitLand)
-                + plugin.getRegionManager().potionPacket.getPacketName();
+        String statusPotion = plugin.getRegionManager().potionFlag.getStatusColor(cubitLand)
+                + plugin.getRegionManager().potionFlag.getProtectionName();
 
         player.sendMessage(plugin.getYamlManager().getLanguage().landInfoE2.replace("{owner}", "Server"));
         player.sendMessage(plugin.getYamlManager().getLanguage().landInfoE4.replace("{min}", minBorder).replace("{max}",
                 maxBorder));
         player.sendMessage(plugin.getYamlManager().getLanguage().landInfoE6.replace("{lock}", statusLock)
                 .replace("{monster}", statusMonster).replace("{fire}", statusFire).replace("{pvp}", statusPvP)
-                .replace("{tnt}", statusTNT).replace("{potion}", statusPotion));
+                .replace("{tnt}", statusTNT).replace("{potion}", statusPotion).replace("{animals}", statusAnimals));
         return;
     }
 

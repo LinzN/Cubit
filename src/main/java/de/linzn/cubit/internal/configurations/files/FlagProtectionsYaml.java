@@ -18,18 +18,21 @@ public class FlagProtectionsYaml {
     public boolean worldRegionPacketFire;
     public boolean worldRegionPacketLock;
     public boolean worldRegionPacketMonster;
+    public boolean worldRegionPacketAnimals;
     public boolean worldRegionPacketPotion;
     public boolean worldRegionPacketPVP;
     public boolean worldRegionPacketTNT;
     public boolean shopRegionPacketFire;
     public boolean shopRegionPacketLock;
     public boolean shopRegionPacketMonster;
+    public boolean shopRegionPacketAnimals;
     public boolean shopRegionPacketPotion;
     public boolean shopRegionPacketPVP;
     public boolean shopRegionPacketTNT;
     public boolean serverRegionPacketFire;
     public boolean serverRegionPacketLock;
     public boolean serverRegionPacketMonster;
+    public boolean serverRegionPacketAnimals;
     public boolean serverRegionPacketPotion;
     public boolean serverRegionPacketPVP;
     public boolean serverRegionPacketTNT;
@@ -42,26 +45,29 @@ public class FlagProtectionsYaml {
     }
 
     public void setup() {
-        worldRegionPacketFire = (boolean) this.getObjectValue("flags.worldregion.defaultProtection.fire", true);
-        worldRegionPacketLock = (boolean) this.getObjectValue("flags.worldregion.defaultProtection.lock", true);
-        worldRegionPacketMonster = (boolean) this.getObjectValue("flags.worldregion.defaultProtection.monster", true);
-        worldRegionPacketPotion = (boolean) this.getObjectValue("flags.worldregion.defaultProtection.potion", true);
-        worldRegionPacketPVP = (boolean) this.getObjectValue("flags.worldregion.defaultProtection.pvp", true);
-        worldRegionPacketTNT = (boolean) this.getObjectValue("flags.worldregion.defaultProtection.tnt", true);
+        worldRegionPacketFire = (boolean) this.getObjectValue("flags.worldregion.default.fire", false);
+        worldRegionPacketLock = (boolean) this.getObjectValue("flags.worldregion.default.lock", true);
+        worldRegionPacketMonster = (boolean) this.getObjectValue("flags.worldregion.default.monster", false);
+        worldRegionPacketAnimals = (boolean) this.getObjectValue("flags.worldregion.default.animals", true);
+        worldRegionPacketPotion = (boolean) this.getObjectValue("flags.worldregion.default.potion", false);
+        worldRegionPacketPVP = (boolean) this.getObjectValue("flags.worldregion.default.pvp", false);
+        worldRegionPacketTNT = (boolean) this.getObjectValue("flags.worldregion.default.tnt", false);
 
-        shopRegionPacketFire = (boolean) this.getObjectValue("flags.shopregion.defaultProtection.fire", true);
-        shopRegionPacketLock = (boolean) this.getObjectValue("flags.shopregion.defaultProtection.lock", true);
-        shopRegionPacketMonster = (boolean) this.getObjectValue("flags.shopregion.defaultProtection.monster", true);
-        shopRegionPacketPotion = (boolean) this.getObjectValue("flags.shopregion.defaultProtection.potion", true);
-        shopRegionPacketPVP = (boolean) this.getObjectValue("flags.shopregion.defaultProtection.pvp", true);
-        shopRegionPacketTNT = (boolean) this.getObjectValue("flags.shopregion.defaultProtection.tnt", true);
+        shopRegionPacketFire = (boolean) this.getObjectValue("flags.shopregion.default.fire", false);
+        shopRegionPacketLock = (boolean) this.getObjectValue("flags.shopregion.default.lock", true);
+        shopRegionPacketMonster = (boolean) this.getObjectValue("flags.shopregion.default.monster", false);
+        shopRegionPacketAnimals = (boolean) this.getObjectValue("flags.shopregion.default.animals", true);
+        shopRegionPacketPotion = (boolean) this.getObjectValue("flags.shopregion.default.potion", false);
+        shopRegionPacketPVP = (boolean) this.getObjectValue("flags.shopregion.default.pvp", false);
+        shopRegionPacketTNT = (boolean) this.getObjectValue("flags.shopregion.default.tnt", false);
 
-        serverRegionPacketFire = (boolean) this.getObjectValue("flags.serverregion.defaultProtection.fire", true);
-        serverRegionPacketLock = (boolean) this.getObjectValue("flags.serverregion.defaultProtection.lock", true);
-        serverRegionPacketMonster = (boolean) this.getObjectValue("flags.serverregion.defaultProtection.monster", true);
-        serverRegionPacketPotion = (boolean) this.getObjectValue("flags.serverregion.defaultProtection.potion", true);
-        serverRegionPacketPVP = (boolean) this.getObjectValue("flags.serverregion.defaultProtection.pvp", true);
-        serverRegionPacketTNT = (boolean) this.getObjectValue("flags.serverregion.defaultProtection.tnt", true);
+        serverRegionPacketFire = (boolean) this.getObjectValue("flags.serverregion.default.fire", false);
+        serverRegionPacketLock = (boolean) this.getObjectValue("flags.serverregion.default.lock", true);
+        serverRegionPacketMonster = (boolean) this.getObjectValue("flags.serverregion.default.monster", false);
+        serverRegionPacketAnimals = (boolean) this.getObjectValue("flags.serverregion.default.animals", true);
+        serverRegionPacketPotion = (boolean) this.getObjectValue("flags.serverregion.default.potion", false);
+        serverRegionPacketPVP = (boolean) this.getObjectValue("flags.serverregion.default.pvp", false);
+        serverRegionPacketTNT = (boolean) this.getObjectValue("flags.serverregion.default.tnt", false);
     }
 
     public Object getObjectValue(String path, Object defaultValue) {

@@ -49,6 +49,7 @@ permissions:
             cubit.command.land.flag.lock: true
             cubit.command.land.flag.tnt: true
             cubit.command.land.flag.monster: true
+            cubit.command.land.flag.animals: true
             cubit.command.land.flag.potion: true
             cubit.command.land.changebiome: true
             cubit.command.land.listbiomes: true
@@ -70,6 +71,13 @@ permissions:
             cubit.command.shop.list: true
             cubit.command.shop.changebiome: true
             cubit.command.shop.listbiomes: true
+            cubit.command.shop.flag.pvp: true
+            cubit.command.shop.flag.fire: true
+            cubit.command.shop.flag.lock: true
+            cubit.command.shop.flag.tnt: true
+            cubit.command.shop.flag.monster: true
+            cubit.command.shop.flag.animals: true
+            cubit.command.shop.flag.potion: true
     cubit.command.admin.land:
         description: Admin command permissions
         children:
@@ -93,6 +101,7 @@ permissions:
             cubit.command.admin.flag.lock: true
             cubit.command.admin.flag.tnt: true
             cubit.command.admin.flag.monster: true
+            cubit.command.admin.flag.animals: true
             cubit.command.admin.flag.potion: true
             cubit.command.admin.reloadcubit: true
             cubit.command.admin.listsnapshots: true
@@ -144,6 +153,8 @@ permissions:
         default: op
     cubit.command.land.flag.monster:
         default: op
+    cubit.command.land.flag.animals:
+        default: op
     cubit.command.land.flag.potion:
         default: op
     cubit.command.shop.buy:
@@ -165,6 +176,20 @@ permissions:
     cubit.command.shop.removemember:
         default: op
     cubit.command.shop.kick:
+        default: op
+    cubit.command.shop.flag.pvp:
+        default: op
+    cubit.command.shop.flag.fire:
+        default: op
+    cubit.command.shop.flag.lock:
+        default: op
+    cubit.command.shop.flag.tnt:
+        default: op
+    cubit.command.shop.flag.monster:
+        default: op
+    cubit.command.shop.flag.animals:
+        default: op
+    cubit.command.shop.flag.potion:
         default: op
     cubit.command.admin.sell:
         default: op
@@ -203,6 +228,8 @@ permissions:
     cubit.command.admin.flag.tnt:
         default: op
     cubit.command.admin.flag.monster:
+        default: op
+    cubit.command.admin.flag.animals:
         default: op
     cubit.command.admin.reloadcubit:
         default: op

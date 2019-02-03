@@ -67,7 +67,7 @@ public class CommandCubit implements CommandExecutor {
     public void loadCmd() {
         try {
             PermissionNodes perm = CubitBukkitPlugin.inst().getPermNodes();
-            /* Protection CubitCommand */
+            /* Flags CubitCommand */
             this.cmdMap.put("help", new HelpCubit(this.plugin));
             this.cmdMap.put("h", new HelpCubit(this.plugin));
             this.cmdMap.put("version", new Version(this.plugin));
