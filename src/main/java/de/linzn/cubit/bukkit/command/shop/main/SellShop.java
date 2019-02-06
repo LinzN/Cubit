@@ -149,6 +149,7 @@ public class SellShop implements ICommand {
         }
 
         /* Cubit land update event*/
+        cubitLand.setWGRegion(cubitLand.getWGRegion(), true);
         CubitLandUpdateEvent cubitLandUpdateEvent = new CubitLandUpdateEvent(loc.getWorld(), cubitLand.getLandName(), cubitLand);
         this.plugin.getServer().getPluginManager().callEvent(cubitLandUpdateEvent);
 
