@@ -14,8 +14,11 @@ package de.linzn.cubit.bukkit.plugin.listener;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 
 import java.util.Date;
@@ -36,5 +39,25 @@ public class LoginListener implements Listener {
                 }
             }
         });
+    }
+
+    /* Temp ArmorStand with hands. Thanks to Cris - Hundemaunzen*/
+    @EventHandler
+    public void onArmorStandArms(final PlayerInteractAtEntityEvent e) {
+        if (e.getRightClicked() instanceof ArmorStand) {
+            if (e.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.STICK)) {
+                if (!((ArmorStand) e.getRightClicked()).hasArms()) {
+                    if (e.getPlayer().getInventory().getItemInMainHand().getAmount() > 2) {
+                        e.getPlayer().getInventory().getItemInMainHand().setAmount(e.getPlayer().getInventory().getItemInMainHand().getAmount() - 2);
+                    } else if (e.getPlayer().getInventory().getItemInMainHand().getAmount() == 2) {
+                        e.getPlayer().getInventory().clear(e.getPlayer().getInventory().getHeldItemSlot());
+                    } else {
+                        return;
+                    }
+                    ((ArmorStand) e.getRightClicked()).setArms(true);
+                    e.setCancelled(true);
+                }
+            }
+        }
     }
 }
