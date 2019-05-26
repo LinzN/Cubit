@@ -81,13 +81,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
-            <version>1.13.2-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.boydti</groupId>
-            <artifactId>fawe-api</artifactId>
-            <version>latest</version>
+            <version>1.14.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -137,7 +131,7 @@
             </plugin>
         </plugins>
     </build>
-    <version>4.6.0</version>
+    <version>4.6.1</version>
     <groupId>de.linzn</groupId>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
