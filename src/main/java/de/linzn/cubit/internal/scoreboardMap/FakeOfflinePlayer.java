@@ -70,6 +70,16 @@ public class FakeOfflinePlayer implements OfflinePlayer {
         return null;
     }
 
+    @Override
+    public long getLastLogin() {
+        return 0;
+    }
+
+    @Override
+    public long getLastSeen() {
+        return 0;
+    }
+
     public boolean isOnline() {
         return false;
     }
