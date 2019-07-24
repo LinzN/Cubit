@@ -33,7 +33,7 @@
         </repository>
         <repository>
             <id>codemc-repo</id>
-            <url>https://repo.codemc.org/service/rest/repository/browse/maven-public/</url>
+            <url>https://repo.codemc.org/repository/maven-public/</url>
         </repository>
         
 
