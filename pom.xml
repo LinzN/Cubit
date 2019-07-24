@@ -31,6 +31,11 @@
             <id>enigmar-repo</id>
             <url>https://repository.enigmar.de/</url>
         </repository>
+        <repository>
+            <id>codemc-repo</id>
+            <url>https://repo.codemc.org/service/rest/repository/browse/maven-public/</url>
+        </repository>
+        
 
     </repositories>
     <dependencies>
