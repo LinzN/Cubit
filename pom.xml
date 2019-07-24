@@ -32,9 +32,10 @@
             <url>https://repository.enigmar.de/</url>
         </repository>
         <repository>
-            <id>codemc-repo</id>
-            <url>https://repo.codemc.org/repository/maven-public/</url>
+            <id>spigot-server-repo</id>
+            <url>http://maven.elmakers.com/repository/</url>
         </repository>
+
         
 
     </repositories>
