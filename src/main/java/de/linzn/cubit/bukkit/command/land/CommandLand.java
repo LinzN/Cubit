@@ -142,8 +142,6 @@ public class CommandLand implements CommandExecutor {
                     new EditBiomeUniversal(this.plugin, perm.changeBiomeLand, CubitType.WORLD, false));
 
             this.cmdMap.put("listbiomes", new ListBiomesUniversal(this.plugin, perm.listBiomesLand, CubitType.WORLD));
-            this.cmdMap.put("listsaves",
-                    new ListSnapshotsUniversal(this.plugin, perm.listSavesLand, CubitType.WORLD, false));
 
             this.isLoaded = true;
         } catch (Exception e) {
