@@ -18,7 +18,6 @@ import de.linzn.cubit.bukkit.command.land.main.OfferLand;
 import de.linzn.cubit.bukkit.command.land.main.SellLand;
 import de.linzn.cubit.bukkit.command.universal.*;
 import de.linzn.cubit.bukkit.command.universal.blockedit.EditBiomeUniversal;
-import de.linzn.cubit.bukkit.command.universal.blockedit.EditResetUniversal;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import de.linzn.cubit.bukkit.plugin.PermissionNodes;
 import de.linzn.cubit.internal.cubitRegion.CubitType;
@@ -108,10 +107,6 @@ public class CommandAdmin implements CommandExecutor {
             this.cmdMap.put("listbiomes",
                     new ListBiomesUniversal(this.plugin, perm.listBiomesAdminLand, CubitType.NOTYPE));
             this.cmdMap.put("list", new ListUniversal(this.plugin, perm.listAdminLand, CubitType.NOTYPE, true));
-
-            this.cmdMap.put("listsaves",
-                    new ListSnapshotsUniversal(this.plugin, perm.listSavesAdmin, CubitType.NOTYPE, true));
-            this.cmdMap.put("reset", new EditResetUniversal(this.plugin, perm.resetLand, CubitType.NOTYPE, true));
             this.cmdMap.put("setbuyuptime", new SetBuyupTime(this.plugin, perm.setbuyuptime));
 
             this.isLoaded = true;
