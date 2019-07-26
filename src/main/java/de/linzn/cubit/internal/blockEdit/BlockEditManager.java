@@ -15,14 +15,12 @@ import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import de.linzn.cubit.internal.blockEdit.normal.nmsPackets.NMSLoader;
 import de.linzn.cubit.internal.blockEdit.subHandler.BiomeHandler;
 import de.linzn.cubit.internal.blockEdit.subHandler.BlockHandler;
-import de.linzn.cubit.internal.blockEdit.subHandler.SnapshotHandler;
 import org.bukkit.Bukkit;
 
 public class BlockEditManager {
 
     private CubitBukkitPlugin plugin;
     private NMSLoader nmsloader;
-    private SnapshotHandler snapshotHandler;
     private BiomeHandler biomeHandler;
     private BlockHandler blockHandler;
 
@@ -31,13 +29,8 @@ public class BlockEditManager {
         boolean useFAWE = Bukkit.getPluginManager().getPlugin("") != null;
         this.plugin = plugin;
         this.nmsloader = new NMSLoader(this.plugin);
-        this.snapshotHandler = new SnapshotHandler(this.plugin, useFAWE);
         this.biomeHandler = new BiomeHandler(this.plugin, useFAWE);
         this.blockHandler = new BlockHandler(this.plugin, useFAWE);
-    }
-
-    public SnapshotHandler getSnapshotHandler() {
-        return this.snapshotHandler;
     }
 
     public BiomeHandler getBiomeHandler() {
