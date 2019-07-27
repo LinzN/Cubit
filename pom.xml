@@ -1,8 +1,8 @@
 <!--
-  ~ Copyright (C) 2018. MineGaming - All Rights Reserved
-  ~ You may use, distribute and modify this code under the
-  ~ terms of the LGPLv3 license, which unfortunately won't be
-  ~ written for another century.
+  ~  Copyright (C) 2019. MineGaming - All Rights Reserved
+  ~  You may use, distribute and modify this code under the
+  ~  terms of the LGPLv3 license, which unfortunately won't be
+  ~  written for another century.
   ~
   ~  You should have received a copy of the LGPLv3 license with
   ~  this file. If not, please write to: niklas.linz@enigmar.de
@@ -79,10 +79,10 @@
 
         <!--Spigot Server -->
         <dependency>
-               <groupId>org.spigotmc</groupId>
-               <artifactId>spigot</artifactId>
-               <version>1.14.4-R0.1-SNAPSHOT</version>
-               <scope>provided</scope>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.14.4-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>net.milkbowl.vault</groupId>
@@ -131,7 +131,7 @@
             </plugin>
         </plugins>
     </build>
-    <version>4.6.1</version>
+    <version>4.6.2</version>
     <groupId>de.linzn</groupId>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

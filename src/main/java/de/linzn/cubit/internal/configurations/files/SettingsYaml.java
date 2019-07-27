@@ -1,8 +1,8 @@
 /*
- * Copyright (C) 2018. MineGaming - All Rights Reserved
- * You may use, distribute and modify this code under the
- * terms of the LGPLv3 license, which unfortunately won't be
- * written for another century.
+ *  Copyright (C) 2019. MineGaming - All Rights Reserved
+ *  You may use, distribute and modify this code under the
+ *  terms of the LGPLv3 license, which unfortunately won't be
+ *  written for another century.
  *
  *  You should have received a copy of the LGPLv3 license with
  *  this file. If not, please write to: niklas.linz@enigmar.de
@@ -31,10 +31,6 @@ public class SettingsYaml {
     public double landMaxPrice;
     public double landSellPercent;
     public double landChangeBiomePrice;
-    public boolean landUseSnapshots;
-    public double landSaveSnapshotPrice;
-    public double landRestoreSnapshotPrice;
-    public double landResetSnapshotPrice;
     public double landDeprecatedMember;
     public double landDeprecatedOther;
     public boolean landUseMaterialBorder;
@@ -83,10 +79,6 @@ public class SettingsYaml {
         this.landMaxPrice = (double) this.getObjectValue("module.land.maxPrice", 750D);
         this.landSellPercent = (double) this.getObjectValue("module.land.sellPercentInDecimal", 0.4D);
         this.landChangeBiomePrice = (double) this.getObjectValue("module.land.landChangeBiomePrice", 25D);
-        this.landUseSnapshots = (boolean) this.getObjectValue("module.land.landUseSnapshots", true);
-        this.landSaveSnapshotPrice = (double) this.getObjectValue("module.land.landSaveSnapshot", 350D);
-        this.landRestoreSnapshotPrice = (double) this.getObjectValue("module.land.landRestoreSnapshot", 150D);
-        this.landResetSnapshotPrice = (double) this.getObjectValue("module.land.landResetSnapshotPrice", 50D);
         this.landDeprecatedMember = (double) this.getObjectValue("module.land.deprecatedBuyupMember", 35D);
         this.landDeprecatedOther = (double) this.getObjectValue("module.land.deprecatedBuyupOther", 45D);
         this.landUseMaterialBorder = (boolean) this.getObjectValue("module.land.useMaterialBorder", true);

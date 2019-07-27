@@ -1,8 +1,8 @@
 /*
- * Copyright (C) 2018. MineGaming - All Rights Reserved
- * You may use, distribute and modify this code under the
- * terms of the LGPLv3 license, which unfortunately won't be
- * written for another century.
+ *  Copyright (C) 2019. MineGaming - All Rights Reserved
+ *  You may use, distribute and modify this code under the
+ *  terms of the LGPLv3 license, which unfortunately won't be
+ *  written for another century.
  *
  *  You should have received a copy of the LGPLv3 license with
  *  this file. If not, please write to: niklas.linz@enigmar.de
@@ -19,21 +19,14 @@ import org.bukkit.block.Biome;
 public class BiomeHandler {
 
     private CubitBukkitPlugin plugin;
-    private boolean useFAWE;
 
-    public BiomeHandler(CubitBukkitPlugin plugin, boolean useFAWE) {
+    public BiomeHandler(CubitBukkitPlugin plugin) {
         this.plugin = plugin;
-        this.useFAWE = useFAWE;
     }
 
 
     public boolean changeBiomeChunk(Chunk chunk, Biome biome) {
-        if (this.useFAWE) {
-            // some code
-        } else {
-            return this.changeBiomeChunkDefault(chunk, biome);
-        }
-        return false;
+        return this.changeBiomeChunkDefault(chunk, biome);
     }
 
     private boolean changeBiomeChunkDefault(Chunk chunk, Biome biome) {

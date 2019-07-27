@@ -1,8 +1,8 @@
 /*
- * Copyright (C) 2018. MineGaming - All Rights Reserved
- * You may use, distribute and modify this code under the
- * terms of the LGPLv3 license, which unfortunately won't be
- * written for another century.
+ *  Copyright (C) 2019. MineGaming - All Rights Reserved
+ *  You may use, distribute and modify this code under the
+ *  terms of the LGPLv3 license, which unfortunately won't be
+ *  written for another century.
  *
  *  You should have received a copy of the LGPLv3 license with
  *  this file. If not, please write to: niklas.linz@enigmar.de
@@ -13,12 +13,15 @@ package de.linzn.cubit.internal.cacheSystem;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mojang.util.UUIDTypeAdapter;
+import com.google.gson.TypeAdapter;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -31,6 +34,14 @@ public class NameCache {
     private Gson gson = new GsonBuilder().registerTypeAdapter(UUID.class, new UUIDTypeAdapter()).create();
     private Map<UUID, String> playerCache = new HashMap<>();
     private String name;
+
+    public static String fromUUID(UUID value) {
+        return value.toString().replace("-", "");
+    }
+
+    public static UUID fromString(String input) {
+        return UUID.fromString(input.replaceFirst("(\\w{8})(\\w{4})(\\w{4})(\\w{4})(\\w{12})", "$1-$2-$3-$4-$5"));
+    }
 
     private String fetchMojangName(UUID uuid) {
         try {
@@ -94,5 +105,26 @@ public class NameCache {
             playerName = "Unknown";
         }
         return playerName;
+    }
+
+    private static class UUIDTypeAdapter extends TypeAdapter<UUID> {
+        public UUIDTypeAdapter() {
+        }
+
+        static String fromUUID(UUID value) {
+            return value.toString().replace("-", "");
+        }
+
+        static UUID fromString(String input) {
+            return UUID.fromString(input.replaceFirst("(\\w{8})(\\w{4})(\\w{4})(\\w{4})(\\w{12})", "$1-$2-$3-$4-$5"));
+        }
+
+        public void write(JsonWriter out, UUID value) throws IOException {
+            out.value(fromUUID(value));
+        }
+
+        public UUID read(JsonReader in) throws IOException {
+            return fromString(in.nextString());
+        }
     }
 }

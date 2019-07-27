@@ -1,8 +1,8 @@
 /*
- * Copyright (C) 2018. MineGaming - All Rights Reserved
- * You may use, distribute and modify this code under the
- * terms of the LGPLv3 license, which unfortunately won't be
- * written for another century.
+ *  Copyright (C) 2019. MineGaming - All Rights Reserved
+ *  You may use, distribute and modify this code under the
+ *  terms of the LGPLv3 license, which unfortunately won't be
+ *  written for another century.
  *
  *  You should have received a copy of the LGPLv3 license with
  *  this file. If not, please write to: niklas.linz@enigmar.de
@@ -22,7 +22,7 @@ public class CubitAPI {
     /**
      * Get cubitland for specific coordinates
      *
-     * @param world World for this cubitland
+     * @param world  World for this cubitland
      * @param chunkX X-coordinates for chunk
      * @param chunkZ Z-coordinates for chunk
      * @return CubitLand. Can return null if no one found

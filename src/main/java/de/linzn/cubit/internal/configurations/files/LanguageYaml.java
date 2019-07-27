@@ -1,8 +1,8 @@
 /*
- * Copyright (C) 2018. MineGaming - All Rights Reserved
- * You may use, distribute and modify this code under the
- * terms of the LGPLv3 license, which unfortunately won't be
- * written for another century.
+ *  Copyright (C) 2019. MineGaming - All Rights Reserved
+ *  You may use, distribute and modify this code under the
+ *  terms of the LGPLv3 license, which unfortunately won't be
+ *  written for another century.
  *
  *  You should have received a copy of the LGPLv3 license with
  *  this file. If not, please write to: niklas.linz@enigmar.de
@@ -33,10 +33,7 @@ public class LanguageYaml {
     public String reachLimit;
     public String notABiome;
     public String pageNotFound;
-    public String noSnapshot;
-    public String alreadySnapshot;
     public String noValidWEAdapter;
-    public String disabledSnapshots;
     /* Success MSG */
     public String buySuccess;
     public String createShopLand;
@@ -50,9 +47,6 @@ public class LanguageYaml {
     public String kickInfo;
     public String isFreeAndBuyable;
     public String changedBiome;
-    public String savedSnapshot;
-    public String restoredSnapshot;
-    public String resetSnapshot;
     public String setbuyuptime;
     /* UnSuccess MSG */
     public String buyIsAlreadyLand;
@@ -62,7 +56,6 @@ public class LanguageYaml {
     public String takeOwnLand;
     public String notOffered;
     public String noRegionsFound;
-    public String noSnapshotsFound;
     public String wrongArguments;
 
     /* Flag switch msg */
@@ -137,9 +130,6 @@ public class LanguageYaml {
     public String landHelpHeaderP5;
     public String landHelpE1P5;
     public String landHelpE2P5;
-    public String landHelpE3P5;
-    public String landHelpE4P5;
-    public String landHelpE5P5;
     public String landHelpBottomP5;
     /* Page 1 Help for Shop Command */
     public String shopHelpHeaderP1;
@@ -194,7 +184,6 @@ public class LanguageYaml {
     public String adminHelpHeaderP4;
     public String adminHelpE1P4;
     public String adminHelpE2P4;
-    public String adminHelpE3P4;
     /* Page 5 Help for Admin Command */
     public String adminHelpHeaderP5;
     public String adminHelpE1P5;
@@ -206,9 +195,6 @@ public class LanguageYaml {
     public String cubitHelpHeaderP1;
     public String cubitHelpE1P1;
     public String cubitHelpE2P1;
-    /* Snapshots List */
-    public String landListsnapshotsHeader;
-    public String landListsnapshotsEntry;
 
     /* Land confirm Task like biome */
     public String landEditConfirmTask;
@@ -248,11 +234,8 @@ public class LanguageYaml {
         reachLimit = this.getLanguageString("reachLimit", "&cSorry you reached the limit for this regionType!");
         notABiome = this.getLanguageString("notABiome", "&cThis is not a valid biomename: {biome}!");
         pageNotFound = this.getLanguageString("pageNotfound", "&cThis is not a valid page");
-        noSnapshot = this.getLanguageString("noSnapshot", "&cThere is no snapshot with this name!");
-        alreadySnapshot = this.getLanguageString("alreadySnapshot", "&cThis snapshot exist already!");
         noValidWEAdapter = this.getLanguageString("noValidWEAdapter",
                 "&cWorldEdit has no valid bukkit adapter for this server. Please update WorldEdit!");
-        disabledSnapshots = this.getLanguageString("disabledSnapshots", "&cSnapshots are disabled in settings!");
         /* Success MSG */
         buySuccess = this.getLanguageString("buySuccess", "&2You bought the region &e{regionID}&2!");
         isFreeAndBuyable = this.getLanguageString("isFreeAndBuyable",
@@ -272,11 +255,6 @@ public class LanguageYaml {
         changedBiome = this.getLanguageString("changedBiome",
                 "&2You changed the biome from region &e{regionID} &2to &e{biome}&2!");
 
-        savedSnapshot = this.getLanguageString("savedSnapshot",
-                "&2You created a new snapshot from the region &e{regionID}&2!");
-        restoredSnapshot = this.getLanguageString("restoredSnapshot",
-                "&2You restored a snapshot named &e{snapshotName}&2!");
-        resetSnapshot = this.getLanguageString("resetSnapshot", "&2You reseted the region &e{regionID}&2!");
         setbuyuptime = this.getLanguageString("setBuyupTime", "&2You set the buyuptime for &e{player} &2to &e{time} &2days!");
 
         /* UnSuccess MSG */
@@ -292,7 +270,6 @@ public class LanguageYaml {
         notOffered = this.getLanguageString("notOffered", "&cThe region {regionID} is not offered!");
         wrongArguments = this.getLanguageString("wrongArguments", "&cWrong arguments: Use {usage}!");
         noRegionsFound = this.getLanguageString("noRegionsFound", "&cNo regions found. Sry!");
-        noSnapshotsFound = this.getLanguageString("noSnapshotsFound", "&cNo snapshots found. Sry!");
         notToLongOffline = this.getLanguageString("notToLongOffline", "&cThis player is not long enough offline!");
         /* Header for Plugin */
         landHeader = this.getLanguageString("theme.general.header",
@@ -367,10 +344,6 @@ public class LanguageYaml {
         landHelpHeaderP5 = this.getLanguageString("theme.helpPage5.header", "&6&lLand edit: [Page 5]");
         landHelpE1P5 = this.getLanguageString("theme.helpPage5.help1", "&2 Change biome: &e/land changebiome [Biome]");
         landHelpE2P5 = this.getLanguageString("theme.helpPage5.help2", "&2 List biomes: &e/land listbiomes");
-        landHelpE3P5 = this.getLanguageString("theme.helpPage5.help3", "&2 Save snapshot: &e/land save");
-        landHelpE4P5 = this.getLanguageString("theme.helpPage5.help4",
-                "&2 Restore snapshot: &e/land restore [Snapshot]");
-        landHelpE5P5 = this.getLanguageString("theme.helpPage5.help5", "&2 List snapshots: &e/land listsaves");
         landHelpBottomP5 = this.getLanguageString("theme.helpPage5.bottom", "&a&lBack to page 4 &6/land help 4");
 
         landBiomeListHeader = this.getLanguageString("theme.biomeList.header", "&6&lAll available biomes:");
@@ -423,12 +396,6 @@ public class LanguageYaml {
         landListEntry = this.getLanguageString("theme.landList.entry",
                 "&a{counter}. &6{regionID} &a(&efrom &a- &eto&a) [&e{minPoints} &a- &e{maxPoints}&a]");
 
-        /* List snapshots Command */
-        landListsnapshotsHeader = this.getLanguageString("theme.listsnapshots.header",
-                "&6&lSnapshots Count: &r&2{count} &6&l- Entries &r&2{entryMin} &6&lfrom &r&2{entryMax}");
-        landListsnapshotsEntry = this.getLanguageString("theme.listsnapshots.entry",
-                "&a{counter}. &6{snapshotName} &a [&e{biome}&a]");
-
         /* Page 1 Help for Admin Command */
         adminHelpHeaderP1 = this.getLanguageString("theme.adminHelpPage1.header",
                 "&6<<<<<<<<<<<<<<<<<&2&l|Admin Help|&6>>>>>>>>>>>>>>>>>");
@@ -477,8 +444,6 @@ public class LanguageYaml {
                 "&2 Change biome: &e/cadmin changebiome (biome)");
         adminHelpE2P4 = this.getLanguageString("theme.adminHelpPage4.help2",
                 "&2 List available biomes: &e/cadmin listbiomes");
-        adminHelpE3P4 = this.getLanguageString("theme.adminHelpPage4.help3",
-                "&2 List snapshots: &e/cadmin listsaves [Player] (page)");
 
         /* Page 5 Help for Admin Command */
         adminHelpHeaderP5 = this.getLanguageString("theme.adminHelpPage5.header", "&6&lAdmin regions: [Page 5]");

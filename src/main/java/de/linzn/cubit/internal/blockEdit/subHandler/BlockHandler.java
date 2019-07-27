@@ -1,8 +1,8 @@
 /*
- * Copyright (C) 2018. MineGaming - All Rights Reserved
- * You may use, distribute and modify this code under the
- * terms of the LGPLv3 license, which unfortunately won't be
- * written for another century.
+ *  Copyright (C) 2019. MineGaming - All Rights Reserved
+ *  You may use, distribute and modify this code under the
+ *  terms of the LGPLv3 license, which unfortunately won't be
+ *  written for another century.
  *
  *  You should have received a copy of the LGPLv3 license with
  *  this file. If not, please write to: niklas.linz@enigmar.de
@@ -23,29 +23,17 @@ import java.util.List;
 public class BlockHandler {
 
     private CubitBukkitPlugin plugin;
-    private boolean useFAWE;
 
-    public BlockHandler(CubitBukkitPlugin plugin, boolean useFAWE) {
+    public BlockHandler(CubitBukkitPlugin plugin) {
         this.plugin = plugin;
-        this.useFAWE = useFAWE;
     }
 
     public boolean placeLandBorder(Chunk chunk, Material material) {
-        if (this.useFAWE) {
-            // some code
-        } else {
-            return this.placeLandBorderDefault(chunk, material);
-        }
-        return false;
+        return this.placeLandBorderDefault(chunk, material);
     }
 
     public boolean removeBlockOnShopBuy(Chunk chunk, List<Material> blockList) {
-        if (this.useFAWE) {
-            // some code
-        } else {
-            return this.removeBlockOnShopBuyDefault(chunk, blockList);
-        }
-        return false;
+        return this.removeBlockOnShopBuyDefault(chunk, blockList);
     }
 
     private boolean placeLandBorderDefault(Chunk chunk, Material material) {
