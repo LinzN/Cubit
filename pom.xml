@@ -73,7 +73,6 @@
                     <groupId>org.bukkit</groupId>
                 </exclusion>
             </exclusions>
-
         </dependency>
 
         <!--Spigot Server -->
