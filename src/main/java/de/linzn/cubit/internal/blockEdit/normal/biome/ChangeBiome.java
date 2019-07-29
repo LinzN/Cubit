@@ -50,7 +50,7 @@ public class ChangeBiome {
                 e.printStackTrace();
             }
         }
-        chunk.getWorld().refreshChunk(chunk.getX(), chunk.getZ());
+        Bukkit.getScheduler().runTask(this.plugin, () -> chunk.getWorld().refreshChunk(chunk.getX(), chunk.getZ()));
     }
 
 

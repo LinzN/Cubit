@@ -12,8 +12,8 @@
 package de.linzn.cubit.internal.cubitRegion.flags;
 
 
-import com.sk89q.worldedit.bukkit.BukkitAdapter;
 import com.sk89q.worldedit.world.entity.EntityType;
+import com.sk89q.worldedit.world.entity.EntityTypes;
 import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
@@ -25,6 +25,7 @@ import org.bukkit.entity.Animals;
 import org.bukkit.entity.WaterMob;
 
 import java.util.HashSet;
+import java.util.Locale;
 
 public class AnimalFlag implements IFlags {
 
@@ -34,9 +35,9 @@ public class AnimalFlag implements IFlags {
         for (org.bukkit.entity.EntityType entityType : org.bukkit.entity.EntityType.values()) {
             if (entityType.isAlive()) {
                 if (Animals.class.isAssignableFrom(entityType.getEntityClass()) || WaterMob.class.isAssignableFrom(entityType.getEntityClass())) {
-                    EntityType entityType1 = BukkitAdapter.adapt(entityType);
+                    EntityType entityType1 = EntityTypes.get(entityType.getName().toLowerCase(Locale.ROOT));
                     if (entityType1 != null) {
-                        animalList.add(BukkitAdapter.adapt(entityType));
+                        animalList.add(EntityTypes.get(entityType.getName().toLowerCase(Locale.ROOT)));
                     } else {
                         CubitBukkitPlugin.inst().getLogger().warning("EntityType not found: " + entityType.name());
                     }
