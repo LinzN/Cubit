@@ -11,7 +11,7 @@
 
 package de.linzn.cubit.internal.cubitRegion.flags.worldguard;
 
-import com.sk89q.worldguard.WorldGuard;
+
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.flags.Flag;
 import com.sk89q.worldguard.protection.flags.StateFlag;
@@ -26,7 +26,7 @@ public class CustomFlags {
     public static void registerFlag(Flag flag) {
         try {
             if (!WorldGuardPlugin.inst().isEnabled()) {
-                WorldGuard.getInstance().getFlagRegistry().register(flag);
+                WorldGuardPlugin.inst().getFlagRegistry().register(flag);
             } else {
                 Bukkit.getLogger().warning("Cubit: Flag registry already locket!");
             }

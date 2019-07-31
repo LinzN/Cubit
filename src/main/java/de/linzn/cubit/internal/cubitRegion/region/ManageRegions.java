@@ -11,10 +11,9 @@
 
 package de.linzn.cubit.internal.cubitRegion.region;
 
-import com.sk89q.worldedit.bukkit.BukkitWorld;
-import com.sk89q.worldedit.math.BlockVector3;
+import com.sk89q.worldedit.Vector;
 import com.sk89q.worldguard.LocalPlayer;
-import com.sk89q.worldguard.WorldGuard;
+import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.domains.DefaultDomain;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
@@ -31,11 +30,11 @@ public class ManageRegions {
     public CubitLand newRegion(final int chunkX, final int chunkZ, final World world, final UUID playerUUID,
                                final String regionName) {
 
-        BlockVector3 min;
-        BlockVector3 max;
-        min = BlockVector3.at(chunkX * 16, 0D, chunkZ * 16);
+        Vector min;
+        Vector max;
+        min = new Vector(chunkX * 16, 0D, chunkZ * 16);
         max = min.add(15, world.getMaxHeight(), 15);
-        ProtectedRegion region = new ProtectedCuboidRegion(regionName, min, max);
+        ProtectedRegion region = new ProtectedCuboidRegion(regionName, min.toBlockVector(), max.toBlockVector());
 
         if (playerUUID != null) {
             OfflinePlayer player = Bukkit.getOfflinePlayer(playerUUID);
@@ -53,7 +52,7 @@ public class ManageRegions {
     }
 
     public CubitLand removeRegion(CubitLand cubitLand, World world) {
-        RegionManager manager = WorldGuard.getInstance().getPlatform().getRegionContainer().get(new BukkitWorld(world));
+        RegionManager manager = WorldGuardPlugin.inst().getRegionContainer().get(world);
         manager.removeRegion(cubitLand.getLandName());
         return cubitLand;
 

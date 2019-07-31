@@ -12,9 +12,7 @@
 package de.linzn.cubit.internal.cubitRegion.flags;
 
 
-import com.sk89q.worldedit.world.entity.EntityType;
-import com.sk89q.worldedit.world.entity.EntityTypes;
-import com.sk89q.worldguard.protection.flags.Flags;
+import com.sk89q.worldguard.protection.flags.DefaultFlag;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import de.linzn.cubit.internal.cubitRegion.IFlags;
@@ -22,10 +20,10 @@ import de.linzn.cubit.internal.cubitRegion.flags.worldguard.CustomFlags;
 import de.linzn.cubit.internal.cubitRegion.region.CubitLand;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Animals;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.WaterMob;
 
 import java.util.HashSet;
-import java.util.Locale;
 
 public class AnimalFlag implements IFlags {
 
@@ -35,14 +33,8 @@ public class AnimalFlag implements IFlags {
         for (org.bukkit.entity.EntityType entityType : org.bukkit.entity.EntityType.values()) {
             if (entityType.isAlive()) {
                 if (Animals.class.isAssignableFrom(entityType.getEntityClass()) || WaterMob.class.isAssignableFrom(entityType.getEntityClass())) {
-                    EntityType entityType1 = EntityTypes.get(entityType.getName().toLowerCase(Locale.ROOT));
-                    if (entityType1 != null) {
-                        animalList.add(EntityTypes.get(entityType.getName().toLowerCase(Locale.ROOT)));
-                    } else {
-                        CubitBukkitPlugin.inst().getLogger().warning("EntityType not found: " + entityType.name());
-                    }
+                    animalList.add(entityType);
                 }
-
             }
         }
     }
@@ -56,7 +48,7 @@ public class AnimalFlag implements IFlags {
         if (cubitLand.getWGRegion().getFlag(CustomFlags.CUBIT_MONSTER_SPAWN) == StateFlag.State.DENY) {
             list.addAll(CubitBukkitPlugin.inst().getRegionManager().monsterFlag.monsterList);
         }
-        cubitLand.getWGRegion().getFlags().put(Flags.DENY_SPAWN, list);
+        cubitLand.getWGRegion().getFlags().put(DefaultFlag.DENY_SPAWN, list);
         return cubitLand;
 
     }
@@ -69,7 +61,7 @@ public class AnimalFlag implements IFlags {
         if (cubitLand.getWGRegion().getFlag(CustomFlags.CUBIT_MONSTER_SPAWN) == StateFlag.State.DENY) {
             list.addAll(CubitBukkitPlugin.inst().getRegionManager().monsterFlag.monsterList);
         }
-        cubitLand.getWGRegion().getFlags().put(Flags.DENY_SPAWN, list);
+        cubitLand.getWGRegion().getFlags().put(DefaultFlag.DENY_SPAWN, list);
         return cubitLand;
     }
 

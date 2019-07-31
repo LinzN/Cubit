@@ -11,8 +11,7 @@
 
 package de.linzn.cubit.internal.cubitRegion;
 
-import com.sk89q.worldedit.bukkit.BukkitWorld;
-import com.sk89q.worldguard.WorldGuard;
+import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
@@ -60,7 +59,7 @@ public class CubitRegionManager {
     }
 
     public boolean isValidRegion(final World world, final int valueX, final int valueZ) {
-        RegionManager manager = WorldGuard.getInstance().getPlatform().getRegionContainer().get(new BukkitWorld(world));
+        RegionManager manager = WorldGuardPlugin.inst().getRegionContainer().get(world);
         String serverName = buildLandName(CubitType.SERVER.toString().toLowerCase(), valueX, valueZ);
         String shopName = buildLandName(CubitType.SHOP.toString().toLowerCase(), valueX, valueZ);
         String worldName = buildLandName(world.getName().toLowerCase(), valueX, valueZ);
@@ -307,7 +306,7 @@ public class CubitRegionManager {
     }
 
     public List<CubitLand> getAllRegions(final World world, final CubitType type) {
-        RegionManager rm = WorldGuard.getInstance().getPlatform().getRegionContainer().get(new BukkitWorld(world));
+        RegionManager rm = WorldGuardPlugin.inst().getRegionContainer().get(world);
         List<CubitLand> list = new ArrayList<>();
         try {
             for (Map.Entry<String, ProtectedRegion> region : Objects.requireNonNull(rm).getRegions().entrySet()) {
@@ -333,7 +332,7 @@ public class CubitRegionManager {
     }
 
     private ProtectedRegion praseWGRegion(final World world, final int valueX, final int valueZ) {
-        RegionManager manager = WorldGuard.getInstance().getPlatform().getRegionContainer().get(new BukkitWorld(world));
+        RegionManager manager = WorldGuardPlugin.inst().getRegionContainer().get(world);
         String serverName = buildLandName(CubitType.SERVER.toString(), valueX, valueZ);
         String shopName = buildLandName(CubitType.SHOP.toString(), valueX, valueZ);
         String worldName = buildLandName(world.getName(), valueX, valueZ);

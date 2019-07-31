@@ -12,7 +12,7 @@
 package de.linzn.cubit.internal.cubitRegion.flags;
 
 
-import com.sk89q.worldguard.protection.flags.Flags;
+import com.sk89q.worldguard.protection.flags.DefaultFlag;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import de.linzn.cubit.internal.cubitRegion.IFlags;
@@ -23,21 +23,21 @@ public class PotionFlag implements IFlags {
 
     @Override
     public CubitLand enable(CubitLand cubitLand) {
-        cubitLand.getWGRegion().setFlag(Flags.POTION_SPLASH, StateFlag.State.ALLOW);
+        cubitLand.getWGRegion().setFlag(DefaultFlag.POTION_SPLASH, StateFlag.State.ALLOW);
         return cubitLand;
 
     }
 
     @Override
     public CubitLand disable(CubitLand cubitLand) {
-        cubitLand.getWGRegion().setFlag(Flags.POTION_SPLASH, StateFlag.State.DENY);
+        cubitLand.getWGRegion().setFlag(DefaultFlag.POTION_SPLASH, StateFlag.State.DENY);
         return cubitLand;
 
     }
 
     @Override
     public boolean getStatus(CubitLand cubitLand) {
-        return cubitLand.getWGRegion().getFlag(Flags.POTION_SPLASH) == StateFlag.State.ALLOW;
+        return cubitLand.getWGRegion().getFlag(DefaultFlag.POTION_SPLASH) == StateFlag.State.ALLOW;
     }
 
     @Override
