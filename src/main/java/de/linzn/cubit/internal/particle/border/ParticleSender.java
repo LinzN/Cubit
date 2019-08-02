@@ -12,8 +12,8 @@
 package de.linzn.cubit.internal.particle.border;
 
 import org.bukkit.Chunk;
+import org.bukkit.Effect;
 import org.bukkit.Location;
-import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -22,17 +22,17 @@ public class ParticleSender {
 
     private Player player;
     private ArrayList<Location> edgeBlocks;
-    private Particle primaryEffect;
-    private Particle secondaryEffect;
+    private Effect primaryEffect;
+    private Effect secondaryEffect;
 
-    public ParticleSender(Player player, Location location, Particle primaryEffect, Particle secondaryEffect) {
-
+    public ParticleSender(Player player, Location location, Effect primaryEffect, Effect secondaryEffect) {
         this.player = player;
         this.edgeBlocks = getChunkEdgeLocation(location);
         this.primaryEffect = primaryEffect;
         this.secondaryEffect = secondaryEffect;
-        startParticleLoop();
-
+        if (isSpigot()) {
+            startParticleLoop();
+        }
     }
 
     private ArrayList<Location> getChunkEdgeLocation(Location loc) {
@@ -49,15 +49,15 @@ public class ParticleSender {
         return edgeBlocks;
     }
 
-    private void sendBukkitParticle() {
+    private void sendSpigotParticle() {
         for (Location edgeBlock : this.edgeBlocks) {
             edgeBlock.setZ(edgeBlock.getBlockZ() + .5);
             edgeBlock.setX(edgeBlock.getBlockX() + .5);
             if (this.primaryEffect != null) {
-                this.player.spawnParticle(this.primaryEffect, edgeBlock, 1, 0D, 0D, 0D, 0.001D);
+                this.player.spigot().playEffect(edgeBlock, this.primaryEffect, 0, 0, 0f, 0f, 0f, 0.001f, 1, 32);
             }
             if (this.secondaryEffect != null) {
-                this.player.spawnParticle(this.secondaryEffect, edgeBlock, 1, 0D, 0D, 0D, 0.001D);
+                this.player.spigot().playEffect(edgeBlock, this.primaryEffect, 0, 0, 0f, 0f, 0f, 0.001f, 1, 32);
             }
         }
     }
@@ -66,7 +66,7 @@ public class ParticleSender {
     private void startParticleLoop() {
         int loopValue = 0;
         while (loopValue <= 5) {
-            sendBukkitParticle();
+            sendSpigotParticle();
             loopValue++;
             try {
                 Thread.sleep(800);
@@ -76,4 +76,14 @@ public class ParticleSender {
         }
 
     }
+
+    public boolean isSpigot() {
+        try {
+            Class.forName("net.md_5.bungee.api.ChatColor");
+            return true;
+        } catch (final ClassNotFoundException e) {
+            return false;
+        }
+    }
+
 }

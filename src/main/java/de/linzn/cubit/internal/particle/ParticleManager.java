@@ -13,8 +13,8 @@ package de.linzn.cubit.internal.particle;
 
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import de.linzn.cubit.internal.particle.border.ParticleSender;
+import org.bukkit.Effect;
 import org.bukkit.Location;
-import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 
 
@@ -30,50 +30,49 @@ public class ParticleManager {
 
     public boolean sendBuy(final Player player, final Location loc) {
         if (CubitBukkitPlugin.inst().getYamlManager().getSettings().particleUse) {
-            plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Particle.VILLAGER_HAPPY, Particle.FIREWORKS_SPARK));
+            plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Effect.HAPPY_VILLAGER, Effect.FIREWORKS_SPARK));
         }
         return true;
     }
 
     public boolean sendSell(final Player player, final Location loc) {
         if (CubitBukkitPlugin.inst().getYamlManager().getSettings().particleUse) {
-            plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Particle.SPELL_WITCH, Particle.FIREWORKS_SPARK));
+            plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Effect.WITCH_MAGIC, Effect.FIREWORKS_SPARK));
         }
         return true;
     }
 
     public boolean sendInfo(final Player player, final Location loc) {
         if (CubitBukkitPlugin.inst().getYamlManager().getSettings().particleUse) {
-            plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, null, Particle.FIREWORKS_SPARK));
+            plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, null, Effect.FIREWORKS_SPARK));
         }
         return true;
     }
 
     public boolean changeFlag(final Player player, final Location loc) {
         if (CubitBukkitPlugin.inst().getYamlManager().getSettings().particleUse) {
-            plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Particle.FLAME, Particle.FIREWORKS_SPARK));
+            plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Effect.FLAME, Effect.FIREWORKS_SPARK));
         }
         return true;
     }
 
     public boolean addMember(final Player player, final Location loc) {
         if (CubitBukkitPlugin.inst().getYamlManager().getSettings().particleUse) {
-            plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Particle.HEART, Particle.FIREWORKS_SPARK));
+            plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Effect.HEART, Effect.FIREWORKS_SPARK));
         }
         return true;
     }
 
     public boolean removeMember(final Player player, final Location loc) {
         if (CubitBukkitPlugin.inst().getYamlManager().getSettings().particleUse) {
-            plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Particle.VILLAGER_ANGRY, Particle.FIREWORKS_SPARK));
+            plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Effect.VILLAGER_THUNDERCLOUD, Effect.FIREWORKS_SPARK));
         }
         return true;
     }
 
     public boolean changeBiome(final Player player, final Location loc) {
         if (CubitBukkitPlugin.inst().getYamlManager().getSettings().particleUse) {
-            plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Particle.PORTAL, Particle.FIREWORKS_SPARK));
-
+            plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Effect.PORTAL, Effect.FIREWORKS_SPARK));
         }
         return true;
     }
