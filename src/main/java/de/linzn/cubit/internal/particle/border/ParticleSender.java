@@ -57,7 +57,7 @@ public class ParticleSender {
                 this.player.spigot().playEffect(edgeBlock, this.primaryEffect, 0, 0, 0f, 0f, 0f, 0.001f, 1, 32);
             }
             if (this.secondaryEffect != null) {
-                this.player.spigot().playEffect(edgeBlock, this.primaryEffect, 0, 0, 0f, 0f, 0f, 0.001f, 1, 32);
+                this.player.spigot().playEffect(edgeBlock, this.secondaryEffect, 0, 0, 0f, 0f, 0f, 0.001f, 1, 32);
             }
         }
     }
