@@ -1,35 +1,29 @@
 pipeline {
 	agent any
 	stages {
-		stage ('Clean Workspace') {
-			steps {
-				deleteDir()
-			}
-		}
 	    stage ('Clone') {
 	    	steps {
 	    		checkout scm
 	    	}
-
+	    }
+	    stage('Prepare') {
+	    	steps {
+	        	sh 'mvn clean'
+	    	}
 	    }
 	    stage('Build') {
 	    	steps {
-	        	echo 'Building..'
-	        	sh 'mvn clean install'
-	        	archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+	        	sh 'mvn install'
 	    	}
-
 	    }
 	    stage('Test') {
 	    	steps {
-	    		echo 'Testing..'
-	        	sh 'mvn clean test'
+	        	sh 'mvn test'
 	    	}
-
 	    }
 	    stage('Deploy') {
 	    	steps {
-	    		echo 'Deploying....'
+	        	archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
 	    	}
 	    }
     }
