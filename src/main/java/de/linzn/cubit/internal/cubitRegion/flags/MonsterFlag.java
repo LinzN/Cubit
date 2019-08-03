@@ -17,6 +17,7 @@ import com.sk89q.worldedit.world.entity.EntityType;
 import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
+import de.linzn.cubit.internal.cubitRegion.CubitType;
 import de.linzn.cubit.internal.cubitRegion.IFlags;
 import de.linzn.cubit.internal.cubitRegion.flags.worldguard.CustomFlags;
 import de.linzn.cubit.internal.cubitRegion.region.CubitLand;
@@ -45,7 +46,6 @@ public class MonsterFlag implements IFlags {
     }
 
     @Override
-
     public CubitLand enable(CubitLand cubitLand) {
         cubitLand.getWGRegion().setFlag(CustomFlags.CUBIT_MONSTER_SPAWN, StateFlag.State.ALLOW);
         cubitLand.getWGRegion().setFlag(Flags.MOB_DAMAGE, StateFlag.State.ALLOW);
@@ -61,8 +61,19 @@ public class MonsterFlag implements IFlags {
 
     @Override
     public CubitLand disable(CubitLand cubitLand) {
+        boolean disableMonsterDamage;
+        if (cubitLand.getCubitType() == CubitType.WORLD) {
+            disableMonsterDamage = CubitBukkitPlugin.inst().getYamlManager().getFlag().worldRegionPacketMonsterDisableDamage;
+        } else if (cubitLand.getCubitType() == CubitType.SHOP) {
+            disableMonsterDamage = CubitBukkitPlugin.inst().getYamlManager().getFlag().shopRegionPacketMonsterDisableDamage;
+        } else if (cubitLand.getCubitType() == CubitType.SERVER) {
+            disableMonsterDamage = CubitBukkitPlugin.inst().getYamlManager().getFlag().serverRegionPacketMonsterDisableDamage;
+        } else {
+            disableMonsterDamage = true;
+        }
+
         cubitLand.getWGRegion().setFlag(CustomFlags.CUBIT_MONSTER_SPAWN, StateFlag.State.DENY);
-        cubitLand.getWGRegion().setFlag(Flags.MOB_DAMAGE, StateFlag.State.DENY);
+        cubitLand.getWGRegion().setFlag(Flags.MOB_DAMAGE, disableMonsterDamage ? StateFlag.State.DENY : StateFlag.State.ALLOW);
 
         HashSet<EntityType> list = new HashSet<>(this.monsterList);
         if (cubitLand.getWGRegion().getFlag(CustomFlags.CUBIT_ANIMAL_SPAWN) == StateFlag.State.DENY) {
