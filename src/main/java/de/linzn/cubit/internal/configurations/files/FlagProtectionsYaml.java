@@ -18,6 +18,7 @@ public class FlagProtectionsYaml {
     public boolean worldRegionPacketFire;
     public boolean worldRegionPacketLock;
     public boolean worldRegionPacketMonster;
+    public boolean worldRegionPacketMonsterDisableDamage;
     public boolean worldRegionPacketAnimals;
     public boolean worldRegionPacketPotion;
     public boolean worldRegionPacketPVP;
@@ -25,6 +26,7 @@ public class FlagProtectionsYaml {
     public boolean shopRegionPacketFire;
     public boolean shopRegionPacketLock;
     public boolean shopRegionPacketMonster;
+    public boolean shopRegionPacketMonsterDisableDamage;
     public boolean shopRegionPacketAnimals;
     public boolean shopRegionPacketPotion;
     public boolean shopRegionPacketPVP;
@@ -32,6 +34,7 @@ public class FlagProtectionsYaml {
     public boolean serverRegionPacketFire;
     public boolean serverRegionPacketLock;
     public boolean serverRegionPacketMonster;
+    public boolean serverRegionPacketMonsterDisableDamage;
     public boolean serverRegionPacketAnimals;
     public boolean serverRegionPacketPotion;
     public boolean serverRegionPacketPVP;
@@ -68,6 +71,10 @@ public class FlagProtectionsYaml {
         serverRegionPacketPotion = (boolean) this.getObjectValue("flags.serverregion.default.potion", false);
         serverRegionPacketPVP = (boolean) this.getObjectValue("flags.serverregion.default.pvp", false);
         serverRegionPacketTNT = (boolean) this.getObjectValue("flags.serverregion.default.tnt", false);
+
+        worldRegionPacketMonsterDisableDamage = (boolean) this.getObjectValue("flags.monster.worldregion.disableMonsterDamage", true);
+        shopRegionPacketMonsterDisableDamage = (boolean) this.getObjectValue("flags.monster.shopregion.disableMonsterDamage", true);
+        serverRegionPacketMonsterDisableDamage = (boolean) this.getObjectValue("flags.monster.serverregion.disableMonsterDamage", true);
     }
 
     public Object getObjectValue(String path, Object defaultValue) {
