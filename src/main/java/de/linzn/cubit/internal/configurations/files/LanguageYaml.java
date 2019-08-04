@@ -18,6 +18,8 @@ public class LanguageYaml {
 
     /* Info MSG */
     public String startBiomeChange;
+    public String enterRegionGreetings;
+    public String enterOwnRegionGreetings;
     /* Error MSG */
     public String noConsoleMode;
     public String disabledCommand;
@@ -88,7 +90,6 @@ public class LanguageYaml {
     public String landInfoA2;
     public String landInfoA3;
     public String landInfoE1;
-    public String landInfoE1A1;
     public String landInfoE2;
     public String landInfoE3;
     public String landInfoE4;
@@ -215,6 +216,8 @@ public class LanguageYaml {
 
         /* Info MSG */
         startBiomeChange = this.getLanguageString("startBiomeChange", "&2Starting biome change for region {regionID}!");
+        enterRegionGreetings = this.getLanguageString("enterRegionGreetings", "&e{player}`s &2region &e{regionID}&2 {pvp}");
+        enterOwnRegionGreetings = this.getLanguageString("enterOwnRegionGreetings", "&eYour &2region &e{regionID}&2 {pvp}");
         /* Error MSG */
         noConsoleMode = this.getLanguageString("noConsoleMode", "&4Sorry this is not available in console mode!");
         disabledCommand = this.getLanguageString("disabledCommand", "&4Sorry this command is disabled!");
