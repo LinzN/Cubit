@@ -16,6 +16,7 @@ import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import de.linzn.cubit.bukkit.command.SetupCommands;
 import de.linzn.cubit.bukkit.plugin.listener.AdditionalPhysicsListener;
 import de.linzn.cubit.bukkit.plugin.listener.LoginListener;
+import de.linzn.cubit.bukkit.plugin.listener.MovementListener;
 import de.linzn.cubit.internal.blockEdit.BlockEditManager;
 import de.linzn.cubit.internal.cacheSystem.CacheManager;
 import de.linzn.cubit.internal.configurations.YamlConfigurationManager;
@@ -81,6 +82,11 @@ public class CubitBukkitPlugin extends JavaPlugin {
         if (this.getYamlManager().getSettings().physicWaterLavaFlowLand) {
             this.getServer().getPluginManager().registerEvents(new AdditionalPhysicsListener(), this);
         }
+
+        if (this.getYamlManager().getSettings().greetingsRegionEnter) {
+            this.getServer().getPluginManager().registerEvents(new MovementListener(), this);
+        }
+
         runOutgoingStreams();
 
         getLogger().info("Cubit startup finish");

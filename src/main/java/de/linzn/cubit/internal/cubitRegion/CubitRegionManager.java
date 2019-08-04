@@ -323,11 +323,16 @@ public class CubitRegionManager {
         return list;
     }
 
+
     public CubitLand praseRegionData(final World world, final int valueX, final int valueZ) {
+        return praseRegionData(world, valueX, valueZ, true);
+    }
+
+    public CubitLand praseRegionData(final World world, final int valueX, final int valueZ, boolean setupNames) {
         ProtectedRegion region = praseWGRegion(world, valueX, valueZ);
         CubitLand cubitLand = new CubitLand(world);
         if (region != null) {
-            cubitLand.setWGRegion(region, true);
+            cubitLand.setWGRegion(region, setupNames);
         }
         return cubitLand;
     }
