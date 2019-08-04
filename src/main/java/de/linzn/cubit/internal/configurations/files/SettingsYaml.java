@@ -49,6 +49,7 @@ public class SettingsYaml {
     public boolean particleUse;
     public boolean entityLimiterUse;
     public boolean physicWaterLavaFlowLand;
+    public boolean greetingsRegionEnter;
     /* Database module */
     public boolean sqlUse;
     public String sqlDataBase;
@@ -122,6 +123,7 @@ public class SettingsYaml {
         this.entityLimiterUse = (boolean) getObjectValue("module.entityLimiter.use", false);
 
         this.physicWaterLavaFlowLand = (boolean) getObjectValue("module.physicWaterLavaFlowLand.use", false);
+        this.greetingsRegionEnter = (boolean) getObjectValue("module.greetingsRegionEnter.use", false);
 
         this.updateCheck = (boolean) getObjectValue("module.updateCheck", true);
         this.useMineSuite = (boolean) getObjectValue("module.mineSuite.use", false);
