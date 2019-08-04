@@ -9,10 +9,10 @@ import java.lang.reflect.Constructor;
 class ActionBarAPI {
     static void sendActionbar(Player player, String msg) {
         try {
-            Constructor<?> constructor = getNMSClass("PacketPlayOutChat").getConstructor(getNMSClass("IChatBaseComponent"), byte.class);
+            Constructor<?> constructor = getNMSClass("PacketPlayOutChat").getConstructor(getNMSClass("IChatBaseComponent"), getNMSClass("ChatMessageType"));
 
             Object icbc = getNMSClass("IChatBaseComponent").getDeclaredClasses()[0].getMethod("a", String.class).invoke(null, "{\"text\":\"" + msg + "\"}");
-            Object packet = constructor.newInstance(icbc, (byte) 2);
+            Object packet = constructor.newInstance(icbc, getNMSClass("ChatMessageType").getEnumConstants()[2]);
             Object entityPlayer = player.getClass().getMethod("getHandle").invoke(player);
             Object playerConnection = entityPlayer.getClass().getField("playerConnection").get(entityPlayer);
 
