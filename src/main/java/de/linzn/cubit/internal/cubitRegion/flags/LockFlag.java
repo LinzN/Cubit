@@ -25,30 +25,18 @@ public class LockFlag implements IFlags {
 
     @Override
     public CubitLand enable(CubitLand cubitLand) {
-        RegionGroupFlag groupFlagUse = Flags.USE.getRegionGroupFlag();
-        RegionGroupFlag groupFlagInteract = Flags.INTERACT.getRegionGroupFlag();
-        RegionGroupFlag groupFlagChestAccess = Flags.CHEST_ACCESS.getRegionGroupFlag();
-        cubitLand.getWGRegion().setFlag(groupFlagUse, RegionGroup.NON_MEMBERS);
-        cubitLand.getWGRegion().setFlag(groupFlagInteract, RegionGroup.NON_MEMBERS);
-        cubitLand.getWGRegion().setFlag(groupFlagChestAccess, RegionGroup.NON_MEMBERS);
+        RegionGroupFlag groupFlag = Flags.USE.getRegionGroupFlag();
+        cubitLand.getWGRegion().setFlag(groupFlag, RegionGroup.NON_MEMBERS);
         cubitLand.getWGRegion().setFlag(Flags.USE, StateFlag.State.DENY);
-        cubitLand.getWGRegion().setFlag(Flags.INTERACT, StateFlag.State.DENY);
-        cubitLand.getWGRegion().setFlag(Flags.CHEST_ACCESS, StateFlag.State.DENY);
         return cubitLand;
 
     }
 
     @Override
     public CubitLand disable(CubitLand cubitLand) {
-        RegionGroupFlag groupFlagUse = Flags.USE.getRegionGroupFlag();
-        RegionGroupFlag groupFlagInteract = Flags.INTERACT.getRegionGroupFlag();
-        RegionGroupFlag groupFlagChestAccess = Flags.CHEST_ACCESS.getRegionGroupFlag();
-        cubitLand.getWGRegion().setFlag(groupFlagUse, RegionGroup.ALL);
-        cubitLand.getWGRegion().setFlag(groupFlagInteract, RegionGroup.ALL);
-        cubitLand.getWGRegion().setFlag(groupFlagChestAccess, RegionGroup.ALL);
+        RegionGroupFlag groupFlag = Flags.USE.getRegionGroupFlag();
+        cubitLand.getWGRegion().setFlag(groupFlag, RegionGroup.ALL);
         cubitLand.getWGRegion().setFlag(Flags.USE, StateFlag.State.ALLOW);
-        cubitLand.getWGRegion().setFlag(Flags.INTERACT, StateFlag.State.ALLOW);
-        cubitLand.getWGRegion().setFlag(Flags.CHEST_ACCESS, StateFlag.State.ALLOW);
         return cubitLand;
 
     }
