@@ -194,8 +194,7 @@ public class EntityManager {
             int index = entry.getValue().size() - 1;
             while (toRemove > 0 && index >= 0) {
                 Entity toCheck = entry.getValue().get(index);
-                if (!skipNamed || toCheck.getCustomName() == null
-                        || toCheck instanceof LivingEntity && ((LivingEntity) toCheck).getRemoveWhenFarAway()) {
+                if (!skipNamed || toCheck instanceof LivingEntity && ((LivingEntity) toCheck).getRemoveWhenFarAway()) {
                     toCheck.remove();
                     --toRemove;
                 }
