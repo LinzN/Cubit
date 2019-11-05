@@ -11,29 +11,19 @@
 
 package de.linzn.cubit.internal.cacheSystem;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class NameCache {
-    private final String NAME_URL = "https://api.mojang.com/user/profiles/%s/names";
-    private Gson gson = new GsonBuilder().registerTypeAdapter(UUID.class, new UUIDTypeAdapter()).create();
+    //    private final String NAME_URL = "https://api.mojang.com/user/profiles/%s/names";
+//    private Gson gson = new GsonBuilder().registerTypeAdapter(UUID.class, new UUIDTypeAdapter()).create();
     private Map<UUID, String> playerCache = new HashMap<>();
-    private String name;
+//    private String name;
 
     public static String fromUUID(UUID value) {
         return value.toString().replace("-", "");
@@ -43,22 +33,23 @@ public class NameCache {
         return UUID.fromString(input.replaceFirst("(\\w{8})(\\w{4})(\\w{4})(\\w{4})(\\w{12})", "$1-$2-$3-$4-$5"));
     }
 
-    private String fetchMojangName(UUID uuid) {
-        try {
-            HttpURLConnection connection = (HttpURLConnection) new URL(
-                    String.format(NAME_URL, UUIDTypeAdapter.fromUUID(uuid))).openConnection();
-            connection.setReadTimeout(5000);
-            NameCache[] nameHistory = gson.fromJson(
-                    new BufferedReader(new InputStreamReader(connection.getInputStream())), NameCache[].class);
-            NameCache currentNameData = nameHistory[nameHistory.length - 1];
-            playerCache.put(uuid, currentNameData.name);
-            return currentNameData.name;
-        } catch (Exception e) {
-            return null;
+    /*
+        private String fetchMojangName(UUID uuid) {
+            try {
+                HttpURLConnection connection = (HttpURLConnection) new URL(
+                        String.format(NAME_URL, UUIDTypeAdapter.fromUUID(uuid))).openConnection();
+                connection.setReadTimeout(5000);
+                NameCache[] nameHistory = gson.fromJson(
+                        new BufferedReader(new InputStreamReader(connection.getInputStream())), NameCache[].class);
+                NameCache currentNameData = nameHistory[nameHistory.length - 1];
+                playerCache.put(uuid, currentNameData.name);
+                return currentNameData.name;
+            } catch (Exception e) {
+                return null;
+            }
+
         }
-
-    }
-
+    */
     private String fetchBukkitName(UUID uuid) {
         try {
             OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);
@@ -97,16 +88,16 @@ public class NameCache {
             playerName = fetchBukkitName(uuid);
         }
 
-        if (playerName == null) {
+/*        if (playerName == null) {
             playerName = fetchMojangName(uuid);
         }
-
+*/
         if (playerName == null) {
             playerName = "Unknown";
         }
         return playerName;
     }
-
+/*
     private static class UUIDTypeAdapter extends TypeAdapter<UUID> {
         public UUIDTypeAdapter() {
         }
@@ -127,4 +118,5 @@ public class NameCache {
             return fromString(in.nextString());
         }
     }
+    */
 }
