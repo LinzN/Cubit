@@ -18,6 +18,7 @@ import de.linzn.cubit.internal.cubitRegion.CubitType;
 import de.linzn.cubit.internal.cubitRegion.region.CubitLand;
 import de.linzn.cubit.internal.dataBase.OfferData;
 import org.apache.commons.lang.math.NumberUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -151,7 +152,7 @@ public class SellShop implements ICommand {
         /* Cubit land update event*/
         cubitLand.setWGRegion(cubitLand.getWGRegion(), true);
         CubitLandUpdateEvent cubitLandUpdateEvent = new CubitLandUpdateEvent(loc.getWorld(), cubitLand.getLandName(), cubitLand);
-        this.plugin.getServer().getPluginManager().callEvent(cubitLandUpdateEvent);
+        Bukkit.getScheduler().runTask(plugin, () -> plugin.getServer().getPluginManager().callEvent(cubitLandUpdateEvent));
 
         sender.sendMessage(plugin.getYamlManager().getLanguage().sellSuccess.replace("{regionID}", regionName));
 

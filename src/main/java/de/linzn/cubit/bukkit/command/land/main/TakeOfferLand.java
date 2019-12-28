@@ -17,6 +17,7 @@ import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import de.linzn.cubit.internal.cubitRegion.CubitType;
 import de.linzn.cubit.internal.cubitRegion.region.CubitLand;
 import de.linzn.cubit.internal.dataBase.OfferData;
+import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -141,7 +142,7 @@ public class TakeOfferLand implements ICommand {
         /* Cubit land update event*/
         cubitLand.setWGRegion(cubitLand.getWGRegion(), true);
         CubitLandUpdateEvent cubitLandUpdateEvent = new CubitLandUpdateEvent(loc.getWorld(), cubitLand.getLandName(), cubitLand);
-        this.plugin.getServer().getPluginManager().callEvent(cubitLandUpdateEvent);
+        Bukkit.getScheduler().runTask(plugin, () -> plugin.getServer().getPluginManager().callEvent(cubitLandUpdateEvent));
 
         if (!plugin.getParticleManager().sendBuy(player, loc)) {
             /* If this task failed! This should never happen */

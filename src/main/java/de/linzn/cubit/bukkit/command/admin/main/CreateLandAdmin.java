@@ -84,7 +84,7 @@ public class CreateLandAdmin implements ICommand {
         /* Call cubit buy land event */
         CubitLand cubitLand = plugin.getRegionManager().praseRegionData(loc.getWorld(), chunk.getX(), chunk.getZ());
         CubitLandBuyEvent cubitLandBuyEvent = new CubitLandBuyEvent(loc.getWorld(), cubitLand);
-        this.plugin.getServer().getPluginManager().callEvent(cubitLandBuyEvent);
+        Bukkit.getScheduler().runTask(plugin, () -> plugin.getServer().getPluginManager().callEvent(cubitLandBuyEvent));
 
         if (!plugin.getBlockManager().getBlockHandler().placeLandBorder(chunk,
                 CubitBukkitPlugin.inst().getYamlManager().getSettings().landBuyMaterialBorder)) {

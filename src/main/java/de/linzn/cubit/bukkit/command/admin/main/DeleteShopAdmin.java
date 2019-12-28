@@ -16,6 +16,7 @@ import de.linzn.cubit.bukkit.command.ICommand;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import de.linzn.cubit.internal.cubitRegion.CubitType;
 import de.linzn.cubit.internal.cubitRegion.region.CubitLand;
+import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -88,7 +89,7 @@ public class DeleteShopAdmin implements ICommand {
 
         /* Call cubit sell land event */
         CubitLandSellEvent cubitLandSellEvent = new CubitLandSellEvent(loc.getWorld(), regionName);
-        this.plugin.getServer().getPluginManager().callEvent(cubitLandSellEvent);
+        Bukkit.getScheduler().runTask(plugin, () -> plugin.getServer().getPluginManager().callEvent(cubitLandSellEvent));
 
         sender.sendMessage(plugin.getYamlManager().getLanguage().deleteShopLand.replace("{regionID}", regionName));
 
