@@ -124,7 +124,7 @@ public class CubitBukkitPlugin extends JavaPlugin {
 
     private void runOutgoingStreams() {
         getLogger().info("Run updater and metrics");
-        this.metrics = new Metrics(this);
+        this.metrics = new Metrics(this, 519);
         if (this.yamlConfiguration.getSettings().updateCheck) {
             this.spigetUpdateCheck = new SpigetUpdateCheck(this);
         }

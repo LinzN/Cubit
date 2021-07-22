@@ -12,7 +12,10 @@
 package de.linzn.cubit.internal.scoreboardMap;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.Statistic;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
 import java.util.Map;
@@ -68,6 +71,96 @@ public class FakeOfflinePlayer implements OfflinePlayer {
 
     public Location getBedSpawnLocation() {
         return null;
+    }
+
+    @Override
+    public void incrementStatistic(Statistic statistic) throws IllegalArgumentException {
+
+    }
+
+    @Override
+    public void decrementStatistic(Statistic statistic) throws IllegalArgumentException {
+
+    }
+
+    @Override
+    public void incrementStatistic(Statistic statistic, int i) throws IllegalArgumentException {
+
+    }
+
+    @Override
+    public void decrementStatistic(Statistic statistic, int i) throws IllegalArgumentException {
+
+    }
+
+    @Override
+    public void setStatistic(Statistic statistic, int i) throws IllegalArgumentException {
+
+    }
+
+    @Override
+    public int getStatistic(Statistic statistic) throws IllegalArgumentException {
+        return 0;
+    }
+
+    @Override
+    public void incrementStatistic(Statistic statistic, Material material) throws IllegalArgumentException {
+
+    }
+
+    @Override
+    public void decrementStatistic(Statistic statistic, Material material) throws IllegalArgumentException {
+
+    }
+
+    @Override
+    public int getStatistic(Statistic statistic, Material material) throws IllegalArgumentException {
+        return 0;
+    }
+
+    @Override
+    public void incrementStatistic(Statistic statistic, Material material, int i) throws IllegalArgumentException {
+
+    }
+
+    @Override
+    public void decrementStatistic(Statistic statistic, Material material, int i) throws IllegalArgumentException {
+
+    }
+
+    @Override
+    public void setStatistic(Statistic statistic, Material material, int i) throws IllegalArgumentException {
+
+    }
+
+    @Override
+    public void incrementStatistic(Statistic statistic, EntityType entityType) throws IllegalArgumentException {
+
+    }
+
+    @Override
+    public void decrementStatistic(Statistic statistic, EntityType entityType) throws IllegalArgumentException {
+
+    }
+
+    @Override
+    public int getStatistic(Statistic statistic, EntityType entityType) throws IllegalArgumentException {
+        return 0;
+    }
+
+    @Override
+    public void incrementStatistic(Statistic statistic, EntityType entityType, int i) throws IllegalArgumentException {
+
+    }
+
+    @Override
+    public void decrementStatistic(Statistic statistic, EntityType entityType, int i) {
+
+    }
+
+    @Override
+    public void setStatistic(Statistic statistic, EntityType entityType, int i) {
+
     }
 
     public boolean isOnline() {

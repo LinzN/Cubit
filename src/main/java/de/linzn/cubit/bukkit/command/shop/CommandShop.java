@@ -11,7 +11,6 @@
 
 package de.linzn.cubit.bukkit.command.shop;
 
-import com.google.common.collect.Maps;
 import de.linzn.cubit.bukkit.command.ICommand;
 import de.linzn.cubit.bukkit.command.shop.main.BuyShop;
 import de.linzn.cubit.bukkit.command.shop.main.HelpShop;
@@ -36,7 +35,7 @@ public class CommandShop implements CommandExecutor {
     public ThreadPoolExecutor cmdThread;
     private CubitBukkitPlugin plugin;
     private boolean isLoaded = false;
-    private TreeMap<String, ICommand> cmdMap = Maps.newTreeMap();
+    private TreeMap<String, ICommand> cmdMap = new TreeMap<>();
 
     public CommandShop(CubitBukkitPlugin plugin) {
         this.plugin = plugin;

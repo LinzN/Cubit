@@ -11,7 +11,6 @@
 
 package de.linzn.cubit.bukkit.command.cubit;
 
-import com.google.common.collect.Maps;
 import de.linzn.cubit.bukkit.command.ICommand;
 import de.linzn.cubit.bukkit.command.cubit.main.HelpCubit;
 import de.linzn.cubit.bukkit.command.cubit.main.RebuildFlag;
@@ -33,7 +32,7 @@ public class CommandCubit implements CommandExecutor {
     public ThreadPoolExecutor cmdThread;
     private CubitBukkitPlugin plugin;
     private boolean isLoaded = false;
-    private TreeMap<String, ICommand> cmdMap = Maps.newTreeMap();
+    private TreeMap<String, ICommand> cmdMap = new TreeMap<>();
 
     public CommandCubit(CubitBukkitPlugin plugin) {
         this.plugin = plugin;

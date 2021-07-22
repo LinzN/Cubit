@@ -11,7 +11,6 @@
 
 package de.linzn.cubit.bukkit.command.admin;
 
-import com.google.common.collect.Maps;
 import de.linzn.cubit.bukkit.command.ICommand;
 import de.linzn.cubit.bukkit.command.admin.main.*;
 import de.linzn.cubit.bukkit.command.land.main.OfferLand;
@@ -35,7 +34,7 @@ public class CommandAdmin implements CommandExecutor {
     public ThreadPoolExecutor cmdThread;
     private CubitBukkitPlugin plugin;
     private boolean isLoaded = false;
-    private TreeMap<String, ICommand> cmdMap = Maps.newTreeMap();
+    private TreeMap<String, ICommand> cmdMap = new TreeMap<>();
 
     public CommandAdmin(CubitBukkitPlugin plugin) {
         this.plugin = plugin;
