@@ -1,11 +1,11 @@
 /*
- *  Copyright (C) 2019. MineGaming - All Rights Reserved
- *  You may use, distribute and modify this code under the
- *  terms of the LGPLv3 license, which unfortunately won't be
- *  written for another century.
+ * Copyright (C) 2021. Kekshaus - All Rights Reserved
+ * You may use, distribute and modify this code under the
+ * terms of the LGPLv3 license, which unfortunately won't be
+ * written for another century.
  *
- *  You should have received a copy of the LGPLv3 license with
- *  this file. If not, please write to: niklas.linz@enigmar.de
+ * You should have received a copy of the LGPLv3 license with
+ * this file. If not, please write to: niklas.linz@enigmar.de
  *
  */
 
@@ -41,6 +41,19 @@ import java.util.zip.GZIPOutputStream;
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class Metrics {
 
+    // The version of this bStats class
+    public static final int B_STATS_VERSION = 1;
+    // The url to which the data is sent
+    private static final String URL = "https://bStats.org/submitData/bukkit";
+    // Should failed requests be logged?
+    private static boolean logFailedRequests;
+    // Should the sent data be logged?
+    private static boolean logSentData;
+    // Should the response text be logged?
+    private static boolean logResponseStatusText;
+    // The uuid of the server
+    private static String serverUUID;
+
     static {
         // You can use the property to disable the check in your test environment
         if (System.getProperty("bstats.relocatecheck") == null || !System.getProperty("bstats.relocatecheck").equals("false")) {
@@ -57,40 +70,17 @@ public class Metrics {
 
     // This ThreadFactory enforces the naming convention for our Threads
     private final ThreadFactory threadFactory = task -> new Thread(task, "bStats-Metrics");
-
     // Executor service for requests
     // We use an executor service because the Bukkit scheduler is affected by server lags
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1, threadFactory);
-
-    // The version of this bStats class
-    public static final int B_STATS_VERSION = 1;
-
-    // The url to which the data is sent
-    private static final String URL = "https://bStats.org/submitData/bukkit";
-
-    // Is bStats enabled on this server?
-    private boolean enabled;
-
-    // Should failed requests be logged?
-    private static boolean logFailedRequests;
-
-    // Should the sent data be logged?
-    private static boolean logSentData;
-
-    // Should the response text be logged?
-    private static boolean logResponseStatusText;
-
-    // The uuid of the server
-    private static String serverUUID;
-
     // The plugin
     private final Plugin plugin;
-
     // The plugin id
     private final int pluginId;
-
     // A list with all custom charts
     private final List<CustomChart> charts = new ArrayList<>();
+    // Is bStats enabled on this server?
+    private boolean enabled;
 
     /**
      * Class constructor.
@@ -163,6 +153,74 @@ public class Metrics {
                 startSubmitting();
             }
         }
+    }
+
+    /**
+     * Sends the data to the bStats server.
+     *
+     * @param plugin Any plugin. It's just used to get a logger instance.
+     * @param data   The data to send.
+     * @throws Exception If the request failed.
+     */
+    private static void sendData(Plugin plugin, JsonObject data) throws Exception {
+        if (data == null) {
+            throw new IllegalArgumentException("Data cannot be null!");
+        }
+        if (Bukkit.isPrimaryThread()) {
+            throw new IllegalAccessException("This method must not be called from the main thread!");
+        }
+        if (logSentData) {
+            plugin.getLogger().info("Sending data to bStats: " + data);
+        }
+        HttpsURLConnection connection = (HttpsURLConnection) new URL(URL).openConnection();
+
+        // Compress the data to save bandwidth
+        byte[] compressedData = compress(data.toString());
+
+        // Add headers
+        connection.setRequestMethod("POST");
+        connection.addRequestProperty("Accept", "application/json");
+        connection.addRequestProperty("Connection", "close");
+        connection.addRequestProperty("Content-Encoding", "gzip"); // We gzip our request
+        connection.addRequestProperty("Content-Length", String.valueOf(compressedData.length));
+        connection.setRequestProperty("Content-Type", "application/json"); // We send our data in JSON format
+        connection.setRequestProperty("User-Agent", "MC-Server/" + B_STATS_VERSION);
+
+        // Send data
+        connection.setDoOutput(true);
+        try (DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream())) {
+            outputStream.write(compressedData);
+        }
+
+        StringBuilder builder = new StringBuilder();
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                builder.append(line);
+            }
+        }
+
+        if (logResponseStatusText) {
+            plugin.getLogger().info("Sent data to bStats and received response: " + builder);
+        }
+    }
+
+    /**
+     * Gzips the given String.
+     *
+     * @param str The string to gzip.
+     * @return The gzipped String.
+     * @throws IOException If the compression failed.
+     */
+    private static byte[] compress(final String str) throws IOException {
+        if (str == null) {
+            return null;
+        }
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        try (GZIPOutputStream gzip = new GZIPOutputStream(outputStream)) {
+            gzip.write(str.getBytes(StandardCharsets.UTF_8));
+        }
+        return outputStream.toByteArray();
     }
 
     /**
@@ -341,74 +399,6 @@ public class Metrics {
                 }
             }
         }).start();
-    }
-
-    /**
-     * Sends the data to the bStats server.
-     *
-     * @param plugin Any plugin. It's just used to get a logger instance.
-     * @param data   The data to send.
-     * @throws Exception If the request failed.
-     */
-    private static void sendData(Plugin plugin, JsonObject data) throws Exception {
-        if (data == null) {
-            throw new IllegalArgumentException("Data cannot be null!");
-        }
-        if (Bukkit.isPrimaryThread()) {
-            throw new IllegalAccessException("This method must not be called from the main thread!");
-        }
-        if (logSentData) {
-            plugin.getLogger().info("Sending data to bStats: " + data);
-        }
-        HttpsURLConnection connection = (HttpsURLConnection) new URL(URL).openConnection();
-
-        // Compress the data to save bandwidth
-        byte[] compressedData = compress(data.toString());
-
-        // Add headers
-        connection.setRequestMethod("POST");
-        connection.addRequestProperty("Accept", "application/json");
-        connection.addRequestProperty("Connection", "close");
-        connection.addRequestProperty("Content-Encoding", "gzip"); // We gzip our request
-        connection.addRequestProperty("Content-Length", String.valueOf(compressedData.length));
-        connection.setRequestProperty("Content-Type", "application/json"); // We send our data in JSON format
-        connection.setRequestProperty("User-Agent", "MC-Server/" + B_STATS_VERSION);
-
-        // Send data
-        connection.setDoOutput(true);
-        try (DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream())) {
-            outputStream.write(compressedData);
-        }
-
-        StringBuilder builder = new StringBuilder();
-        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                builder.append(line);
-            }
-        }
-
-        if (logResponseStatusText) {
-            plugin.getLogger().info("Sent data to bStats and received response: " + builder);
-        }
-    }
-
-    /**
-     * Gzips the given String.
-     *
-     * @param str The string to gzip.
-     * @return The gzipped String.
-     * @throws IOException If the compression failed.
-     */
-    private static byte[] compress(final String str) throws IOException {
-        if (str == null) {
-            return null;
-        }
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        try (GZIPOutputStream gzip = new GZIPOutputStream(outputStream)) {
-            gzip.write(str.getBytes(StandardCharsets.UTF_8));
-        }
-        return outputStream.toByteArray();
     }
 
     /**

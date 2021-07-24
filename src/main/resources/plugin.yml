@@ -1,10 +1,10 @@
 name: Cubit
-main : de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin
+main: de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin
 version: ${project.version}
 description: A worldguard region manager for bukkit servers
-author: Niklas Linz
+author: Kekshaus
 load: POSTWORLD
-depend: [WorldEdit, WorldGuard, Vault]
+depend: [ WorldEdit, WorldGuard, Vault ]
 api-version: 1.13
 
 commands:
@@ -14,218 +14,218 @@ commands:
     description: Land Command
   shop:
     description: Shop Command
-    aliases: [shops]
+    aliases: [ shops ]
   cadmin:
     description: Admin Command
-    aliases: [sadmin, ladmin, shopadmin, landadmin]
+    aliases: [ sadmin, ladmin, shopadmin, landadmin ]
 permissions:
-    cubit.user:
-        description: User main permissions
-        children:
-            cubit.command.user.land: true
-            cubit.command.user.shop: true
-    cubit.admin:
-        description: Admin main permissions
-        children:
-            cubit.command.admin.land: true
-            cubit.bypass.kick: true
-            cubit.admin.checkupdate: true
-    cubit.command.user.land:
-        description:  User command permissions
-        children:
-            cubit.command.land.info: true
-            cubit.command.land.buy: true
-            cubit.command.land.sell: true
-            cubit.command.land.help: true
-            cubit.command.land.addmember: true
-            cubit.command.land.removemember: true
-            cubit.command.land.offer: true
-            cubit.command.land.takeoffer: true
-            cubit.command.land.buyup: true
-            cubit.command.land.kick: true
-            cubit.command.land.list: true
-            cubit.command.land.flag.pvp: true
-            cubit.command.land.flag.fire: true
-            cubit.command.land.flag.lock: true
-            cubit.command.land.flag.tnt: true
-            cubit.command.land.flag.monster: true
-            cubit.command.land.flag.animals: true
-            cubit.command.land.flag.potion: true
-            cubit.command.land.changebiome: true
-            cubit.command.land.listbiomes: true
-            cubit.command.land.showmap: true
-    cubit.command.user.shop:
-        description:  User command permissions
-        children:
-            cubit.command.shop.buy: true
-            cubit.command.shop.sell: true
-            cubit.command.shop.info: true
-            cubit.command.shop.addmember: true
-            cubit.command.shop.removemember: true
-            cubit.command.shop.kick: true
-            cubit.command.shop.help: true
-            cubit.command.shop.list: true
-            cubit.command.shop.changebiome: true
-            cubit.command.shop.listbiomes: true
-            cubit.command.shop.flag.pvp: true
-            cubit.command.shop.flag.fire: true
-            cubit.command.shop.flag.lock: true
-            cubit.command.shop.flag.tnt: true
-            cubit.command.shop.flag.monster: true
-            cubit.command.shop.flag.animals: true
-            cubit.command.shop.flag.potion: true
-    cubit.command.admin.land:
-        description: Admin command permissions
-        children:
-            cubit.command.user.land: true
-            cubit.command.user.shop: true
-            cubit.command.admin.sell: true
-            cubit.command.admin.addmember: true
-            cubit.command.admin.removemember: true
-            cubit.command.admin.offer: true
-            cubit.command.admin.createserver: true
-            cubit.command.admin.create: true
-            cubit.command.admin.deleteserver: true
-            cubit.command.admin.createshop: true
-            cubit.command.admin.deleteshop: true
-            cubit.command.admin.list: true
-            cubit.command.admin.help: true
-            cubit.command.admin.changebiome: true
-            cubit.command.admin.listbiomes: true
-            cubit.command.admin.flag.pvp: true
-            cubit.command.admin.flag.fire: true
-            cubit.command.admin.flag.lock: true
-            cubit.command.admin.flag.tnt: true
-            cubit.command.admin.flag.monster: true
-            cubit.command.admin.flag.animals: true
-            cubit.command.admin.flag.potion: true
-            cubit.command.admin.reloadcubit: true
-            cubit.command.admin.listsnapshots: true
-            cubit.command.admin.setbuyuptime: true
-            cubit.command.admin.rebuildFlag: true
-    cubit.command.land.info:
-        default: op
-    cubit.command.land.buy:
-        default: op
-    cubit.command.land.sell:
-        default: op
-    cubit.command.land.help:
-        default: op
-    cubit.command.land.addmember:
-        default: op
-    cubit.command.land.removemember:
-        default: op
-    cubit.command.land.offer:
-        default: op
-    cubit.command.land.takeoffer:
-        default: op
-    cubit.command.land.kick:
-        default: op
-    cubit.command.land.list:
-        default: op
-    cubit.command.land.changebiome:
-        default: op
-    cubit.command.land.listbiomes:
-        default: op
-    cubit.command.land.buyup:
-        default: op
-    cubit.command.land.showmap:
-        default: op
-    cubit.command.land.flag.pvp:
-        default: op
-    cubit.command.land.flag.fire:
-        default: op
-    cubit.command.land.flag.lock:
-        default: op
-    cubit.command.land.flag.tnt:
-        default: op
-    cubit.command.land.flag.monster:
-        default: op
-    cubit.command.land.flag.animals:
-        default: op
-    cubit.command.land.flag.potion:
-        default: op
-    cubit.command.shop.buy:
-        default: op
-    cubit.command.shop.sell:
-        default: op
-    cubit.command.shop.info:
-        default: op
-    cubit.command.shop.list:
-        default: op
-    cubit.command.shop.changebiome:
-        default: op
-    cubit.command.shop.listbiomes:
-        default: op
-    cubit.command.shop.help:
-        default: op
-    cubit.command.shop.addmember:
-        default: op
-    cubit.command.shop.removemember:
-        default: op
-    cubit.command.shop.kick:
-        default: op
-    cubit.command.shop.flag.pvp:
-        default: op
-    cubit.command.shop.flag.fire:
-        default: op
-    cubit.command.shop.flag.lock:
-        default: op
-    cubit.command.shop.flag.tnt:
-        default: op
-    cubit.command.shop.flag.monster:
-        default: op
-    cubit.command.shop.flag.animals:
-        default: op
-    cubit.command.shop.flag.potion:
-        default: op
-    cubit.command.admin.sell:
-        default: op
-    cubit.command.admin.addmember:
-        default: op
-    cubit.command.admin.removemember:
-        default: op
-    cubit.command.admin.offer:
-        default: op
-    cubit.command.admin.help:
-        default: op
-    cubit.command.admin.list:
-        default: op
-    cubit.command.admin.listbiomes:
-        default: op
-    cubit.command.admin.listsnapshots:
-        default: op
-    cubit.command.admin.changebiome:
-        default: op
-    cubit.command.admin.createserver:
-        default: op
-    cubit.command.admin.create:
-        default: op
-    cubit.command.admin.deleteserver:
-        default: op
-    cubit.command.admin.createshop:
-        default: op
-    cubit.command.admin.deleteshop:
-        default: op
-    cubit.command.admin.flag.pvp:
-        default: op
-    cubit.command.admin.flag.fire:
-        default: op
-    cubit.command.admin.flag.lock:
-        default: op
-    cubit.command.admin.flag.tnt:
-        default: op
-    cubit.command.admin.flag.monster:
-        default: op
-    cubit.command.admin.flag.animals:
-        default: op
-    cubit.command.admin.reloadcubit:
-        default: op
-    cubit.command.admin.setbuyuptime:
-        default: op
-    cubit.bypass.kick:
-        default: op
-    cubit.admin.checkupdate:
-        default: op
-    cubit.command.admin.rebuildFlag:
-        default: op
+  cubit.user:
+    description: User main permissions
+    children:
+      cubit.command.user.land: true
+      cubit.command.user.shop: true
+  cubit.admin:
+    description: Admin main permissions
+    children:
+      cubit.command.admin.land: true
+      cubit.bypass.kick: true
+      cubit.admin.checkupdate: true
+  cubit.command.user.land:
+    description: User command permissions
+    children:
+      cubit.command.land.info: true
+      cubit.command.land.buy: true
+      cubit.command.land.sell: true
+      cubit.command.land.help: true
+      cubit.command.land.addmember: true
+      cubit.command.land.removemember: true
+      cubit.command.land.offer: true
+      cubit.command.land.takeoffer: true
+      cubit.command.land.buyup: true
+      cubit.command.land.kick: true
+      cubit.command.land.list: true
+      cubit.command.land.flag.pvp: true
+      cubit.command.land.flag.fire: true
+      cubit.command.land.flag.lock: true
+      cubit.command.land.flag.tnt: true
+      cubit.command.land.flag.monster: true
+      cubit.command.land.flag.animals: true
+      cubit.command.land.flag.potion: true
+      cubit.command.land.changebiome: true
+      cubit.command.land.listbiomes: true
+      cubit.command.land.showmap: true
+  cubit.command.user.shop:
+    description: User command permissions
+    children:
+      cubit.command.shop.buy: true
+      cubit.command.shop.sell: true
+      cubit.command.shop.info: true
+      cubit.command.shop.addmember: true
+      cubit.command.shop.removemember: true
+      cubit.command.shop.kick: true
+      cubit.command.shop.help: true
+      cubit.command.shop.list: true
+      cubit.command.shop.changebiome: true
+      cubit.command.shop.listbiomes: true
+      cubit.command.shop.flag.pvp: true
+      cubit.command.shop.flag.fire: true
+      cubit.command.shop.flag.lock: true
+      cubit.command.shop.flag.tnt: true
+      cubit.command.shop.flag.monster: true
+      cubit.command.shop.flag.animals: true
+      cubit.command.shop.flag.potion: true
+  cubit.command.admin.land:
+    description: Admin command permissions
+    children:
+      cubit.command.user.land: true
+      cubit.command.user.shop: true
+      cubit.command.admin.sell: true
+      cubit.command.admin.addmember: true
+      cubit.command.admin.removemember: true
+      cubit.command.admin.offer: true
+      cubit.command.admin.createserver: true
+      cubit.command.admin.create: true
+      cubit.command.admin.deleteserver: true
+      cubit.command.admin.createshop: true
+      cubit.command.admin.deleteshop: true
+      cubit.command.admin.list: true
+      cubit.command.admin.help: true
+      cubit.command.admin.changebiome: true
+      cubit.command.admin.listbiomes: true
+      cubit.command.admin.flag.pvp: true
+      cubit.command.admin.flag.fire: true
+      cubit.command.admin.flag.lock: true
+      cubit.command.admin.flag.tnt: true
+      cubit.command.admin.flag.monster: true
+      cubit.command.admin.flag.animals: true
+      cubit.command.admin.flag.potion: true
+      cubit.command.admin.reloadcubit: true
+      cubit.command.admin.listsnapshots: true
+      cubit.command.admin.setbuyuptime: true
+      cubit.command.admin.rebuildFlag: true
+  cubit.command.land.info:
+    default: op
+  cubit.command.land.buy:
+    default: op
+  cubit.command.land.sell:
+    default: op
+  cubit.command.land.help:
+    default: op
+  cubit.command.land.addmember:
+    default: op
+  cubit.command.land.removemember:
+    default: op
+  cubit.command.land.offer:
+    default: op
+  cubit.command.land.takeoffer:
+    default: op
+  cubit.command.land.kick:
+    default: op
+  cubit.command.land.list:
+    default: op
+  cubit.command.land.changebiome:
+    default: op
+  cubit.command.land.listbiomes:
+    default: op
+  cubit.command.land.buyup:
+    default: op
+  cubit.command.land.showmap:
+    default: op
+  cubit.command.land.flag.pvp:
+    default: op
+  cubit.command.land.flag.fire:
+    default: op
+  cubit.command.land.flag.lock:
+    default: op
+  cubit.command.land.flag.tnt:
+    default: op
+  cubit.command.land.flag.monster:
+    default: op
+  cubit.command.land.flag.animals:
+    default: op
+  cubit.command.land.flag.potion:
+    default: op
+  cubit.command.shop.buy:
+    default: op
+  cubit.command.shop.sell:
+    default: op
+  cubit.command.shop.info:
+    default: op
+  cubit.command.shop.list:
+    default: op
+  cubit.command.shop.changebiome:
+    default: op
+  cubit.command.shop.listbiomes:
+    default: op
+  cubit.command.shop.help:
+    default: op
+  cubit.command.shop.addmember:
+    default: op
+  cubit.command.shop.removemember:
+    default: op
+  cubit.command.shop.kick:
+    default: op
+  cubit.command.shop.flag.pvp:
+    default: op
+  cubit.command.shop.flag.fire:
+    default: op
+  cubit.command.shop.flag.lock:
+    default: op
+  cubit.command.shop.flag.tnt:
+    default: op
+  cubit.command.shop.flag.monster:
+    default: op
+  cubit.command.shop.flag.animals:
+    default: op
+  cubit.command.shop.flag.potion:
+    default: op
+  cubit.command.admin.sell:
+    default: op
+  cubit.command.admin.addmember:
+    default: op
+  cubit.command.admin.removemember:
+    default: op
+  cubit.command.admin.offer:
+    default: op
+  cubit.command.admin.help:
+    default: op
+  cubit.command.admin.list:
+    default: op
+  cubit.command.admin.listbiomes:
+    default: op
+  cubit.command.admin.listsnapshots:
+    default: op
+  cubit.command.admin.changebiome:
+    default: op
+  cubit.command.admin.createserver:
+    default: op
+  cubit.command.admin.create:
+    default: op
+  cubit.command.admin.deleteserver:
+    default: op
+  cubit.command.admin.createshop:
+    default: op
+  cubit.command.admin.deleteshop:
+    default: op
+  cubit.command.admin.flag.pvp:
+    default: op
+  cubit.command.admin.flag.fire:
+    default: op
+  cubit.command.admin.flag.lock:
+    default: op
+  cubit.command.admin.flag.tnt:
+    default: op
+  cubit.command.admin.flag.monster:
+    default: op
+  cubit.command.admin.flag.animals:
+    default: op
+  cubit.command.admin.reloadcubit:
+    default: op
+  cubit.command.admin.setbuyuptime:
+    default: op
+  cubit.bypass.kick:
+    default: op
+  cubit.admin.checkupdate:
+    default: op
+  cubit.command.admin.rebuildFlag:
+    default: op

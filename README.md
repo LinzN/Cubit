@@ -1,15 +1,20 @@
 ![](https://files.enigmar.de/plugins/cubit-logo.png)
 
-
 [![Build Status](https://ci.enigmar.de/job/cubit-pipeline/job/master/badge/icon)](https://ci.enigmar.de/job/cubit/)
+
 ### Cubit the regionmanager
 
-Cubit is a regionmanager for worldguard. You can buy a worldguard region with one command. The size for every region is one chunk (16x16). This region is fully protectet from other players. For each additional region,  the cost increases for the next region. This taxes are optional and can modified in the settings.yml. The owner of the region can add members to a region for build rights. The flags of a region can be changed. Like pvp, fire or other flags. If the owner of a region wants to sell his region, he can offer the region or sell the region directly to the server for a specific percentage of the buyprice.
-
+Cubit is a regionmanager for worldguard. You can buy a worldguard region with one command. The size for every region is
+one chunk (16x16). This region is fully protectet from other players. For each additional region, the cost increases for
+the next region. This taxes are optional and can modified in the settings.yml. The owner of the region can add members
+to a region for build rights. The flags of a region can be changed. Like pvp, fire or other flags. If the owner of a
+region wants to sell his region, he can offer the region or sell the region directly to the server for a specific
+percentage of the buyprice.
 
 ### Dependencies:
 
 ##### (Needed)
+
 [Vault](https://dev.bukkit.org/bukkit-plugins/vault/) (with an economy plugin)
 
 [WorldGuard](https://dev.bukkit.org/bukkit-plugins/worldguard/)
@@ -22,22 +27,13 @@ Cubit is a regionmanager for worldguard. You can buy a worldguard region with on
 
 MySQL Server
 
-
-
-
-
-
-
 #### [Permissions](https://gitlab.enigmar.de/minegaming/cubit/cubit/wikis/Permissions)
+
 All permissions for cubit.
 
-
-
 #### [Commands](https://gitlab.enigmar.de/minegaming/cubit/cubit/wikis/Commands)
+
 Show all commands for cubit.
-
-
-
 
 #### Installation instructions:
 
@@ -49,12 +45,10 @@ Show all commands for cubit.
 6. Edit the settings.yml for your requirements.
 7. Enjoy the plugin :D
 
-
-
 #### [SourceCode](https://gitlab.enigmar.de/minegaming/cubit/cubit/)
+
 Here you find the sourcecode of cubit.
 
-
-
 #### [Buildserver](https://ci.enigmar.de/job/Cubit/)
+
 If you want to test development builds.
