@@ -103,6 +103,7 @@ permissions:
       cubit.command.admin.listsnapshots: true
       cubit.command.admin.setbuyuptime: true
       cubit.command.admin.rebuildFlag: true
+      cubit.command.admin.upgradeHeight: true
   cubit.command.land.info:
     default: op
   cubit.command.land.buy:
@@ -228,4 +229,6 @@ permissions:
   cubit.admin.checkupdate:
     default: op
   cubit.command.admin.rebuildFlag:
+    default: op
+  cubit.command.admin.upgradeHeight:
     default: op

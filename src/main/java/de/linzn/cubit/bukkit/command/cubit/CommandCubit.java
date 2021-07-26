@@ -12,10 +12,7 @@
 package de.linzn.cubit.bukkit.command.cubit;
 
 import de.linzn.cubit.bukkit.command.ICommand;
-import de.linzn.cubit.bukkit.command.cubit.main.HelpCubit;
-import de.linzn.cubit.bukkit.command.cubit.main.RebuildFlag;
-import de.linzn.cubit.bukkit.command.cubit.main.Reload;
-import de.linzn.cubit.bukkit.command.cubit.main.Version;
+import de.linzn.cubit.bukkit.command.cubit.main.*;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
 import de.linzn.cubit.bukkit.plugin.PermissionNodes;
 import org.bukkit.command.Command;
@@ -74,6 +71,7 @@ public class CommandCubit implements CommandExecutor {
             this.cmdMap.put("reload", new Reload(this.plugin, perm.reloadCubit));
             this.cmdMap.put("rl", new Reload(this.plugin, perm.reloadCubit));
             this.cmdMap.put("rebuildflag", new RebuildFlag(this.plugin, perm.rebuildFlag));
+            this.cmdMap.put("upgradeheight", new UpgradeHeight(this.plugin, perm.upgradeHeightFlag));
             this.isLoaded = true;
         } catch (Exception e) {
             e.printStackTrace();
