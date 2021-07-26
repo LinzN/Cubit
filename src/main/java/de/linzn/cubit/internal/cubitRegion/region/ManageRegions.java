@@ -33,7 +33,7 @@ public class ManageRegions {
 
         BlockVector3 min;
         BlockVector3 max;
-        min = BlockVector3.at(chunkX * 16, 0D, chunkZ * 16);
+        min = BlockVector3.at(chunkX * 16, world.getMinHeight(), chunkZ * 16);
         max = min.add(15, world.getMaxHeight(), 15);
         ProtectedRegion region = new ProtectedCuboidRegion(regionName, min, max);
 
