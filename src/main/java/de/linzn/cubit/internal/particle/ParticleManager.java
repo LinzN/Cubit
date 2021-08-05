@@ -37,14 +37,14 @@ public class ParticleManager {
 
     public boolean sendSell(final Player player, final Location loc) {
         if (CubitBukkitPlugin.inst().getYamlManager().getSettings().particleUse) {
-            plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Particle.SPELL_WITCH, Particle.FIREWORKS_SPARK));
+            plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Particle.SOUL_FIRE_FLAME, Particle.FIREWORKS_SPARK));
         }
         return true;
     }
 
     public boolean sendInfo(final Player player, final Location loc) {
         if (CubitBukkitPlugin.inst().getYamlManager().getSettings().particleUse) {
-            plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, null, Particle.FIREWORKS_SPARK));
+            plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> new ParticleSender(player, loc, Particle.REVERSE_PORTAL, Particle.FIREWORKS_SPARK));
         }
         return true;
     }
