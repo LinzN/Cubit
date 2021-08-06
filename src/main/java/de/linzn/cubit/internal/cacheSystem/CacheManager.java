@@ -24,15 +24,15 @@ public class CacheManager {
         this.nameCache = new NameCache();
     }
 
-    public String[] getPlayernames(UUID[] playerUUIDs) {
+    public String[] getPlayerNames(UUID[] playerUUIDs) {
         String[] playerNames = new String[playerUUIDs.length];
         for (int i = 0; i < playerNames.length; i++) {
-            playerNames[i] = getPlayername(playerUUIDs[i]);
+            playerNames[i] = getPlayerName(playerUUIDs[i]);
         }
         return playerNames;
     }
 
-    public String getPlayername(UUID playerUUID) {
+    public String getPlayerName(UUID playerUUID) {
         return this.nameCache.getCacheName(playerUUID);
     }
 }

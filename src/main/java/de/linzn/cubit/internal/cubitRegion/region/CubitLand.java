@@ -40,10 +40,10 @@ public class CubitLand {
         this.region = region;
         if (setupNames) {
             if (this.getOwnersUUID().length > 0) {
-                this.ownerNames = CubitBukkitPlugin.inst().getCacheManager().getPlayernames(this.getOwnersUUID());
+                this.ownerNames = CubitBukkitPlugin.inst().getCacheManager().getPlayerNames(this.getOwnersUUID());
             }
             if (this.getMembersUUID().length > 0) {
-                this.memberNames = CubitBukkitPlugin.inst().getCacheManager().getPlayernames(this.getMembersUUID());
+                this.memberNames = CubitBukkitPlugin.inst().getCacheManager().getPlayerNames(this.getMembersUUID());
             }
         }
     }

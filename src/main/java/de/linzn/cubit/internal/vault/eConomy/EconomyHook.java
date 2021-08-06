@@ -40,7 +40,7 @@ public class EconomyHook {
             if (sender.getName() != null) {
                 econ.withdrawPlayer(sender, value);
             } else {
-                econ.withdrawPlayer(this.plugin.getCacheManager().getPlayername(senderUUID), value);
+                econ.withdrawPlayer(this.plugin.getCacheManager().getPlayerName(senderUUID), value);
             }
         }
         if (receiverUUID != null) {
@@ -48,7 +48,7 @@ public class EconomyHook {
             if (receiver.getName() != null) {
                 econ.depositPlayer(receiver, value);
             } else {
-                econ.depositPlayer(this.plugin.getCacheManager().getPlayername(receiverUUID), value);
+                econ.depositPlayer(this.plugin.getCacheManager().getPlayerName(receiverUUID), value);
             }
         }
     }

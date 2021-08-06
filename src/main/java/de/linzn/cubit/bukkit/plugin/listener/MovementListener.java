@@ -48,7 +48,7 @@ public class MovementListener implements Listener {
                     if (cubitLandTo.getOwnersUUID().length >= 1 && cubitLandTo.getOwnersUUID()[0].equals(event.getPlayer().getUniqueId())) {
                         msg = CubitBukkitPlugin.inst().getYamlManager().getLanguage().enterOwnRegionGreetings.replace("{regionID}", landName).replace("{pvp}", pvp);
                     } else {
-                        String ownerName = CubitBukkitPlugin.inst().getCacheManager().getPlayername(cubitLandTo.getOwnersUUID()[0]);
+                        String ownerName = CubitBukkitPlugin.inst().getCacheManager().getPlayerName(cubitLandTo.getOwnersUUID()[0]);
                         msg = CubitBukkitPlugin.inst().getYamlManager().getLanguage().enterRegionGreetings.replace("{regionID}", landName).replace("{player}", ownerName).replace("{pvp}", pvp);
                     }
                     ActionBarAPI.sendActionbar(event.getPlayer(), msg);
