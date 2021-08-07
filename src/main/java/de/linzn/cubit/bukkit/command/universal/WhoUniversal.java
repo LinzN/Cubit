@@ -23,17 +23,15 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.UUID;
 
-public class KickUniversal implements ICommand {
+public class WhoUniversal implements ICommand {
 
     private CubitBukkitPlugin plugin;
     private String permNode;
     private CubitType type;
 
-    public KickUniversal(CubitBukkitPlugin plugin, String permNode, CubitType type) {
+    public WhoUniversal(CubitBukkitPlugin plugin, String permNode, CubitType type) {
         this.plugin = plugin;
         this.permNode = permNode;
         this.type = type;
@@ -82,39 +80,23 @@ public class KickUniversal implements ICommand {
             return true;
         }
 
+
+        if (plugin.getRegionManager().pvpFlag.getStatus(cubitLand)) {
+            sender.sendMessage(plugin.getYamlManager().getLanguage().errorPvpIsEnabled);
+            return true;
+        }
+
+
         /* Run in sync */
         synchronizeTask(this.plugin, () -> {
-            HashSet<UUID> playerMap = new HashSet<>();
-
+            HashSet<String> playersOnChunk = new HashSet<>();
             for (Entity entity : chunk.getEntities()) {
-                if (!(entity instanceof Player)) {
-                    continue;
-                }
-                if (entity.hasPermission(plugin.getPermNodes().kickAdminBypass)) {
-                    continue;
-                }
-                if (plugin.getRegionManager().hasLandPermission(cubitLand, entity.getUniqueId())) {
-                    continue;
-                }
-                if (Arrays.asList(cubitLand.getMembersUUID()).contains(entity.getUniqueId())) {
-                    continue;
-                }
-                playerMap.add(entity.getUniqueId());
-            }
-
-            for (UUID uuid : playerMap) {
-                final Player kickedPlayer = Bukkit.getPlayer(uuid);
-                if (kickedPlayer != null) {
-                    plugin.getServer().getScheduler().runTask(plugin, () -> {
-                        kickedPlayer.teleport(loc.getWorld().getSpawnLocation());
-                        kickedPlayer.sendMessage(plugin.getYamlManager().getLanguage().kickedInfo.replace("{regionID}",
-                                cubitLand.getLandName()));
-                    });
-
+                if (entity instanceof Player) {
+                    playersOnChunk.add(entity.getName());
                 }
             }
             sender.sendMessage(
-                    plugin.getYamlManager().getLanguage().kickInfo.replace("{regionID}", cubitLand.getLandName()));
+                    plugin.getYamlManager().getLanguage().whoInfo.replace("{regionID}", cubitLand.getLandName()).replace("{players}", playersOnChunk.toString()));
         });
         return true;
     }

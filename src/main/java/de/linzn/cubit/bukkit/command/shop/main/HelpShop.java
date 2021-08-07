@@ -81,6 +81,7 @@ public class HelpShop implements ICommand {
         sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpE1P3);
         sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpE2P3);
         sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpE3P3);
+        sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpE4P3);
         sender.sendMessage(plugin.getYamlManager().getLanguage().shopHelpBottomP3);
 
         return true;

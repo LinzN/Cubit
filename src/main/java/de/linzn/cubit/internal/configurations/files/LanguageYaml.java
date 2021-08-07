@@ -48,6 +48,7 @@ public class LanguageYaml {
     public String offerRemoveSuccess;
     public String kickedInfo;
     public String kickInfo;
+    public String whoInfo;
     public String isFreeAndBuyable;
     public String changedBiome;
     public String setbuyuptime;
@@ -60,6 +61,7 @@ public class LanguageYaml {
     public String notOffered;
     public String noRegionsFound;
     public String wrongArguments;
+    public String errorPvpIsEnabled;
 
     /* Flag switch msg */
     public String pvpOn;
@@ -118,6 +120,7 @@ public class LanguageYaml {
     public String landHelpE1P3;
     public String landHelpE2P3;
     public String landHelpE3P3;
+    public String landHelpE4P3;
     public String landHelpBottomP3;
     /* Page 4 Help for Land Command */
     public String landHelpHeaderP4;
@@ -151,6 +154,7 @@ public class LanguageYaml {
     public String shopHelpE1P3;
     public String shopHelpE2P3;
     public String shopHelpE3P3;
+    public String shopHelpE4P3;
     public String shopHelpBottomP3;
     /* Page 4 Help for Shop Command */
     public String shopHelpHeaderP4;
@@ -257,6 +261,7 @@ public class LanguageYaml {
         kickedInfo = this.getLanguageString("kickedInfo",
                 "&6You kicked from the region {regionID} by the region owner!");
         kickInfo = this.getLanguageString("kickInfo", "&2All non-member kicked from the region &e{regionID}&2!");
+        whoInfo = this.getLanguageString("whoInfo", "&2The following players are on the region &e{regionID}&2\n &a {players}");
         changedBiome = this.getLanguageString("changedBiome",
                 "&2You changed the biome from region &e{regionID} &2to &e{biome}&2!");
 
@@ -274,6 +279,7 @@ public class LanguageYaml {
         takeOwnLand = this.getLanguageString("takeOwnLand", "&cYou can not buy your own region!");
         notOffered = this.getLanguageString("notOffered", "&cThe region {regionID} is not offered!");
         wrongArguments = this.getLanguageString("wrongArguments", "&cWrong arguments: Use {usage}!");
+        errorPvpIsEnabled = this.getLanguageString("errorPvpIsEnabled", "&cPvP is on this region enabled. This command is not possible!");
         noRegionsFound = this.getLanguageString("noRegionsFound", "&cNo regions found. Sry!");
         notToLongOffline = this.getLanguageString("notToLongOffline", "&cThis player is not long enough offline!");
         /* Header for Plugin */
@@ -327,6 +333,8 @@ public class LanguageYaml {
                 "&2 Unset player build-rights: &e/land remove (-all) [player]");
         landHelpE3P3 = this.getLanguageString("theme.helpPage3.help3",
                 "&2 Kick non-members from a region (teleporting): &e/land kick");
+        landHelpE4P3 = this.getLanguageString("theme.helpPage3.help4",
+                "&2 Show all players standing on the current region: &e/land who");
         landHelpBottomP3 = this.getLanguageString("theme.helpPage3.bottom", "&a&lMore on page 4 with &6/land help 4");
 
         /* Page 4 Help for Land Command */
@@ -379,6 +387,8 @@ public class LanguageYaml {
                 "&2 Unset player build-rights: &e/shop remove (-all) [player]");
         shopHelpE3P3 = this.getLanguageString("theme.shopHelpPage3.help3",
                 "&2 Kick non-members from a shop (teleporting): &4/shop kick");
+        shopHelpE4P3 = this.getLanguageString("theme.shopHelpPage3.help4",
+                "&2 Show all players standing on the current shop: &4/shop who");
         shopHelpBottomP3 = this.getLanguageString("theme.shopHelpPage3.bottom",
                 "&a&lMore on page 4 with &6/shop help 4");
 

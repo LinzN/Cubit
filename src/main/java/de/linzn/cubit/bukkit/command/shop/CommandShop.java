@@ -102,6 +102,7 @@ public class CommandShop implements CommandExecutor {
             this.cmdMap.put("remove",
                     new RemoveMemberUniversal(this.plugin, perm.removeMemberShop, CubitType.SHOP, false));
             this.cmdMap.put("kick", new KickUniversal(this.plugin, perm.kickShop, CubitType.SHOP));
+            this.cmdMap.put("who", new WhoUniversal(this.plugin, perm.whoShop, CubitType.SHOP));
             this.cmdMap.put("changebiome",
                     new EditBiomeUniversal(this.plugin, perm.changeBiomeShop, CubitType.SHOP, false));
             this.cmdMap.put("listbiomes", new ListBiomesUniversal(this.plugin, perm.listBiomesShop, CubitType.SHOP));

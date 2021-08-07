@@ -28,6 +28,7 @@ public class PermissionNodes {
     public String buyupLand = "cubit.command.land.buyup";
     public String takeOfferLand = "cubit.command.land.takeoffer";
     public String kickLand = "cubit.command.land.kick";
+    public String whoLand = "cubit.command.land.who";
     public String listLand = "cubit.command.land.list";
     public String changeBiomeLand = "cubit.command.land.changebiome";
     public String listBiomesLand = "cubit.command.land.listbiomes";
@@ -44,6 +45,7 @@ public class PermissionNodes {
     public String addMemberShop = "cubit.command.shop.addmember";
     public String removeMemberShop = "cubit.command.shop.removemember";
     public String kickShop = "cubit.command.shop.kick";
+    public String whoShop = "cubit.command.shop.who";
     public String listShop = "cubit.command.shop.list";
     public String flagShop = "cubit.command.shop.flag.";
     public String listBiomesShop = "cubit.command.shop.listbiomes";

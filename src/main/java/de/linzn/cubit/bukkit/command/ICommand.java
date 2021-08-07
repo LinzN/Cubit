@@ -11,9 +11,15 @@
 
 package de.linzn.cubit.bukkit.command;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.plugin.Plugin;
 
 public interface ICommand {
     boolean runCmd(Command cmd, CommandSender sender, String[] args);
+
+    default void synchronizeTask(Plugin plugin, Runnable runnable){
+        Bukkit.getScheduler().runTask(plugin, runnable);
+    }
 }

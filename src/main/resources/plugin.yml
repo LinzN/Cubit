@@ -43,6 +43,7 @@ permissions:
       cubit.command.land.takeoffer: true
       cubit.command.land.buyup: true
       cubit.command.land.kick: true
+      cubit.command.land.who: true
       cubit.command.land.list: true
       cubit.command.land.flag.pvp: true
       cubit.command.land.flag.fire: true
@@ -63,6 +64,7 @@ permissions:
       cubit.command.shop.addmember: true
       cubit.command.shop.removemember: true
       cubit.command.shop.kick: true
+      cubit.command.shop.who: true
       cubit.command.shop.help: true
       cubit.command.shop.list: true
       cubit.command.shop.changebiome: true
@@ -122,6 +124,8 @@ permissions:
     default: op
   cubit.command.land.kick:
     default: op
+  cubit.command.land.who:
+    default: op
   cubit.command.land.list:
     default: op
   cubit.command.land.changebiome:
@@ -165,6 +169,8 @@ permissions:
   cubit.command.shop.removemember:
     default: op
   cubit.command.shop.kick:
+    default: op
+  cubit.command.shop.who:
     default: op
   cubit.command.shop.flag.pvp:
     default: op
