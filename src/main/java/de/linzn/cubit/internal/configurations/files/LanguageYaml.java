@@ -20,6 +20,7 @@ public class LanguageYaml {
     public String startBiomeChange;
     public String enterRegionGreetings;
     public String enterOwnRegionGreetings;
+    public String blockEditReconnectInfo;
     /* Error MSG */
     public String noConsoleMode;
     public String disabledCommand;
@@ -216,6 +217,7 @@ public class LanguageYaml {
 
         /* Info MSG */
         startBiomeChange = this.getLanguageString("startBiomeChange", "&2Starting biome change for region {regionID}!");
+        blockEditReconnectInfo  = this.getLanguageString("blockEditReconnectInfo", "&2The see the result of this operation it could be that you need to perform a reconnect!");
         enterRegionGreetings = this.getLanguageString("enterRegionGreetings", "&e{player}`s &2region &e{regionID}&2 {pvp}");
         enterOwnRegionGreetings = this.getLanguageString("enterOwnRegionGreetings", "&eYour &2region &e{regionID}&2 {pvp}");
         /* Error MSG */

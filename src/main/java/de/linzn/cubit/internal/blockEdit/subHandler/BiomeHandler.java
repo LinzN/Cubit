@@ -11,8 +11,9 @@
 
 package de.linzn.cubit.internal.blockEdit.subHandler;
 
+import de.linzn.cubit.internal.blockEdit.normal.worldedit.WorldEditBiomeChange;
+import de.linzn.cubit.internal.blockEdit.normal.worldedit.WorldEditBlockFunction;
 import de.linzn.cubit.bukkit.plugin.CubitBukkitPlugin;
-import de.linzn.cubit.internal.blockEdit.normal.biome.ChangeBiome;
 import org.bukkit.Chunk;
 import org.bukkit.block.Biome;
 
@@ -26,18 +27,7 @@ public class BiomeHandler {
 
 
     public boolean changeBiomeChunk(Chunk chunk, Biome biome) {
-        return this.changeBiomeChunkDefault(chunk, biome);
+        WorldEditBlockFunction worldEditBlockFunction = new WorldEditBiomeChange(chunk, biome);
+        return worldEditBlockFunction.startOperation();
     }
-
-    private boolean changeBiomeChunkDefault(Chunk chunk, Biome biome) {
-
-        try {
-            new ChangeBiome(plugin, chunk, biome).change();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-        return true;
-    }
-
 }

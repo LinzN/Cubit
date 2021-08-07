@@ -184,6 +184,7 @@ public class EditBiomeUniversal implements ICommand {
 
         sender.sendMessage(plugin.getYamlManager().getLanguage().changedBiome
                 .replace("{regionID}", cubitLand.getLandName()).replace("{biome}", biome.name().toUpperCase()));
+        sender.sendMessage(plugin.getYamlManager().getLanguage().blockEditReconnectInfo);
 
         return true;
     }
