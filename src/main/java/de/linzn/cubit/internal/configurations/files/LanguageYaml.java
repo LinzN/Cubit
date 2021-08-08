@@ -221,7 +221,7 @@ public class LanguageYaml {
 
         /* Info MSG */
         startBiomeChange = this.getLanguageString("startBiomeChange", "&2Starting biome change for region {regionID}!");
-        blockEditReconnectInfo  = this.getLanguageString("blockEditReconnectInfo", "&2The see the result of this operation it could be that you need to perform a reconnect!");
+        blockEditReconnectInfo  = this.getLanguageString("blockEditReconnectInfo", "&2To see the result of this operation it could be that you need to perform a reconnect!");
         enterRegionGreetings = this.getLanguageString("enterRegionGreetings", "&e{player}`s &2region &e{regionID}&2 {pvp}");
         enterOwnRegionGreetings = this.getLanguageString("enterOwnRegionGreetings", "&eYour &2region &e{regionID}&2 {pvp}");
         /* Error MSG */
@@ -241,7 +241,7 @@ public class LanguageYaml {
                 "&cNo valid {type} region found here! Sorry :(");
         noNumberFound = this.getLanguageString("noNumberFound", "&cThis is not a valid number");
         reachLimit = this.getLanguageString("reachLimit", "&cSorry you reached the limit for this regionType!");
-        notABiome = this.getLanguageString("notABiome", "&cThis is not a valid biomename: {biome}!");
+        notABiome = this.getLanguageString("notABiome", "&cThis is not a valid biome name: {biome}!");
         pageNotFound = this.getLanguageString("pageNotfound", "&cThis is not a valid page");
         noValidWEAdapter = this.getLanguageString("noValidWEAdapter",
                 "&cWorldEdit has no valid bukkit adapter for this server. Please update WorldEdit!");
